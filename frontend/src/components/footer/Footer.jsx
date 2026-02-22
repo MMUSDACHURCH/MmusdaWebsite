@@ -24,10 +24,10 @@ const Footer = () => {
             fellowship, and service.
           </p>
           <p>
-            <FaMapMarkerAlt /> MMUST Main Campus
+            <FaMapMarkerAlt className="icon-inline"/> MMUST Main Campus
           </p>
           <p>
-            <FaPhoneAlt /> +254 7XX XXX XXX
+            <FaPhoneAlt className="icon-inline"/> +254 7XX XXX XXX
           </p>
         </div>
 

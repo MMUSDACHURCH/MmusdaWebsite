@@ -79,10 +79,14 @@ const Events = () => {
         <div className="events-grid">
           {events.map((event) => (
             <div className="event-card" key={event.eventId}>
-              <img src={event.photoUrl} alt={event.title} />
-              <h3>{event.title}</h3>
-              <p>{event.description}</p>
-              <span>{event.eventDate}</span>
+              <div className="event-image-container">
+                <img src={event.photoUrl} alt={event.title} />
+              </div>
+              <div className="event-content">
+                <h3>{event.title}</h3>
+                <p>{event.description}</p>
+                <span>{event.eventDate}</span>
+              </div>
             </div>
           ))}
         </div>

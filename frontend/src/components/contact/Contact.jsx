@@ -49,30 +49,30 @@ const Contact = () => {
             <div className="form-left">
               <div className="form-group">
                 <label>Name</label>
-                <input type="text" required />
+                <input type="text" placeholder="Your Name" required />
               </div>
 
               <div className="form-group">
                 <label>Email</label>
-                <input type="email" required />
+                <input type="email" placeholder="Your Email" required />
               </div>
 
               <div className="form-group">
                 <label>Phone Number</label>
-                <input type="tel" />
+                <input type="tel" placeholder="Your Phone Number" />
               </div>
 
               <div className="form-group">
                 <label>Subject</label>
-                <input type="text" required />
+                <input type="text" placeholder="Subject" required />
               </div>
 
               <div className="form-group message-group">
                 <label>Message</label>
-                <textarea rows="4" required />
+                <textarea rows="4" placeholder="Your Message" required />
               </div>
 
-              <button className="submit-btn">Send Message</button>
+              <button className="submit-btn" type="submit">Send Message</button>
             </div>
 
             <div className="form-right social-links-block">
@@ -80,31 +80,31 @@ const Contact = () => {
 
               <div className="social-item">
                 <a href="https://facebook.com" target="_blank" rel="noreferrer">
-                  <FaFacebookF className="social-icon" /> Facebook
+                  <FaFacebookF className="social-icon facebook-icon" /> Facebook
                 </a>
               </div>
 
               <div className="social-item">
                 <a href="https://twitter.com" target="_blank" rel="noreferrer">
-                  <FaTwitter className="social-icon" /> Twitter
+                  <FaTwitter className="social-icon twitter-icon" /> Twitter
                 </a>
               </div>
 
               <div className="social-item">
                 <a href="https://instagram.com" target="_blank" rel="noreferrer">
-                  <FaInstagram className="social-icon" /> Instagram
+                  <FaInstagram className="social-icon instagram-icon" /> Instagram
                 </a>
               </div>
 
               <div className="social-item">
                 <a href="https://youtube.com" target="_blank" rel="noreferrer">
-                  <FaYoutube className="social-icon" /> YouTube
+                  <FaYoutube className="social-icon youtube-icon" /> YouTube
                 </a>
               </div>
 
               <div className="social-item">
                 <a href="mailto:emmanuelmose806@gmail.com">
-                  <FaEnvelope className="social-icon" /> Email
+                  <FaEnvelope className="social-icon email-icon" /> Email
                 </a>
               </div>
 
