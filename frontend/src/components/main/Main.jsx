@@ -1,13 +1,13 @@
 import React from "react";
 import "./Main.css";
-import OpenedBible from "../../assets/images/OpenedBible.jpeg";
+import logo1 from "../../assets/images/logo1.jpeg";
 
 const Main = () => {
   return (
     <section className="main-home">
       {/* TEXT CONTENT */}
       <div className="main-info">
-        <h1>Welcome to MMUSDA Church 🙏</h1>
+        <h1>Welcome to MMUSDA Church</h1>
 
         <h2 className="animated-lines">
           <span style={{ "--i": 4 }} data-text="Empowering Faith">
@@ -49,7 +49,7 @@ const Main = () => {
       <div className="main-image">
         <div className="image-box">
           <div className="image-inner">
-            <img src={OpenedBible} alt="Opened Bible" />
+            <img src={logo1} alt="Opened Bible" />
           </div>
         </div>
       </div>
