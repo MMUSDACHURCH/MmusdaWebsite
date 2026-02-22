@@ -1,0 +1,85 @@
+/* Colors */
+:root {
+  --darkblue: #1E3A8A;
+  --warmorange: #F97316;
+  --black: #000;
+  --white: #fff;
+}
+
+/* Drawer container */
+.drawer {
+  width: 250px;
+  height: 100vh;
+  background-color: var(--darkblue);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+}
+
+/* Header */
+.drawer-header {
+  padding: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-bottom: 1px solid var(--black);
+}
+
+/* Navigation items */
+.drawer-nav {
+  flex: 1;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.drawer-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  text-decoration: none;
+  color: var(--white);
+  font-weight: 500;
+  border-radius: 5px;
+  margin: 5px 10px;
+  transition: all 0.3s ease;
+}
+
+.drawer-item:hover {
+  background-color: var(--warmorange);
+  color: var(--black);
+}
+
+.drawer-item.active {
+  background-color: var(--warmorange);
+  color: var(--black);
+}
+
+/* Icon */
+.drawer-icon {
+  font-size: 18px;
+}
+
+/* Footer logout */
+.drawer-footer {
+  padding: 20px;
+  border-top: 1px solid var(--black);
+}
+
+.logout-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--black);
+  color: var(--warmorange);
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  background-color: var(--warmorange);
+  color: var(--black);
+}
