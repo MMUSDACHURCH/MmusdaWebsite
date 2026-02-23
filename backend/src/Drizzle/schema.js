@@ -11,6 +11,7 @@ export const admins = pgTable("admins", {
 export const registeredAdmins = pgTable("registered_admins", {
   registeredId: serial("registered_id").primaryKey(),
   adminId: integer("admin_id").notNull(),
+  password: varchar("password", { length: 255 }).notNull(), // <-- new field
   isVerified: boolean("is_verified").default(false),
   verificationCode: varchar("verification_code", { length: 10 }),
   createdAt: timestamp("created_at").defaultNow(),

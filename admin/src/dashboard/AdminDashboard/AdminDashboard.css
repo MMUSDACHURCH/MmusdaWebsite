@@ -1,41 +1,68 @@
-.dashboard-container {
+.admin-dashboard {
   display: flex;
   height: 100vh;
-  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
 }
 
-.dashboard-main {
-  flex: 1;
-  padding: 30px;
-  background-color: #f0f0f0;
-  overflow-y: auto;
+/* Drawer */
+.drawer {
+  width: 250px;
+  background-color: #0d1b2a; /* dark blue */
+  color: white;
+  display: flex;
+  flex-direction: column;
 }
 
-.dashboard-title {
-  font-size: 2.5rem;
-  color: #1E3A8A; 
-  margin-bottom: 30px;
-}
-
-.dashboard-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-
-.dashboard-card {
-  background-color: #fff;
+.drawer-header {
   padding: 20px;
-  border-left: 5px solid #F97316; /* warm orange */
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-bottom: 1px solid #f77f00; /* warm orange border */
 }
 
-.dashboard-card h2 {
-  margin-bottom: 10px;
-  color: #1E3A8A; /* dark blue */
+.drawer-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
 }
 
-.dashboard-card p {
-  color: #333;
+.drawer-item {
+  padding: 12px 20px;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.drawer-item:hover {
+  background-color: #f77f00; /* warm orange on hover */
+  color: white;
+}
+
+.drawer-item.active {
+  background-color: #f77f00;
+}
+
+.drawer-footer {
+  padding: 20px;
+  border-top: 1px solid #f77f00;
+}
+
+.logout-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #f77f00;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Right content frame */
+.dashboard-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
 }

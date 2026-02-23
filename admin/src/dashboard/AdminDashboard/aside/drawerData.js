@@ -18,18 +18,17 @@ export const adminDrawerData = [
         description: "Manage department listings"
     },
     {
+        id: "Admins",
+        name: "Admins",
+        link: "admins",
+        description: "website admins"
+    },
+    {
         id: "events",
         name: "Events",
         icon: FaCalendarCheck,
         link: "events",
         description: "Event Management"
-    },
-    {
-        id: "bookings",
-        name: "Bookings",
-        icon: FaCalendarCheck,
-        link: "bookings",
-        description: "Reservation Management"
     },
     {
         id: "leaders",

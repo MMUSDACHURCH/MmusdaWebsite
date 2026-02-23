@@ -43,6 +43,13 @@
       "when": 1771824278736,
       "tag": "0005_crazy_william_stryker",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1771827101681,
+      "tag": "0006_flowery_gorgon",
+      "breakpoints": true
     }
   ]
 }

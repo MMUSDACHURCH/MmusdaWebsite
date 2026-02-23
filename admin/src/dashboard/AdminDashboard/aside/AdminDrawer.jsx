@@ -4,17 +4,20 @@ import { NavLink } from "react-router-dom";
 import "./AdminDrawer.css";
 
 const AdminDrawer = () => {
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/login";
+  };
+
   return (
     <div className="drawer">
-      <div className="drawer-header">
-        Admin Panel
-      </div>
+      <div className="drawer-header">Admin Panel</div>
 
       <nav className="drawer-nav">
         {adminDrawerData.map((item) => (
           <NavLink
             key={item.id}
-            to={`/${item.link}`}
+            to={`/dashboard/${item.link}`}
             className={({ isActive }) =>
               `drawer-item ${isActive ? "active" : ""}`
             }
@@ -26,7 +29,7 @@ const AdminDrawer = () => {
       </nav>
 
       <div className="drawer-footer">
-        <button className="logout-btn">
+        <button className="logout-btn" onClick={handleLogout}>
           Logout
         </button>
       </div>

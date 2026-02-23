@@ -1,31 +1,20 @@
 import React from "react";
-import AdminDrawer from "./AdminDrawer";
+import { Routes, Route, Navigate } from "react-router-dom";
+import AdminDrawer from "./aside/AdminDrawer";
 import "./AdminDashboard.css";
 
 const AdminDashboard = () => {
   return (
-    <div className="dashboard-container">
+    <div className="admin-dashboard">
+      {/* Left drawer */}
       <AdminDrawer />
 
-      <div className="dashboard-main">
-        <h1 className="dashboard-title">Welcome, Admin!</h1>
-
-        <div className="dashboard-cards">
-          <div className="dashboard-card">
-            <h2>Departments</h2>
-            <p>Manage all church departments.</p>
-          </div>
-
-          <div className="dashboard-card">
-            <h2>Events</h2>
-            <p>View and manage upcoming events.</p>
-          </div>
-
-          <div className="dashboard-card">
-            <h2>Bookings</h2>
-            <p>Track all reservations and bookings.</p>
-          </div>
-        </div>
+      {/* Right content frame */}
+      <div className="dashboard-content">
+        <Routes>
+          <Route path="/" element={<h2>Welcome to Admin Dashboard</h2>} />
+          {/* You can create pages like /departments, /events later */}
+        </Routes>
       </div>
     </div>
   );
