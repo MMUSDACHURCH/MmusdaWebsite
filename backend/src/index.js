@@ -5,6 +5,7 @@ import prayerRouter from "./prayerRequest/prayerRequest.router.js";
 import sermonsRouter from "./sermons/sermons.router.js";
 import { announcementsRouter } from "./announcements/announcements.router.js";
 import { eventsRouter } from "./events/events.router.js";
+import { authRouter } from "./auth/auth.router.js";
 
 const initializeApp = () => {
   const app = express();
@@ -31,6 +32,7 @@ const initializeApp = () => {
   app.use("/api/prayer-requests", prayerRouter);
   app.use("/api/announcements", announcementsRouter);
   app.use("/api/events", eventsRouter);
+  app.use("/api/auth", authRouter);
 
   app.get("/", (req, res) => {
     res.send("Backend server is running with multi-frontend support!");
