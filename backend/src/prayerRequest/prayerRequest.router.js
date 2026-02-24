@@ -1,9 +1,12 @@
 import express from "express";
-import * as prayerController from "./prayerRequest.controller.js";
+import PrayerRequestsController from "./prayerRequest.controller.js";
 
 const prayerRouter = express.Router();
 
-prayerRouter.post("/", prayerController.createPrayerRequest);
-prayerRouter.get("/public", prayerController.getPublicPrayerRequests);
+prayerRouter.get("/", PrayerRequestsController.getAll);
+prayerRouter.post("/", PrayerRequestsController.create);
+prayerRouter.get("/:id", PrayerRequestsController.getById);
+prayerRouter.put("/:id", PrayerRequestsController.update);
+prayerRouter.delete("/:id", PrayerRequestsController.delete);
 
 export default prayerRouter;

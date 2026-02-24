@@ -1,25 +1,34 @@
-import * as prayerService from "../prayerRequest/prayerRequest.service.js";
+import { PrayerRequestsService } from "./prayerRequest.service.js";
 
-export const createPrayerRequest = async (req, res) => {
-  try {
-    const { firstName, lastName, phoneNumber, title, description, requestedBy, isPublic } = req.body;
+const PrayerRequestsController = {
+  getAll: async (req, res) => {
+    const data = await PrayerRequestsService.getAll();
+    res.json(data);
+  },
 
-    if (!firstName || !lastName || !title) {
-      return res.status(400).json({ success: false, message: "firstName, lastName, and title are required" });
-    }
+  create: async (req, res) => {
+    const data = await PrayerRequestsService.create(req.body);
+    res.status(201).json(data);
+  },
 
-    const result = await prayerService.createPrayerRequest({ firstName, lastName, phoneNumber, title, description, requestedBy, isPublic });
-    res.status(201).json({ success: true, data: result });
-  } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
+  update: async (req, res) => {
+    const id = parseInt(req.params.id);
+    const data = await PrayerRequestsService.update(id, req.body);
+    res.json(data);
+  },
+
+  delete: async (req, res) => {
+    const id = parseInt(req.params.id);
+    await PrayerRequestsService.delete(id);
+    res.json({ message: "Prayer request deleted" });
+  },
+
+  getById: async (req, res) => {
+    const id = parseInt(req.params.id);
+    const data = await PrayerRequestsService.getById(id);
+    if (!data) return res.status(404).json({ error: "Not found" });
+    res.json(data);
   }
 };
 
-export const getPublicPrayerRequests = async (req, res) => {
-  try {
-    const requests = await prayerService.getPublicPrayerRequests();
-    res.status(200).json({ success: true, data: requests });
-  } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
-  }
-};
+export default PrayerRequestsController;

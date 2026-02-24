@@ -1,90 +1,33 @@
-import { AnnouncementService } from "./announcements.service.js";
+import { AnnouncementsService } from "./announcements.service.js";
 
-export const AnnouncementController = {
-  // Create a new announcement
-  create: async (req, res) => {
-    try {
-      const { title, description, createdBy } = req.body;
-      const announcement = await AnnouncementService.createAnnouncement({ title, description, createdBy });
-      res.status(201).json({
-        message: "Announcement created successfully",
-        announcement
-      });
-    } catch (err) {
-      console.error(err);
-      res.status(500).json({ message: "Failed to create announcement" });
-    }
-  },
-
-  // Get all announcements
+const AnnouncementsController = {
   getAll: async (req, res) => {
-    try {
-      const announcements = await AnnouncementService.getAllAnnouncements();
-      res.status(200).json({ announcements });
-    } catch (err) {
-      console.error(err);
-      res.status(500).json({ message: "Failed to fetch announcements" });
-    }
+    const data = await AnnouncementsService.getAll();
+    res.json(data);
   },
 
-  // Get announcements by date range
-  getByDate: async (req, res) => {
-    try {
-      const { startDate, endDate } = req.query;
-      if (!startDate || !endDate) {
-        return res.status(400).json({ message: "startDate and endDate are required" });
-      }
-
-      // Convert strings to Date objects
-      const start = new Date(startDate);
-      const end = new Date(endDate);
-
-      const announcements = await AnnouncementService.getAnnouncementsByDate({ startDate: start, endDate: end });
-
-      res.status(200).json({ announcements });
-    } catch (err) {
-      console.error(err);
-      res.status(500).json({ message: "Failed to fetch announcements by date" });
-    }
+  create: async (req, res) => {
+    const data = await AnnouncementsService.create(req.body);
+    res.status(201).json(data);
   },
 
-  // Update announcement by ID
   update: async (req, res) => {
-    try {
-      const { id } = req.params;
-      const data = req.body;
-
-      const updated = await AnnouncementService.updateAnnouncement(Number(id), data);
-
-      if (!updated) {
-        return res.status(404).json({ message: `Announcement with ID ${id} not found` });
-      }
-
-      res.status(200).json({
-        message: "Announcement updated successfully",
-        announcement: updated
-      });
-    } catch (err) {
-      console.error(err);
-      res.status(500).json({ message: "Failed to update announcement" });
-    }
+    const id = parseInt(req.params.id);
+    const data = await AnnouncementsService.update(id, req.body);
+    res.json(data);
   },
 
-  // Delete announcement by ID
   delete: async (req, res) => {
-    try {
-      const { id } = req.params;
-      const deleted = await AnnouncementService.deleteAnnouncement(Number(id));
+    const id = parseInt(req.params.id);
+    await AnnouncementsService.delete(id);
+    res.json({ message: "Announcement deleted" });
+  },
 
-      // Drizzle delete returns number of affected rows (if supported)
-      if (!deleted || deleted.rowCount === 0) {
-        return res.status(404).json({ message: `Announcement with ID ${id} not found` });
-      }
-
-      res.status(200).json({ message: `Announcement with ID ${id} deleted successfully` });
-    } catch (err) {
-      console.error(err);
-      res.status(500).json({ message: "Failed to delete announcement" });
-    }
+  getByDate: async (req, res) => {
+    const { from, to } = req.query;
+    const results = await AnnouncementsService.getByDate(from, to);
+    res.json(results);
   }
 };
+
+export default AnnouncementsController;

@@ -1,52 +1,41 @@
-import { db } from "../Drizzle/db.js"; // your Drizzle DB instance
-import { announcements } from "../Drizzle/schema.js"; // your table schema
-import { eq, gte, lte } from "drizzle-orm";
+import { db } from "../Drizzle/db.js";
+import { announcements } from "../Drizzle/schema.js";
+import { eq, gte, lte, and } from "drizzle-orm";
 
-export const AnnouncementService = {
-  // Create a new announcement
-  createAnnouncement: async ({ title, description, createdBy }) => {
-    const result = await db.insert(announcements).values({
-      title,
-      description,
-      createdBy,
-    }).returning();
-    return result[0];
+export const AnnouncementsService = {
+  getAll: async () => {
+    return await db.select().from(announcements);
   },
 
-  // Get all announcements
-  getAllAnnouncements: async () => {
-    return db.select().from(announcements).orderBy(announcements.createdAt, "desc");
+  create: async (data) => {
+    const inserted = await db.insert(announcements).values(data).returning();
+    return inserted[0];
   },
 
-  // Get announcements by date range
-  getAnnouncementsByDate: async ({ startDate, endDate }) => {
-    // Convert string query params to Date objects
-    const start = new Date(startDate);
-    const end = new Date(endDate);
-
-    return db.select()
-      .from(announcements)
-      .where(
-        gte(announcements.createdAt, start),
-        lte(announcements.createdAt, end)
-      )
-      .orderBy(announcements.createdAt, "desc");
-  },
-
-  // Update announcement by ID
-  updateAnnouncement: async (announcementId, data) => {
-    const id = Number(announcementId);
-    const result = await db.update(announcements)
+  update: async (id, data) => {
+    const updated = await db
+      .update(announcements)
       .set(data)
       .where(eq(announcements.announcementId, id))
       .returning();
-    return result[0];
+    return updated[0];
   },
 
-  // Delete announcement by ID
-  deleteAnnouncement: async (announcementId) => {
-    const id = Number(announcementId);
-    return db.delete(announcements)
+  delete: async (id) => {
+    return await db
+      .delete(announcements)
       .where(eq(announcements.announcementId, id));
+  },
+
+  getByDate: async (from, to) => {
+    return await db
+      .select()
+      .from(announcements)
+      .where(
+        and(
+          gte(announcements.createdAt, new Date(from)),
+          lte(announcements.createdAt, new Date(to))
+        )
+      );
   }
 };
