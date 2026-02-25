@@ -32,7 +32,7 @@ const navItems = [
     children: [
       { label: "Sermons", path: "/sermons" },
       { label: "Lesson Discussion", path: "/lessons" },
-      { label: "Blocks", path: "/blocks" },
+      { label: "HomeChurches", path: "/homechurches" },
       { label: "Families", path: "/families" },
       { label: "Choirs", path: "/choirs" },
       { label: "Books", path: "/books" },
