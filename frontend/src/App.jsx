@@ -14,6 +14,7 @@ import Events from "./components/events/Events";
 import AboutSDA from "./components/aboutsda/AboutSDA";
 import Books from "./components/book/Book";
 import Departments from "./components/departments/Departments";
+import Leaders from "./components/leaders/Leaders";
 
 function App() {
   const router = createBrowserRouter([
@@ -65,6 +66,11 @@ function App() {
       path: "/departments",
       element: <Departments />,
     },
+    {
+      path: "/leadership",
+      element: <Leaders />,
+    },
+    
   ]);
 
   return (
