@@ -15,6 +15,7 @@ import AboutSDA from "./components/aboutsda/AboutSDA";
 import Books from "./components/book/Book";
 import Departments from "./components/departments/Departments";
 import Leaders from "./components/leaders/Leaders";
+import HomeChurches from "./components/homechurches/HomeChurches";
 
 function App() {
   const router = createBrowserRouter([
@@ -69,6 +70,10 @@ function App() {
     {
       path: "/leadership",
       element: <Leaders />,
+    },
+    {
+      path: "/homechurches",
+      element: <HomeChurches />,
     },
     
   ]);
