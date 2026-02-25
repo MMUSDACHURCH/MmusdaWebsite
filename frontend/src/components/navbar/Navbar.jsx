@@ -46,6 +46,7 @@ const navItems = [
       { label: "Announcements", path: "/announcements" },
       { label: "Prayer Requests", path: "/prayers" },
       { label: "Donations", path: "/donations" },
+      { label: "Suggestions", path: "/suggestions" },
     ]
   },
 ];
