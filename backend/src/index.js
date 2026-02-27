@@ -13,6 +13,7 @@ import familiesRouter from "./families/families.router.js";
 import choirsRouter from "./choirs/choirs.router.js";
 import prayerRouter from "./prayerRequest/prayerRequest.router.js";
 import { membersRouter } from "./members/members.router.js";
+import { suggestionsRouter } from "./suggestions/suggestions.router.js";
 
 const app = express();
 
@@ -47,8 +48,11 @@ app.use("/api/homechurches", homeChurchesRouter);
 app.use("/api/families", familiesRouter);
 app.use("/api/choirs", choirsRouter);
 app.use("/api/members", membersRouter);
+app.use("/api/suggestions", suggestionsRouter);
 
-app.get("/", (req, res) => res.send("Backend server is running with multi-frontend support!"));
+app.get("/", (req, res) =>
+  res.send("Backend server is running with multi-frontend support!")
+);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
