@@ -76,5 +76,17 @@ export const adminDrawerData = [
         name: "contacts",
         link: "contacts",
         description: "contacts"
-    }
+    },
+    {
+        id: "Suggestions",
+        name: "Suggestions",
+        link: "suggestions",
+        description: "Suggestions"
+    },
+    {
+        id: "Offering",
+        name: "Offering",
+        link: "offering",
+        description: "Offering"
+    },
 ];

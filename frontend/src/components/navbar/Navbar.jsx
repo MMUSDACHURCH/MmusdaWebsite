@@ -37,7 +37,6 @@ const navItems = [
       { label: "Families", path: "/families" },
       { label: "Choirs", path: "/choirs" },
       { label: "Books", path: "/books" },
-      { label: "Bible", path: "/bible" },
     ]
   },
   { 
