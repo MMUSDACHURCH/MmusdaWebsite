@@ -20,6 +20,7 @@ import Families from "./components/families/Families";
 import Choirs from "./components/choirs/Choirs";
 import Members from "./components/members/Members";
 import Offering from "./components/offering/Offering";
+import Suggestions from "./components/suggestions/Suggestions";
 
 function App() {
   const router = createBrowserRouter([
@@ -98,6 +99,10 @@ function App() {
     {
       path: "/offering",
       element: <Offering />,
+    },
+    {
+      path: "/suggestions",
+      element: <Suggestions />,
     },
     
     

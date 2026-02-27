@@ -1,0 +1,61 @@
+.suggestions-container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #001f4d; /* dark blue */
+  border-radius: 10px;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.suggestions-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.suggestions-form h2 {
+  text-align: center;
+  color: #ffa500; /* warm orange */
+}
+
+.suggestions-form input,
+.suggestions-form textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ffa500; /* warm orange border */
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.suggestions-form input::placeholder,
+.suggestions-form textarea::placeholder {
+  color: #ccc;
+}
+
+.suggestions-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.suggestions-form button {
+  padding: 12px;
+  background-color: #ffa500; /* warm orange */
+  color: #001f4d; /* dark blue */
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.suggestions-form button:hover {
+  background-color: #ff8c00; /* darker orange */
+}
+
+.response-message {
+  text-align: center;
+  color: #00ffcc; /* bright contrast */
+  font-weight: bold;
+}
