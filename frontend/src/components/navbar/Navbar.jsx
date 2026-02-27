@@ -21,6 +21,7 @@ const navItems = [
       { label: "About SDA", path: "/about/sda" },
       { label: "Beliefs", path: "/about/beliefs" },
       { label: "Members", path: "/members" },
+      
     ]
   },
   { label: "Events", path: "/events", icon: <Calendar className="w-4 h-4" /> },
@@ -32,7 +33,6 @@ const navItems = [
     icon: <BookOpen className="w-4 h-4" />,
     children: [
       { label: "Sermons", path: "/sermons" },
-      { label: "Lesson Discussion", path: "/lessons" },
       { label: "HomeChurches", path: "/homechurches" },
       { label: "Families", path: "/families" },
       { label: "Choirs", path: "/choirs" },
