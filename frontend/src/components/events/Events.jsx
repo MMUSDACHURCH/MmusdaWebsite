@@ -20,7 +20,7 @@ const Events = () => {
     event.title.toLowerCase().includes(searchText.toLowerCase())
   );
 
-  if (loading) return <p className="loading-text">Loading events...</p>;
+  if (loading) return <p className="loading-text">Lgit push --force-with-leaseoading events...</p>;
 
   return (
     <div className="events-container">
