@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchAllEvents } from "../../Features/events/eventsAPI.js";
-import "./Events.css"
+//import "./Events.css"
 
 const Events = () => {
   const [events, setEvents] = useState([]);
