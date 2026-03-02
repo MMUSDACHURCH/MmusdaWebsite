@@ -1,81 +1,62 @@
 .auth-card {
-  width: 100%;
   max-width: 400px;
-  padding: 30px 25px;
+  margin: 5vh auto;
+  padding: 30px;
   background-color: white;
   border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  margin: 0 auto;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
   text-align: center;
 }
-
 .auth-card h2 {
-  color: #1E3A8A;
+  color: darkblue;
   margin-bottom: 20px;
 }
-
 .auth-card input {
   width: 100%;
-  padding: 10px;
-  margin: 10px 0;
+  padding: 12px;
+  margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 6px;
+  font-size: 16px;
 }
-
-.auth-card input:focus {
-  border-color: #F97316;
-  outline: none;
-}
-
 .password-container {
   position: relative;
 }
-
-.password-container .show-hide {
+.show-hide {
   position: absolute;
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
-  color: #1E3A8A;
   cursor: pointer;
+  color: darkblue;
   font-weight: bold;
 }
-
-.auth-card button {
-  width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  background-color: #F97316;
+button {
+  background-color: darkblue;
   color: white;
+  padding: 12px;
+  width: 100%;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
+  font-size: 16px;
   cursor: pointer;
   transition: 0.3s;
 }
-
-.auth-card button:hover {
-  background-color: #EA580C;
+button:hover {
+  background-color: orange;
 }
-
 .links button {
   background: none;
+  color: darkblue;
   border: none;
-  color: #1E3A8A;
   cursor: pointer;
   margin-top: 10px;
   text-decoration: underline;
-  transition: color 0.3s;
 }
-
 .links button:hover {
-  color: #F97316;
+  color: orange;
 }
-
 .message {
-  font-weight: 500;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  color: black;
 }

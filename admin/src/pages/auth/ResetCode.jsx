@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { APIDomain } from "../../utils/APIDomain";
 import "./ResetCode.css";
 
 export default function ResetCode() {
@@ -13,10 +14,10 @@ export default function ResetCode() {
     setLoading(true);
     setMessage("Verifying code...");
     try {
-      const res = await axios.post("/api/auth/verify", { email, code });
+      const res = await axios.post(`${APIDomain}/api/auth/verify`, { email, code });
       setMessage(res.data.message);
-      setTimeout(()=> window.location.href=`/new-password?email=${email}&code=${code}`,1500);
-    } catch(err){
+      setTimeout(() => window.location.href=`/new-password?email=${email}&code=${code}`, 1500);
+    } catch(err) {
       setMessage(err.response?.data?.error || "Error");
     } finally { setLoading(false); }
   };
@@ -26,10 +27,18 @@ export default function ResetCode() {
       <h2>Verify Reset Code</h2>
       {message && <p className="message">{message}</p>}
       <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Reset Code" value={code} onChange={(e)=>setCode(e.target.value)} required />
-        <button type="submit" disabled={loading}>{loading ? "Verifying..." : "Verify Code"}</button>
+        <input
+          type="text"
+          placeholder="Reset Code"
+          value={code}
+          onChange={(e) => setCode(e.target.value)}
+          required
+        />
+        <button type="submit" disabled={loading}>
+          {loading ? "Verifying..." : "Verify Code"}
+        </button>
       </form>
-      <button className="link-btn" onClick={()=>window.history.back()}>Back</button>
+      <button className="link-btn" onClick={() => window.history.back()}>Back</button>
     </div>
   );
 }

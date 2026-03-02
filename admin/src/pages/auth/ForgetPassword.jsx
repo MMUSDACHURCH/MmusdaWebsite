@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { APIDomain } from "../../utils/APIDomain";
 import "./ForgetPassword.css";
 
 export default function ForgetPassword() {
@@ -14,7 +15,7 @@ export default function ForgetPassword() {
     setLoading(true);
     setMessage("Sending reset code...");
     try {
-      const res = await axios.post("/api/auth/forgot-password", { email });
+      const res = await axios.post(`${APIDomain}/api/auth/forgot-password`, { email });
       setMessage(res.data.message);
       setTimeout(()=> window.location.href=`/reset-code?email=${email}`,1500);
     } catch(err) {

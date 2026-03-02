@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { APIDomain } from "../../utils/APIDomain";
 import "./Register.css";
 
 export default function Register() {
@@ -23,13 +24,11 @@ export default function Register() {
     setLoading(true);
     setMessage("Registering...");
     try {
-      const res = await axios.post("/api/auth/register", { email, password });
+      const res = await axios.post(`${APIDomain}/api/auth/register`, { email, password });
       setMessage(res.data.message);
     } catch (err) {
       setMessage(err.response?.data?.error || "Registration failed");
-    } finally {
-      setLoading(false);
-    }
+    } finally { setLoading(false); }
   };
 
   return (
@@ -37,19 +36,19 @@ export default function Register() {
       <h2>Register</h2>
       {message && <p className="message">{message}</p>}
       <form onSubmit={handleSubmit}>
-        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <input type="email" placeholder="Email" value={email} onChange={(e)=>setEmail(e.target.value)} required />
         <div className="password-container">
-          <input type={showPassword ? "text" : "password"} placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-          <span className="show-hide" onClick={() => setShowPassword(!showPassword)}>{showPassword ? "Hide" : "Show"}</span>
+          <input type={showPassword ? "text" : "password"} placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)} required />
+          <span className="show-hide" onClick={()=>setShowPassword(!showPassword)}>{showPassword ? "Hide" : "Show"}</span>
         </div>
         <div className="password-container">
-          <input type={showConfirm ? "text" : "password"} placeholder="Confirm Password" value={confirm} onChange={(e) => setConfirm(e.target.value)} required />
-          <span className="show-hide" onClick={() => setShowConfirm(!showConfirm)}>{showConfirm ? "Hide" : "Show"}</span>
+          <input type={showConfirm ? "text" : "password"} placeholder="Confirm Password" value={confirm} onChange={(e)=>setConfirm(e.target.value)} required />
+          <span className="show-hide" onClick={()=>setShowConfirm(!showConfirm)}>{showConfirm ? "Hide" : "Show"}</span>
         </div>
         <button type="submit" disabled={loading}>{loading ? "Registering..." : "Register"}</button>
       </form>
       <div className="links">
-        <button onClick={() => window.location.href="/login"}>Already have an account? Login</button>
+        <button onClick={()=>window.location.href="/login"}>Already have an account? Login</button>
       </div>
     </div>
   );
