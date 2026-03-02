@@ -1,31 +1,36 @@
 import { useState } from "react";
 import axios from "axios";
+import "./ForgetPassword.css";
 
 export default function ForgetPassword() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!email) return setMessage("Email is required");
+
+    setLoading(true);
+    setMessage("Sending reset code...");
     try {
-      const res = await axios.post("/auth/forgot-password", { email });
+      const res = await axios.post("/api/auth/forgot-password", { email });
       setMessage(res.data.message);
-      setTimeout(() => {
-        window.location.href = "/reset-code?email=" + email;
-      }, 1500);
-    } catch (err) {
+      setTimeout(()=> window.location.href=`/reset-code?email=${email}`,1500);
+    } catch(err) {
       setMessage(err.response?.data?.error || "Error");
-    }
+    } finally { setLoading(false); }
   };
 
   return (
-    <div className="card">
+    <div className="auth-card">
       <h2>Forgot Password</h2>
-      {message && <p>{message}</p>}
+      {message && <p className="message">{message}</p>}
       <form onSubmit={handleSubmit}>
-        <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Registered Email" />
-        <button type="submit">Send Reset Code</button>
+        <input type="email" placeholder="Registered Email" value={email} onChange={(e)=>setEmail(e.target.value)} required />
+        <button type="submit" disabled={loading}>{loading ? "Sending..." : "Send Reset Code"}</button>
       </form>
+      <button className="link-btn" onClick={()=>window.history.back()}>Back</button>
     </div>
   );
 }
