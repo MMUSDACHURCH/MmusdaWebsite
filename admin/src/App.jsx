@@ -10,10 +10,8 @@ import ForgetPassword from './pages/auth/ForgetPassword';
 import ResetCode from './pages/auth/ResetCode';
 import NewPassword from './pages/auth/NewPassword';
 import Departments from './components/departments/Departments';
-
 // Dashboard
 import AdminDashboard from './dashboard/AdminDashboard/AdminDashboard';
-
 
 
 function App() {
@@ -38,7 +36,7 @@ function App() {
       path: '/admin/dashboard/*',
       element: isLoggedIn ? <AdminDashboard /> : <Navigate to="/login" />,
       children: [
-        { path: '', element: <h2>Welcome to Admin Dashboard</h2> },
+        { path: '', element: <h2>Admin Dashboard</h2> },
         { path: 'departments', element: <Departments /> },
       ],
     },

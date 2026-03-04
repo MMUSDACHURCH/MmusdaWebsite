@@ -1,61 +1,66 @@
-import React, { useState } from "react";
-import { adminDrawerData } from "./drawerData";
-import { NavLink } from "react-router-dom";
-import { HiMenu, HiX } from "react-icons/hi";
+// src/components/AdminDrawer/AdminDrawer.jsx
+import React from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { adminDrawerData } from "../aside/drawerData";
 import "./AdminDrawer.css";
 
-const AdminDrawer = ({ onSelect }) => {
-  const [open, setOpen] = useState(false);
+const AdminDrawer = ({ isSidebarOpen, onToggle }) => {
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    window.location.href = "/login";
-  };
-
-  const handleClick = (link) => {
-    onSelect(link);
-    setOpen(false);
+    localStorage.removeItem("user");
+    navigate("/login");
   };
 
   return (
-    <>
-      <div className="top-navbar">
-        <button className="menu-btn" onClick={() => setOpen(true)}>
-          <HiMenu size={28} />
+    <aside className={`admin-drawer ${isSidebarOpen ? "expanded" : "collapsed"}`}>
+      {/* Header */}
+      <div className="drawer-header">
+        <span className={`drawer-title ${isSidebarOpen ? "visible" : ""}`}>
+          Admin Dashboard
+        </span>
+        <button onClick={onToggle} className="drawer-toggle">
+          {isSidebarOpen ? "❮" : "❯"}
         </button>
-        <h1 className="nav-title">Admin Panel</h1>
       </div>
 
-      {open && <div className="overlay" onClick={() => setOpen(false)} />}
+      {/* Navigation */}
+      <nav className="drawer-nav">
+        {adminDrawerData.map((item) => {
+          if (item.id.toLowerCase() === "logout") {
+            return (
+              <button
+                key={item.id}
+                onClick={handleLogout}
+                className="drawer-item logout-item"
+              >
+                {item.icon && <item.icon size={22} />}
+                {isSidebarOpen && <span>{item.name}</span>}
+              </button>
+            );
+          }
 
-      <div className={`drawer ${open ? "drawer-open" : ""}`}>
-        <div className="drawer-header">
-          <span>Admin Panel</span>
-          <button className="close-btn" onClick={() => setOpen(false)}>
-            <HiX size={26} />
-          </button>
-        </div>
-
-        <nav className="drawer-nav">
-          {adminDrawerData.map((item) => (
-            <div
+          return (
+            <NavLink
               key={item.id}
-              className="drawer-item"
-              onClick={() => handleClick(item.link)}
+              to={item.link}
+              className={({ isActive }) =>
+                `drawer-item ${isActive ? "active" : ""}`
+              }
             >
-              {item.icon && <item.icon className="drawer-icon" />}
-              <span>{item.name}</span>
-            </div>
-          ))}
-        </nav>
+              {item.icon && <item.icon size={22} />}
+              {isSidebarOpen && <span>{item.name}</span>}
+            </NavLink>
+          );
+        })}
+      </nav>
 
-        <div className="drawer-footer">
-          <button className="logout-btn" onClick={handleLogout}>
-            Logout
-          </button>
-        </div>
+      {/* Footer */}
+      <div className="drawer-footer">
+        © {new Date().getFullYear()} Church Admin
       </div>
-    </>
+    </aside>
   );
 };
 

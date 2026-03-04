@@ -1,39 +1,74 @@
+
+/* src/pages/AdminDashboard/AdminDashboard.css */
+
 .admin-dashboard {
-  display: flex;
   min-height: 100vh;
-  background: #f3f4f6;
+  background: linear-gradient(to bottom right, #f3f4f6, #e5e7eb);
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.dashboard-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+  border-radius: 20px;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-topbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 25px;
+  background: linear-gradient(to right, #1e3a8a, #1e40af);
+  color: white;
+  border-radius: 0;
+}
+
+.dashboard-topbar button {
+  font-size: 1.5rem;
+  color: #cbd5e1;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.dashboard-topbar button:hover {
+  transform: scale(1.2);
+  color: white;
+}
+
+.dashboard-main {
+  display: flex;
+  flex: 1;
+  min-height: 70vh;
+}
+
+.dashboard-drawer {
+  transition: all 0.5s ease-in-out;
+  overflow: hidden;
+}
+
+.dashboard-drawer.expanded {
+  width: 250px;
+}
+
+.dashboard-drawer.collapsed {
+  width: 0;
 }
 
 .dashboard-content {
   flex: 1;
-  padding: 30px;
-  margin-left: 250px;
-  transition: margin-left 0.3s ease;
-}
-
-.content-card {
-  background: var(--white);
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-  margin: 20px auto;
-  max-width: 1200px;
-  animation: fadeIn 0.4s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@media (max-width: 768px) {
-  .dashboard-content {
-    margin-left: 0;
-    padding: 20px;
-  }
-
-  .content-card {
-    margin: 10px 0;
-    border-radius: 10px;
-  }
+  padding: 20px;
+  background: #f9fafb;
+  border-radius: 0 20px 20px 0;
+  overflow-y: auto;
+  transition: all 0.3s;
 }
