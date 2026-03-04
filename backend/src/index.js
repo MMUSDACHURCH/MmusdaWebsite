@@ -55,7 +55,7 @@ app.use("/api/offerings", offeringsRouter);
 app.use("/api/offeringsdetails", offeringDetailsRouter);
 
 app.get("/", (req, res) =>
-  res.send("Backend server is running with multi-frontend support!")
+  res.send("Backend server is running successfully!")
 );
 
 const PORT = process.env.PORT || 5000;
