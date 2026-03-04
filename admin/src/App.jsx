@@ -9,6 +9,7 @@ import VerifyUser from './pages/auth/VerifyUser';
 import ForgetPassword from './pages/auth/ForgetPassword';
 import ResetCode from './pages/auth/ResetCode';
 import NewPassword from './pages/auth/NewPassword';
+import Departments from './components/departments/Departments';
 
 // Dashboard
 import AdminDashboard from './dashboard/AdminDashboard/AdminDashboard';
@@ -38,15 +39,7 @@ function App() {
       element: isLoggedIn ? <AdminDashboard /> : <Navigate to="/login" />,
       children: [
         { path: '', element: <h2>Welcome to Admin Dashboard</h2> },
-        { path: 'admins', element: <Register /> },
-        { path: 'events', element: <Register /> },
-        { path: 'leaders', element: <Register /> },
-        { path: 'homechurches', element: <Register /> },
-        { path: 'families', element: <Register /> },
-        { path: 'announcements', element: <Register /> },
-        { path: 'choirs', element: <Register /> },
-        { path: 'members', element: <Register /> },
-        { path: 'contacts', element: <Register /> },
+        { path: 'departments', element: <Departments /> },
       ],
     },
 
