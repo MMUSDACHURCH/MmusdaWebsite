@@ -1,8 +1,8 @@
 // src/pages/AdminDashboard/AdminDashboard.jsx
 import React, { useState } from "react";
-import AdminDrawer from "../../components/AdminDrawer/AdminDrawer";
-import Navbar from "../../components/navbar/Navbar";
-import Footer from "../../components/footer/Footer";
+import AdminDrawer from "../AdminDashboard/aside/AdminDrawer";
+//import Navbar from "../../components/navbar/Navbar";
+//import Footer from "../../components/footer/Footer";
 import { Outlet } from "react-router-dom";
 import "./AdminDashboard.css";
 
@@ -40,8 +40,7 @@ const AdminDashboard = () => {
           isDrawerOpen ? "drawer-open" : "drawer-closed"
         }`}
       >
-        {/* Topbar */}
-        <Navbar />
+        
 
         {/* Close icon for mobile when content is active */}
         {activeContent && window.innerWidth < 768 && (
@@ -65,7 +64,7 @@ const AdminDashboard = () => {
           )}
         </main>
 
-        <Footer />
+        
       </div>
     </div>
   );

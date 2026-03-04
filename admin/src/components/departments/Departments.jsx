@@ -1,88 +1,89 @@
 import React, { useEffect, useState } from "react";
-import {
-  getAllDepartments,
-  createDepartment,
-  updateDepartment,
-  deleteDepartment,
-} from "../../Features/departments/departmentsAPI";
-
-import { FaTrash, FaEdit } from "react-icons/fa";
+import { DepartmentsAPI } from "../../Features/departments/departmentsAPI";
+import CreateDepartment from "./CreateDepartment.jsx";
 import "./Departments.css";
 
 const Departments = () => {
   const [departments, setDepartments] = useState([]);
-  const [name, setName] = useState("");
-  const [editingId, setEditingId] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [showCreate, setShowCreate] = useState(false);
 
-  const loadDepartments = async () => {
-    const data = await getAllDepartments();
+  const fetchDepartments = async () => {
+    setLoading(true);
+    const data = await DepartmentsAPI.getAllDepartments();
     setDepartments(data);
-  };
-
-  useEffect(() => {
-    loadDepartments();
-  }, []);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (editingId) {
-      await updateDepartment(editingId, { name });
-      setEditingId(null);
-    } else {
-      await createDepartment({ name });
-    }
-
-    setName("");
-    loadDepartments();
-  };
-
-  const handleEdit = (dept) => {
-    setEditingId(dept._id);
-    setName(dept.name);
+    setLoading(false);
   };
 
   const handleDelete = async (id) => {
-    await deleteDepartment(id);
-    loadDepartments();
+    if (!window.confirm("Delete this department?")) return;
+
+    await DepartmentsAPI.deleteDepartment(id);
+    setDepartments(departments.filter((d) => d.departmentId !== id));
   };
+
+  useEffect(() => {
+    fetchDepartments();
+  }, []);
 
   return (
     <div className="departments-container">
-      <h2 className="dept-title">Departments</h2>
+      <div className="departments-header">
+        <h2 className="departments-title">Departments</h2>
 
-      <form onSubmit={handleSubmit} className="dept-form">
-        <input
-          type="text"
-          placeholder="Department name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-
-        <button type="submit">
-          {editingId ? "Update Department" : "Add Department"}
+        <button
+          className="create-btn"
+          onClick={() => setShowCreate(!showCreate)}
+        >
+          {showCreate ? "Close" : "Create Department"}
         </button>
-      </form>
+      </div>
 
-      <ul className="dept-list">
-        {departments.map((dept) => (
-          <li key={dept._id} className="dept-item">
-            <span>{dept.name}</span>
+      {showCreate && (
+        <CreateDepartment
+          onCreated={(newDept) => {
+            setDepartments([newDept, ...departments]);
+            setShowCreate(false);
+          }}
+        />
+      )}
 
-            <div className="dept-actions">
-              <FaEdit
-                className="edit-icon"
-                onClick={() => handleEdit(dept)}
-              />
-              <FaTrash
-                className="delete-icon"
-                onClick={() => handleDelete(dept._id)}
-              />
-            </div>
-          </li>
-        ))}
-      </ul>
+      {loading ? (
+        <p className="loading-text">Loading departments...</p>
+      ) : departments.length === 0 ? (
+        <p className="empty-text">No departments found.</p>
+      ) : (
+        <table className="departments-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Admin Leader</th>
+              <th>Assistant</th>
+              <th>Admin Contact</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {departments.map((dept) => (
+              <tr key={dept.departmentId} className="departments-row">
+                <td>{dept.name}</td>
+                <td>{dept.adminLeader}</td>
+                <td>{dept.assistant}</td>
+                <td>{dept.adminContact}</td>
+                <td className="text-center">
+                  <button
+                    className="delete-btn"
+                    onClick={() => handleDelete(dept.departmentId)}
+                  >
+                    ✕
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 };

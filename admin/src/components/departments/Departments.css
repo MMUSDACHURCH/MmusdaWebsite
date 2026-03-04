@@ -1,80 +1,105 @@
+:root {
+  --dark-blue: #0A1A44;
+  --warm-orange: #FF8C42;
+  --white: #ffffff;
+  --black: #000000;
+}
+
 .departments-container {
-  width: 90%;
-  max-width: 500px;
-  margin: 30px auto;
-  padding: 20px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0px 3px 8px rgba(0,0,0,0.1);
+  padding: 1rem;
+  color: var(--black);
 }
 
-.dept-title {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 22px;
-  font-weight: bold;
-}
-
-.dept-form {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.dept-form input {
-  flex: 1;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-
-.dept-form button {
-  padding: 10px 15px;
-  background: #0066cc;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.dept-form button:hover {
-  background: #004c99;
-}
-
-.dept-list {
-  list-style: none;
-  padding: 0;
-}
-
-.dept-item {
+.departments-header {
   display: flex;
   justify-content: space-between;
-  padding: 12px;
-  border-bottom: 1px solid #eee;
   align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
 }
 
-.dept-actions {
-  display: flex;
-  gap: 15px;
+.departments-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--dark-blue);
 }
 
-.edit-icon {
-  color: #007bff;
+.create-btn {
+  background-color: var(--warm-orange);
+  color: var(--white);
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  border: none;
+  font-weight: 600;
   cursor: pointer;
-  font-size: 18px;
+  transition: 0.3s ease-in-out;
 }
 
-.delete-icon {
-  color: red;
+.create-btn:hover {
+  background-color: var(--dark-blue);
+  color: var(--white);
+  transform: scale(1.05);
+}
+
+.departments-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.departments-table th {
+  background-color: var(--dark-blue);
+  color: var(--white);
+  padding: 0.75rem;
+}
+
+.departments-table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.departments-row {
+  transition: 0.3s ease-in-out;
+}
+
+.departments-row:hover {
+  background-color: #f0f4ff;
+  transform: scale(1.01);
+}
+
+.delete-btn {
+  color: var(--warm-orange);
   cursor: pointer;
-  font-size: 18px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: 0.2s;
 }
 
-.edit-icon:hover {
-  color: #0056b3;
+.delete-btn:hover {
+  color: var(--dark-blue);
+  transform: scale(1.2);
 }
 
-.delete-icon:hover {
-  color: darkred;
+.loading-text,
+.empty-text {
+  padding: 1rem;
+  color: var(--dark-blue);
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .departments-table th,
+  .departments-table td {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .departments-title {
+    font-size: 1.4rem;
+  }
+
+  .create-btn {
+    margin-top: 0.5rem;
+  }
 }
