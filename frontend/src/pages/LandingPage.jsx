@@ -5,7 +5,8 @@ import Main from "../../../frontend/src/components/main/Main";
 import Sermons from "../../../frontend/src/components/sermons/Sermons";
 import Footer from "../../src/components/footer/Footer";
 import Contact from "../../src/components/contact/Contact";
-import PrayerRequest from "../../src/components/prayerRequest/PrayerRequest"
+import PrayerRequest from "../../src/components/prayerRequest/PrayerRequest";
+import Hero1 from "../components/hero1/Hero1";
 
 function LandingPage() {
   return (
@@ -13,6 +14,7 @@ function LandingPage() {
       <Navbar />
       <Home />
       <Main />
+      <Hero1 />
       <PrayerRequest />
       <Contact />
       <Sermons />
