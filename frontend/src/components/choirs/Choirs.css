@@ -1,69 +1,86 @@
-
+/* Container */
 .choirs-container {
-  padding: 40px 20px;
-  max-width: 1400px;
+  padding: 60px 20px;
+  max-width: 1300px;
   margin: 0 auto;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f0f2f5;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f8f8f8; /* smoke white */
 }
 
 /* Title */
 .choirs-title {
   text-align: center;
-  font-size: 2.8rem;
-  margin-bottom: 40px;
-  color: #0d1b2a; /* Dark Blue */
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
-  animation: fadeInDown 1s ease;
+  font-size: 3rem;
+  color: #001f4d; /* dark blue */
+  margin-bottom: 50px;
+  text-shadow: 1px 1px 6px rgba(0,0,0,0.3);
+  animation: fadeInDown 1s ease forwards;
+  transition: color 0.3s ease;
+}
+
+.choirs-title:hover {
+  color: #ff8c00; /* warm orange */
+  cursor: default;
 }
 
 /* Grid Layout */
 .choirs-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
+  gap: 30px;
 }
 
 /* Choir Card */
 .choir-card {
-  background: linear-gradient(145deg, #0d1b2a, #1b3b5f); /* Dark Blue Gradient */
-  color: #fff;
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  transition: all 0.4s ease;
+  cursor: pointer;
   animation: fadeInUp 0.8s ease forwards;
+  border-top: 5px solid #001f4d;
 }
 
-/* Hover Effect */
 .choir-card:hover {
-  transform: translateY(-10px) scale(1.03);
-  background: linear-gradient(145deg, #ff7f50, #ffa65c); /* Warm Orange Gradient */
-  color: #0d1b2a;
-  box-shadow: 0 12px 25px rgba(0,0,0,0.35);
+  transform: translateY(-8px) scale(1.03);
+  background: linear-gradient(145deg, #001f4d, #002a6b);
+  color: #ffa500;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+  border-top: 5px solid #ff8c00;
 }
 
 /* Choir Info */
 .choir-name {
-  font-size: 1.6rem;
-  margin-bottom: 12px;
+  font-size: 1.7rem;
   font-weight: bold;
+  margin-bottom: 12px;
+  transition: color 0.3s ease;
+}
+
+.choir-card:hover .choir-name {
+  color: #ffffff;
 }
 
 .choir-detail {
   font-size: 1rem;
-  margin-bottom: 8px;
   line-height: 1.5;
+  margin-bottom: 8px;
+  transition: color 0.3s ease;
+}
+
+.choir-card:hover .choir-detail {
+  color: #ffe0b3;
 }
 
 /* Loading & Empty States */
 .choirs-loading,
 .choirs-empty {
   text-align: center;
-  font-size: 1.4rem;
-  color: #0d1b2a;
+  font-size: 1.5rem;
+  color: #001f4d;
   margin-top: 100px;
-  animation: fadeIn 1s ease;
+  animation: fadeIn 1s ease forwards;
 }
 
 /* Animations */
@@ -80,4 +97,13 @@
 @keyframes fadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .choirs-title { font-size: 2.2rem; margin-bottom: 30px; }
+  .choir-name { font-size: 1.4rem; }
+  .choir-detail { font-size: 0.95rem; }
+  .choirs-grid { gap: 20px; }
+  .choirs-container { padding: 40px 15px; }
 }

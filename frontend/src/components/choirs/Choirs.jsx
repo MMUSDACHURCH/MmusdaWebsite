@@ -1,4 +1,3 @@
-// src/Features/choirs/Choirs.jsx
 import React, { useEffect, useState } from "react";
 import { fetchChoirs } from "../../Features/choirs/choirsAPI.js";
 import "./Choirs.css";
@@ -26,7 +25,7 @@ const Choirs = () => {
 
   return (
     <div className="choirs-container">
-      <h2 className="choirs-title">Choirs</h2>
+      <h2 className="choirs-title">Our Choirs</h2>
       <div className="choirs-grid">
         {choirs.map((choir) => (
           <div key={choir.choirId} className="choir-card">

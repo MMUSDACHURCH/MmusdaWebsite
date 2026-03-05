@@ -1,4 +1,3 @@
-// src/Features/Families.jsx
 import React, { useEffect, useState } from "react";
 import { fetchFamilies } from "../../Features/families/familiesAPI.js";
 import "./Families.css";
@@ -13,7 +12,6 @@ const Families = () => {
       setFamilies(data);
       setLoading(false);
     };
-
     getFamilies();
   }, []);
 
@@ -31,8 +29,11 @@ const Families = () => {
       <div className="families-grid">
         {families.map((family) => (
           <div key={family.familyId} className="family-card">
-            <h3 className="family-name">{family.name}</h3>
-            <p className="family-description">{family.description || "No description"}</p>
+            <h3 className="family-name">{family.familyName}</h3>
+            <p className="family-detail"><strong>Head:</strong> {family.headOfFamily}</p>
+            {family.contactInfo && <p className="family-detail"><strong>Contact:</strong> {family.contactInfo}</p>}
+            {family.leaderContact && <p className="family-detail"><strong>Leader Contact:</strong> {family.leaderContact}</p>}
+            {family.description && <p className="family-description">{family.description}</p>}
           </div>
         ))}
       </div>
