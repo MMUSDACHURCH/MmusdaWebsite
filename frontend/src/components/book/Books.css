@@ -1,87 +1,116 @@
 .books-page {
-  background-color: #ffffff;
-  color: #000000;
   font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f8f8f8;
+  color: #000;
   line-height: 1.6;
+  padding: 20px 0;
 }
 
 .books-header {
-  background-color: #001f3f;
+  background: linear-gradient(135deg, #001f4d, #002a6b);
   color: white;
-  padding: 80px 20px;
   text-align: center;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  padding: 100px 20px;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+  border-radius: 0 0 50% 50% / 0 0 20% 20%;
 }
 
 .books-header h1 {
-  color: #FF8C00;
   font-size: 3rem;
+  color: #ffa500;
   margin-bottom: 10px;
+  transition: color 0.3s ease;
+}
+
+.books-header h1:hover {
+  color: #ff8c00;
 }
 
 .subtitle {
+  font-size: 1.4rem;
   font-style: italic;
-  font-size: 1.2rem;
-  opacity: 0.9;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+}
+
+.subtitle:hover {
+  opacity: 1;
 }
 
 .books-content {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 50px 20px;
 }
 
 h2 {
-  color: #001f3f;
-  border-left: 5px solid #FF8C00;
+  color: #001f4d;
+  border-left: 6px solid #ffa500;
   padding-left: 15px;
-  margin-top: 40px;
-  margin-bottom: 20px;
+  margin: 50px 0 20px;
+  font-size: 2rem;
+  transition: color 0.3s ease;
+}
+
+h2:hover {
+  color: #002a6b;
 }
 
 h3 {
-  color: #FF8C00;
+  color: #ffa500;
+  font-size: 1.5rem;
   margin-bottom: 15px;
+  transition: color 0.3s ease;
 }
 
-/* Cards & Layout */
+h3:hover {
+  color: #ff8c00;
+}
+
 .vision-mission-grid, .list-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 25px;
-  margin: 40px 0;
+  gap: 30px;
+  margin-top: 20px;
 }
 
 .info-card, .list-card {
-  background: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.3s ease;
 }
 
-.info-card:hover {
+.info-card:hover, .list-card:hover {
   transform: translateY(-10px);
-  border-bottom: 4px solid #FF8C00;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  background: #fffaf0;
 }
 
 .historical-box {
-  background-color: #f9f9f9;
+  background-color: #ffffff;
   padding: 30px;
-  border-radius: 15px;
+  border-radius: 20px;
   margin: 30px 0;
-  border: 1px dashed #001f3f;
+  border: 1px dashed #001f4d;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.historical-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
 .scripture-quote {
-  color: #001f3f;
-  font-weight: bold;
-  text-align: center;
-  margin-top: 20px;
   font-style: italic;
+  text-align: center;
+  font-weight: bold;
+  color: #001f4d;
+  margin-top: 20px;
 }
 
-/* Lists */
 ul {
   list-style: none;
   padding: 0;
@@ -89,66 +118,77 @@ ul {
 
 ul li {
   margin-bottom: 12px;
-  padding-left: 25px;
+  padding-left: 28px;
   position: relative;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
 }
 
 ul li::before {
   content: '▶';
   position: absolute;
   left: 0;
-  color: #FF8C00;
-  font-size: 0.8rem;
-  top: 4px;
+  color: #ffa500;
+  font-size: 0.85rem;
+  top: 3px;
 }
 
-/* Involvement */
+ul li:hover {
+  color: #ff8c00;
+}
+
 .involvement-chips {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+  margin-top: 20px;
 }
 
 .involvement-chips span {
-  background: #001f3f;
+  background: #001f4d;
   color: white;
-  padding: 10px 20px;
-  border-radius: 25px;
+  padding: 10px 22px;
+  border-radius: 30px;
   font-weight: 500;
   transition: all 0.3s ease;
-  cursor: default;
 }
 
 .involvement-chips span:hover {
-  background: #FF8C00;
-  transform: scale(1.05);
+  background: #ffa500;
+  color: #001f4d;
+  transform: scale(1.1);
 }
 
-/* CTA Section */
 .importance-box {
-  background: #001f3f;
+  background: #001f4d;
   color: white;
   padding: 40px;
-  border-radius: 15px;
+  border-radius: 20px;
   margin-bottom: 50px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.importance-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
 }
 
 .importance-box h3 {
-  color: #FF8C00;
+  color: #ffa500;
 }
 
 blockquote {
-  border-left: 4px solid #FF8C00;
-  padding-left: 20px;
-  margin: 25px 0 0 0;
+  border-left: 5px solid #ffa500;
+  padding-left: 18px;
+  margin-top: 20px;
   font-style: italic;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
 }
 
 cite {
   display: block;
   margin-top: 10px;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   opacity: 0.8;
 }
 
@@ -156,40 +196,49 @@ cite {
   text-align: center;
   padding: 40px;
   background: #fff8f0;
-  border-radius: 20px;
+  border-radius: 25px;
+  margin-bottom: 60px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.online-library:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
 }
 
 .browse-button {
   display: inline-block;
   margin-top: 25px;
-  padding: 18px 40px;
-  background-color: #FF8C00;
+  padding: 18px 45px;
+  background-color: #ffa500;
   color: white;
-  text-decoration: none;
   font-weight: bold;
   font-size: 1.2rem;
   border-radius: 50px;
-  box-shadow: 0 4px 15px rgba(255, 140, 0, 0.4);
+  box-shadow: 0 6px 20px rgba(255,140,0,0.4);
   transition: all 0.3s ease;
 }
 
 .browse-button:hover {
-  background-color: #001f3f;
+  background-color: #001f4d;
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 31, 63, 0.3);
+  box-shadow: 0 10px 30px rgba(0,31,63,0.3);
 }
 
-/* Animations */
 .animate-slide-up {
-  animation: slideUp 0.6s ease-out forwards;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideUp 0.6s forwards ease-out;
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 @media (max-width: 768px) {
   .books-header h1 { font-size: 2rem; }
   .books-content { padding: 20px; }
+  h2 { font-size: 1.6rem; }
+  h3 { font-size: 1.3rem; }
 }
