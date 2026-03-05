@@ -32,7 +32,7 @@ const Members = () => {
 
   return (
     <div className="members-container">
-      <h2 className="members-title">Add New Member</h2>
+      <h2 className="members-title">Become A MMUSDA Member</h2>
       <form onSubmit={handleSubmit} className="members-form">
         <input
           type="text"
