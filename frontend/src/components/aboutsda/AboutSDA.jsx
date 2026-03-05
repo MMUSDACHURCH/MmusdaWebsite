@@ -61,7 +61,6 @@ const AboutSDA = () => {
             <li><a href="#mission" onClick={() => setSidebarOpen(false)}>Mission & Structure</a></li>
           </ul>
         </nav>
-
         <div className="did-you-know">
           <h4>Did You Know?</h4>
           <p>Seventh-day Adventists observe the Sabbath on Saturday, emphasizing rest, worship, and family.</p>

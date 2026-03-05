@@ -69,7 +69,6 @@ const AboutMmusda = () => {
 
   return (
     <div className="about-container">
-      {/* Sidebar */}
       <div className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
         <div className="logo-section">
           <h1>MMUSDA</h1>
@@ -85,12 +84,10 @@ const AboutMmusda = () => {
         </nav>
       </div>
 
-      {/* Hamburger icon */}
       <button className="hamburger-btn" onClick={() => setSidebarOpen(true)}>
         <FaBars size={25} />
       </button>
 
-      {/* Main content */}
       <div className="main-frame">
         <div className="content-area">
           {content[activeTab]}

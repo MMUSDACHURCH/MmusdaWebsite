@@ -41,13 +41,12 @@ const Beliefs = () => {
         <h1>FUNDAMENTAL BELIEFS</h1>
         <p>SDA Church</p>
       </header>
-      
       <div className="beliefs-body">
         <nav className="beliefs-sidebar">
           <ul>
             {fundamentalBeliefs.map((belief, index) => (
-              <li 
-                key={index} 
+              <li
+                key={index}
                 className={activeTab === index ? 'active' : ''}
                 onClick={() => setActiveTab(index)}
               >
@@ -56,7 +55,6 @@ const Beliefs = () => {
             ))}
           </ul>
         </nav>
-        
         <main className="beliefs-content">
           <div className="content-card">
             <h2>{fundamentalBeliefs[activeTab].title}</h2>
