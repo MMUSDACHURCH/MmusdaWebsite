@@ -19,10 +19,10 @@ import HomeChurches from "./components/homechurches/HomeChurches";
 import Families from "./components/families/Families";
 import Choirs from "./components/choirs/Choirs";
 import Members from "./components/members/Members";
-//import Offering from "./components/offering/Offering";
+import Offering from "./components/offering/Offering";
 import Suggestions from "./components/suggestions/Suggestions";
 //import OfferingDetails from "./components/offeringdetails/OfferingDetails";
-import OfferingPage from "./pages/Offering";
+
 
 function App() {
   const router = createBrowserRouter([
@@ -100,7 +100,7 @@ function App() {
     },
     {
       path: "/offering",
-      element: <OfferingPage />,
+      element: <Offering />,
     },
     {
       path: "/suggestions",
@@ -108,7 +108,7 @@ function App() {
     },
     {
       path: "/donations",
-      element: <OfferingPage />,
+      element: <Offering />,
     },
     
     

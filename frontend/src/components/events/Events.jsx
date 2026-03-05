@@ -23,15 +23,8 @@ const Events = () => {
 
   if (loading) return <p className="loading-text">Loading events...</p>;
 
-  const containerVariants = {
-    hidden: {},
-    visible: { transition: { staggerChildren: 0.15 } }
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-  };
+  const containerVariants = { hidden: {}, visible: { transition: { staggerChildren: 0.15 } } };
+  const cardVariants = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } };
 
   return (
     <div className="events-container">
@@ -86,7 +79,7 @@ const Events = () => {
 
             <div className="event-content">
               <h3 className="event-title">{event.title}</h3>
-              <p className="event-description">{event.description}</p>
+              <p className="event-description">{event.description || "—"}</p>
               <p className="event-date">Date: {new Date(event.eventDate).toDateString()}</p>
             </div>
           </motion.div>
