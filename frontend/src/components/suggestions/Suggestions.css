@@ -1,61 +1,121 @@
+.suggestions-page {
+  min-height: 100vh;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
 .suggestions-container {
-  max-width: 500px;
-  margin: 50px auto;
-  padding: 20px;
-  background-color: #001f4d; /* dark blue */
-  border-radius: 10px;
-  color: white;
-  font-family: Arial, sans-serif;
+  width: 100%;
+  max-width: 520px;
+  background: white;
+  padding: 35px 30px;
+  border-radius: 12px;
+  border: 2px solid #ffa500;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  animation: fadeIn 0.8s ease;
 }
 
 .suggestions-form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 18px;
 }
 
-.suggestions-form h2 {
+.suggestions-title {
   text-align: center;
-  color: #ffa500; /* warm orange */
+  color: #001f4d;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.optional-note {
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+  background: #fff7e6;
+  padding: 10px;
+  border-left: 4px solid #ffa500;
+  border-radius: 4px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  color: #001f4d;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .suggestions-form input,
 .suggestions-form textarea {
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ffa500; /* warm orange border */
-  font-size: 16px;
-  width: 100%;
-  box-sizing: border-box;
+  padding: 11px 12px;
+  border-radius: 6px;
+  border: 2px solid #ffa500;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.3s ease;
 }
 
-.suggestions-form input::placeholder,
-.suggestions-form textarea::placeholder {
-  color: #ccc;
+.suggestions-form input:focus,
+.suggestions-form textarea:focus {
+  border-color: #ffa500;
+  box-shadow: 0 0 6px rgba(255,165,0,0.4);
 }
 
 .suggestions-form textarea {
   resize: vertical;
-  min-height: 100px;
+  min-height: 120px;
 }
 
-.suggestions-form button {
-  padding: 12px;
-  background-color: #ffa500; /* warm orange */
-  color: #001f4d; /* dark blue */
-  border: none;
-  border-radius: 5px;
+.submit-btn {
+  padding: 13px;
+  background: #001f4d;
+  color: white;
   font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-.suggestions-form button:hover {
-  background-color: #ff8c00; /* darker orange */
+.submit-btn:hover {
+  background: #ffa500;
+  color: #001f4d;
+  transform: translateY(-2px);
 }
 
 .response-message {
   text-align: center;
-  color: #00ffcc; /* bright contrast */
+  margin-top: 10px;
+  color: #001f4d;
   font-weight: bold;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .suggestions-container {
+    padding: 25px 20px;
+  }
+
+  .suggestions-title {
+    font-size: 22px;
+  }
 }
