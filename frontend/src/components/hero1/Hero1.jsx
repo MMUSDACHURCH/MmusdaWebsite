@@ -6,7 +6,7 @@ import "./Hero1.css";
 
 const Hero1 = () => {
   const stats = [
-    { icon: <Users />, label: "Members", value: "500+" },
+    { icon: <Users />, label: "Members", value: "2000+" },
     { icon: <BookOpen />, label: "Ministries", value: "12" },
     { icon: <Calendar />, label: "Events", value: "Weekly" },
   ];

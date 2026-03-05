@@ -7,10 +7,7 @@ import { BookOpen, Heart, Users, Music } from "lucide-react";
 const Main = () => {
   const container = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2 }
-    }
+    visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
   };
 
   const item = {
