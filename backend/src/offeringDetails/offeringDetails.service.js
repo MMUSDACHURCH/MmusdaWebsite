@@ -14,7 +14,7 @@ export const offeringDetailsService = {
         name: data.name,
         phoneNumber: data.phoneNumber,
       })
-      .where(eq(offeringDetails.id, id)) // ✅ use eq helper
+      .where(eq(offeringDetails.id, id)) //  use eq helper
       .returning();
   },
 };

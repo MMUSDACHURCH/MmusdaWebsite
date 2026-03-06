@@ -88,7 +88,7 @@ export const adminDrawerData = [
     link: "offering" 
   },
   { 
-    id: "offeringDetails", 
+    id: "offeringdetails", 
     name: "Offering Details", 
     icon: FaChurch, 
     link: "offering-details" 
