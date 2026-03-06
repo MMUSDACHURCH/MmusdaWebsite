@@ -1,0 +1,85 @@
+.families-page {
+  padding: 20px;
+}
+
+.families-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.create-btn {
+  background: #2d6cdf;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.create-btn:hover {
+  background: #1f4fbf;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.families-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.families-table th, .families-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.families-table th {
+  background: #f5f5f5;
+}
+
+.family-photo {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-icon {
+  color: #ff7f50;
+  cursor: pointer;
+}
+
+.edit-icon:hover {
+  color: #e06636;
+}
+
+.delete-icon {
+  color: red;
+  cursor: pointer;
+}
+
+.delete-icon:hover {
+  color: darkred;
+}
+
+@media(max-width: 768px) {
+  .families-table th, .families-table td {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .family-photo {
+    width: 40px;
+    height: 40px;
+  }
+}

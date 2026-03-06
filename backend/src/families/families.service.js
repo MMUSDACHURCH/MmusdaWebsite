@@ -13,7 +13,11 @@ export const FamiliesService = {
   },
 
   update: async (id, data) => {
-    const updated = await db.update(families).set(data).where(eq(families.familyId, id)).returning();
+    const updated = await db
+      .update(families)
+      .set(data)
+      .where(eq(families.familyId, id))
+      .returning();
     return updated[0];
   },
 

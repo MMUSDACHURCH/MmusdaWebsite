@@ -103,6 +103,7 @@ export const families = pgTable("families", {
   headOfFamily: varchar("head_of_family", { length: 255 }).notNull(),
   contactInfo: varchar("contact_info", { length: 255 }),
   leaderContact: varchar("leader_contact", { length: 255 }),
+  photoUrl: varchar("photo_url", { length: 500 }),
   description: text("description"),
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),

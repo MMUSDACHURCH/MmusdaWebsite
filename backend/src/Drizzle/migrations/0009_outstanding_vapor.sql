@@ -1,0 +1,1 @@
+ALTER TABLE "families" ADD COLUMN "photo_url" varchar(500);
