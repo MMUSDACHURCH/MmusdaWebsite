@@ -9,12 +9,12 @@
   margin: 0 auto;
   padding: 30px 20px;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #ffffff 0%, #f8faff 100%);
+  background: #f5f5f5;
   min-height: 100vh;
 }
 
 .prayer-hero {
-  text-align: left;
+  text-align: center;
   margin-bottom: 40px;
   max-width: 800px;
   margin-left: auto;
@@ -34,16 +34,6 @@
   margin-bottom: 20px;
   border: 1px solid rgba(255, 107, 61, 0.2);
   box-shadow: 0 4px 10px rgba(255, 127, 80, 0.1);
-  transition: all 0.3s ease;
-  cursor: default;
-}
-
-.hero-badge:hover {
-  background: #ff7f50;
-  color: white;
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 10px 20px rgba(255, 127, 80, 0.3);
-  border-color: transparent;
 }
 
 .prayer-hero h1 {
@@ -53,14 +43,6 @@
   line-height: 1.2;
   font-weight: 800;
   letter-spacing: -0.02em;
-  transition: all 0.3s ease;
-  cursor: default;
-}
-
-.prayer-hero h1:hover {
-  color: #ff7f50;
-  transform: translateX(8px) scale(1.02);
-  text-shadow: 0 5px 15px rgba(255, 127, 80, 0.2);
 }
 
 .hero-sub {
@@ -68,14 +50,9 @@
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 15px;
-  max-width: 600px;
-  transition: all 0.3s ease;
-  cursor: default;
-}
-
-.hero-sub:hover {
-  color: #0b3d91;
-  transform: translateX(5px);
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .bible-verse {
@@ -83,20 +60,11 @@
   color: #ff7f50;
   font-size: 0.95rem;
   line-height: 1.6;
-  max-width: 600px;
+  max-width: 650px;
+  margin: 0 auto;
   padding: 12px 0;
   border-bottom: 2px solid rgba(255, 127, 80, 0.2);
   border-top: 2px solid rgba(255, 127, 80, 0.2);
-  transition: all 0.3s ease;
-  cursor: default;
-}
-
-.bible-verse:hover {
-  color: #0b3d91;
-  border-color: #0b3d91;
-  transform: scale(1.01);
-  padding-left: 10px;
-  padding-right: 10px;
 }
 
 .prayer-form-section {
@@ -119,14 +87,6 @@
   color: #ffd700;
   font-size: 1.6rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
-  transition: all 0.3s ease;
-  cursor: default;
-}
-
-.prayer-form-section h2:hover {
-  transform: translateX(8px);
-  text-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
 }
 
 .prayer-form {
@@ -154,7 +114,6 @@
   font-size: 0.9rem;
   outline: none;
   background: rgba(255, 255, 255, 0.98);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   color: #1a2b4c;
   font-family: inherit;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
@@ -169,25 +128,16 @@
 .prayer-form input:hover,
 .prayer-form textarea:hover,
 .prayer-form select:hover {
-  background: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   border-color: #ff7f50;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .prayer-form input:focus,
 .prayer-form textarea:focus,
 .prayer-form select:focus {
   border-color: #ffd700;
-  background: #ffffff;
   box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.3);
-  transform: translateY(-2px);
-}
-
-.prayer-form input::placeholder,
-.prayer-form textarea::placeholder,
-.prayer-form select::placeholder {
-  color: #718096;
 }
 
 .prayer-form select {
@@ -211,19 +161,16 @@
   border-radius: 50px;
   cursor: pointer;
   box-shadow: 0 10px 25px rgba(255, 127, 80, 0.35);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 2px solid transparent;
-  letter-spacing: 0.5px;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
 }
 
 .submit-btn:hover:not(:disabled) {
   background: linear-gradient(135deg, #ff6b3d, #ff5722);
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 20px 35px rgba(255, 107, 61, 0.4);
-  border-color: #ffd700;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(255, 107, 61, 0.4);
 }
 
 .submit-btn:disabled {
@@ -241,7 +188,6 @@
   background: rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   border-left: 4px solid #ffd700;
-  backdrop-filter: blur(4px);
 }
 
 .prayer-requests-section {
@@ -257,32 +203,6 @@
   margin-bottom: 24px;
   font-size: 1.8rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
-  position: relative;
-  padding-bottom: 10px;
-  transition: all 0.3s ease;
-  cursor: default;
-}
-
-.prayer-requests-section h2::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, #ff7f50, #ffd700);
-  border-radius: 4px;
-  transition: width 0.3s ease;
-}
-
-.prayer-requests-section h2:hover::after {
-  width: 100px;
-}
-
-.prayer-requests-section h2:hover {
-  transform: translateX(5px);
-  color: #ff7f50;
 }
 
 .prayer-list {
@@ -297,7 +217,6 @@
   border-radius: 16px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
   border-left: 5px solid #ff7f50;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   text-align: left;
   border: 1px solid rgba(255, 127, 80, 0.1);
 }
@@ -307,13 +226,6 @@
   margin-bottom: 6px;
   font-size: 1.2rem;
   font-weight: 700;
-  line-height: 1.4;
-  transition: all 0.3s ease;
-}
-
-.prayer-item:hover h3 {
-  color: #ff7f50;
-  transform: translateX(5px);
 }
 
 .prayer-author {
@@ -321,53 +233,49 @@
   color: #ff7f50;
   margin-bottom: 10px;
   font-size: 0.85rem;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  transition: all 0.3s ease;
-}
-
-.by-text {
-  color: #718096;
-  font-weight: 400;
-}
-
-.prayer-item:hover .prayer-author {
-  color: #0b3d91;
-  transform: translateX(3px);
 }
 
 .prayer-desc {
   color: #4a5568;
   line-height: 1.6;
   font-size: 0.9rem;
-  transition: all 0.3s ease;
-}
-
-.prayer-item:hover .prayer-desc {
-  color: #0b3d91;
 }
 
 .empty-text {
-  text-align: left;
+  text-align: center;
   color: #718096;
   font-size: 1rem;
   padding: 30px 20px;
   background: rgba(255, 255, 255, 0.8);
   border-radius: 16px;
   border: 2px dashed #cbd5e0;
+}
+
+.show-more-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.show-more-btn {
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #ff7f50, #ff6b3d);
+  color: white;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(255, 127, 80, 0.3);
   transition: all 0.3s ease;
 }
 
-.empty-text:hover {
-  border-color: #ff7f50;
-  color: #0b3d91;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(255, 127, 80, 0.1);
+.show-more-btn:hover {
+  background: linear-gradient(135deg, #ff6b3d, #ff5722);
+  transform: translateY(-2px);
 }
 
 .prayer-footer {
-  text-align: left;
+  text-align: center;
   font-style: italic;
   color: #ff7f50;
   margin-top: 40px;
@@ -375,18 +283,6 @@
   border-top: 2px solid rgba(255, 127, 80, 0.2);
   font-size: 0.95rem;
   line-height: 1.6;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-  transition: all 0.3s ease;
-  cursor: default;
-}
-
-.prayer-footer:hover {
-  color: #0b3d91;
-  border-top-color: #0b3d91;
-  transform: scale(1.01);
-  padding-left: 10px;
 }
 
 @media (max-width: 768px) {
@@ -394,18 +290,9 @@
     padding: 20px 15px;
   }
 
-  .prayer-hero {
-    margin-bottom: 30px;
-  }
-
   .prayer-form-section {
     padding: 20px;
     border-radius: 20px;
-  }
-
-  .prayer-form-section h2 {
-    font-size: 1.4rem;
-    margin-bottom: 20px;
   }
 
   .form-grid {
@@ -413,21 +300,8 @@
     gap: 15px;
   }
 
-  .prayer-form input,
-  .prayer-form textarea,
-  .prayer-form select {
-    padding: 10px 14px;
-    font-size: 0.85rem;
-  }
-
   .prayer-form textarea {
     min-height: 120px;
-  }
-
-  .submit-btn {
-    padding: 12px 20px;
-    font-size: 0.95rem;
-    margin-top: 15px;
   }
 
   .prayer-requests-section h2 {
@@ -460,11 +334,6 @@
     font-size: 0.9rem;
     padding: 20px 16px;
   }
-
-  .prayer-footer {
-    margin-top: 30px;
-    font-size: 0.9rem;
-  }
 }
 
 @media (max-width: 480px) {
@@ -491,5 +360,10 @@
 
   .submit-btn {
     font-size: 0.9rem;
+  }
+
+  .show-more-btn {
+    padding: 6px 12px;
+    font-size: 0.8rem;
   }
 }
