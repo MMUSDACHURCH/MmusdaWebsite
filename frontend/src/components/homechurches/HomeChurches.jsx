@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchAllHomeChurches } from "../../Features/homechurches/homechurchesAPI";
-import "./HomeChurches.css";
+import "../homechurches/HomeChurches.css";
 
 export default function HomeChurches() {
   const [homeChurches, setHomeChurches] = useState([]);
