@@ -22,6 +22,7 @@ import Families from "./components/families/Families";
 import Announcements from "./components/announcements/Announcements";
 import Members from "./components/members/Members";
 import Contacts from "./components/contacts/Contacts";
+import Suggestions from "./components/suggestions/Suggestions";
 
 
 const ProtectedRoute = ({ children }) => {
@@ -98,6 +99,10 @@ const router = createBrowserRouter([
       {
         path: "contacts",
         element: <Contacts />,
+      },
+      {
+        path: "suggestions",
+        element: <Suggestions />,
       },
     ],
   },
