@@ -19,6 +19,7 @@ import Events from "./components/events/Events";
 import Leaders from "./components/leaders/Leaders";
 import HomeChurches from "./components/homechurches/HomeChurches";
 import Families from "./components/families/Families";
+import Announcements from "./components/announcements/Announcements";
 
 
 const ProtectedRoute = ({ children }) => {
@@ -83,6 +84,10 @@ const router = createBrowserRouter([
       {
         path: "families",
         element: <Families />,
+      },
+      {
+        path: "announcements",
+        element: <Announcements />,
       },
     ],
   },

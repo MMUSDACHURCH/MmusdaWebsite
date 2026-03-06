@@ -1,0 +1,81 @@
+.announcements-page {
+  padding: 20px;
+}
+
+.announcements-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.create-btn {
+  background: #2d6cdf;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.create-btn:hover {
+  background: #1f4fbf;
+}
+
+.date-filter {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.announcements-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.announcements-table th, .announcements-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.announcements-table th {
+  background: #f5f5f5;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-icon {
+  color: #ff7f50;
+  cursor: pointer;
+}
+
+.edit-icon:hover {
+  color: #e06636;
+}
+
+.delete-icon {
+  color: red;
+  cursor: pointer;
+}
+
+.delete-icon:hover {
+  color: darkred;
+}
+
+@media(max-width: 768px) {
+  .announcements-table th, .announcements-table td {
+    padding: 8px;
+    font-size: 12px;
+  }
+}
