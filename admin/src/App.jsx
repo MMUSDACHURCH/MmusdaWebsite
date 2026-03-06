@@ -23,6 +23,7 @@ import Announcements from "./components/announcements/Announcements";
 import Members from "./components/members/Members";
 import Contacts from "./components/contacts/Contacts";
 import Suggestions from "./components/suggestions/Suggestions";
+import Offering from "./components/offering/Offering";
 
 
 const ProtectedRoute = ({ children }) => {
@@ -103,6 +104,10 @@ const router = createBrowserRouter([
       {
         path: "suggestions",
         element: <Suggestions />,
+      },
+      {
+        path: "offering",
+        element: <Offering />,
       },
     ],
   },
