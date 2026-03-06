@@ -55,7 +55,7 @@ app.use("/api/offerings", offeringsRouter);
 app.use("/api/offeringsdetails", offeringDetailsRouter);
 
 app.get("/", (req, res) =>
-  res.send("Backend server is running successfully!")
+  res.send("MKUU HAPA NI BACKEND,HUWEZI ONA KITU INAFANYIKA,MAYBE UTUHACK WHICH HUWEZI,SISI NDO SIFUNA!!!!!")
 );
 
 const PORT = process.env.PORT || 5000;
