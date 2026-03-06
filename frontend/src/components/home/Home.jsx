@@ -30,7 +30,10 @@ const Home = () => {
 
   return (
     <div className="home-wrapper">
-      <YouTubeLive />
+
+      <div className="live-container">
+        <YouTubeLive />
+      </div>
 
       <div className="home-container">
         <button className="arrow left-arrow" onClick={prevImage}>❮</button>
@@ -58,6 +61,7 @@ const Home = () => {
           ))}
         </div>
       </div>
+
     </div>
   );
 };
