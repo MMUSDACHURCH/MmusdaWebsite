@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "nodemon src/server.js",
     "start": "node src/server.js",
-    "build": "node src/index.js",
+    "build": "echo 'No build needed for backend'",
     "test": "echo \"Error: no test specified\" && exit 1",
     "push": "drizzle-kit push",
     "generate": "drizzle-kit generate",
