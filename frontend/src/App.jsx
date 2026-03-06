@@ -15,7 +15,7 @@ import AboutSDA from "./components/aboutsda/AboutSDA";
 import Books from "./components/book/Book";
 import Departments from "./components/departments/Departments";
 import Leaders from "./components/leaders/Leaders";
-import HomeChurches from "./components/homechurches/HomeChurches";
+import HomeChurches from "./components/homechurch/HomeChurch";
 import Families from "./components/families/Families";
 import Choirs from "./components/choirs/Choirs";
 import Members from "./components/members/Members";
