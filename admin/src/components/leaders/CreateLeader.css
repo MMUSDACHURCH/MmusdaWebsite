@@ -1,0 +1,47 @@
+.create-leader{
+width:100%;
+max-width:500px;
+margin:auto;
+background:white;
+padding:30px;
+border-radius:8px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.create-leader h2{
+margin-bottom:20px;
+text-align:center;
+}
+
+.create-leader form{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.create-leader input{
+padding:12px;
+border:1px solid #ccc;
+border-radius:6px;
+font-size:14px;
+}
+
+.create-leader button{
+padding:12px;
+border:none;
+background:#2d6cdf;
+color:white;
+font-weight:600;
+border-radius:6px;
+cursor:pointer;
+}
+
+.create-leader button:hover{
+background:#1f4fbf;
+}
+
+.message{
+margin-top:15px;
+text-align:center;
+font-weight:500;
+}

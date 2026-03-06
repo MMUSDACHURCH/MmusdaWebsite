@@ -16,6 +16,8 @@ import AdminDashboard from "./dashboard/AdminDashboard/AdminDashboard";
 // Components
 import Departments from "./components/departments/Departments";
 import Events from "./components/events/Events";
+import Leaders from "./components/leaders/Leaders";
+
 
 const ProtectedRoute = ({ children }) => {
   const token = localStorage.getItem("token");
@@ -67,6 +69,10 @@ const router = createBrowserRouter([
       {
         path: "events",
         element: <Events />,
+      },
+      {
+        path: "leaders",
+        element: <Leaders />,
       },
     ],
   },

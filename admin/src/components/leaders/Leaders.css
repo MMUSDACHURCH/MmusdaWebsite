@@ -1,0 +1,120 @@
+.leaders-page{
+padding:25px;
+background:white;
+min-height:100vh;
+}
+
+.leaders-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+flex-wrap:wrap;
+gap:10px;
+}
+
+.leaders-header h2{
+color:#0b2a4a;
+}
+
+.create-btn{
+background:#ff8c42;
+color:white;
+border:none;
+padding:10px 18px;
+border-radius:6px;
+cursor:pointer;
+font-weight:600;
+}
+
+.create-btn:hover{
+background:#e6762f;
+}
+
+.leaders-search{
+display:flex;
+gap:10px;
+margin-bottom:20px;
+flex-wrap:wrap;
+}
+
+.leaders-search input{
+padding:10px;
+border:1px solid #ccc;
+border-radius:6px;
+flex:1;
+min-width:200px;
+}
+
+.leaders-search button{
+background:#0b2a4a;
+color:white;
+border:none;
+padding:10px 16px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.table-container{
+width:100%;
+overflow-x:auto;
+}
+
+.leaders-table{
+width:100%;
+border-collapse:collapse;
+background:white;
+}
+
+.leaders-table th{
+background:#0b2a4a;
+color:white;
+padding:12px;
+text-align:left;
+}
+
+.leaders-table td{
+padding:12px;
+border-bottom:1px solid #eee;
+}
+
+.actions{
+display:flex;
+gap:12px;
+align-items:center;
+}
+
+.edit-icon{
+color:#ff8c42;
+cursor:pointer;
+font-size:18px;
+}
+
+.delete-icon{
+color:#d11a2a;
+cursor:pointer;
+font-size:18px;
+}
+
+.edit-icon:hover{
+color:#e6762f;
+}
+
+.delete-icon:hover{
+color:#a50f1c;
+}
+
+@media(max-width:768px){
+
+.leaders-header{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.leaders-table th,
+.leaders-table td{
+font-size:14px;
+padding:10px;
+}
+
+}
