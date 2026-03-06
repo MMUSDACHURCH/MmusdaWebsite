@@ -1,0 +1,72 @@
+.members-page {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: white;
+  color: black;
+}
+
+.members-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.create-btn, .pdf-btn {
+  background-color: #FF8C42;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.create-btn:hover, .pdf-btn:hover {
+  background-color: #e57733;
+}
+
+.members-header input {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.members-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.members-table th, .members-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.members-table th {
+  background-color: #002F6C;
+  color: white;
+  text-align: left;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.delete-icon {
+  color: red;
+  cursor: pointer;
+}
+
+.delete-icon:hover {
+  color: darkred;
+}

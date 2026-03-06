@@ -20,6 +20,8 @@ import Leaders from "./components/leaders/Leaders";
 import HomeChurches from "./components/homechurches/HomeChurches";
 import Families from "./components/families/Families";
 import Announcements from "./components/announcements/Announcements";
+import Members from "./components/members/Members";
+import Contacts from "./components/contacts/Contacts";
 
 
 const ProtectedRoute = ({ children }) => {
@@ -88,6 +90,14 @@ const router = createBrowserRouter([
       {
         path: "announcements",
         element: <Announcements />,
+      },
+      {
+        path: "members",
+        element: <Members />,
+      },
+      {
+        path: "contacts",
+        element: <Contacts />,
       },
     ],
   },

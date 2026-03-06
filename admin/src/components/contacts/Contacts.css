@@ -1,0 +1,61 @@
+.contacts-page {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: white;
+  color: black;
+}
+
+.contacts-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.pdf-btn {
+  background-color: #FF8C42;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.pdf-btn:hover {
+  background-color: darkorange;
+}
+
+.contacts-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.contacts-table th, .contacts-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.contacts-table th {
+  background-color: #002F6C;
+  color: white;
+  text-align: left;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.delete-icon {
+  color: #FF8C42;
+  cursor: pointer;
+}
+
+.delete-icon:hover {
+  color: darkorange;
+}
+
+.table-container {
+  overflow-x: auto;
+}
