@@ -36,4 +36,8 @@ export const DepartmentsAPI = {
       throw error;
     }
   },
+  updateDepartment: async (id, departmentData) => {
+    const response = await axios.put(`${DEPARTMENTS_URL}/${id}`, departmentData);
+    return response.data.department;
+  },
 };

@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { DepartmentsAPI } from "../../Features/departments/departmentsAPI";
 import "./UpdateDepartment.css";
 
-const CreateDepartment = ({ onCreated, onCancel }) => {
+const UpdateDepartment = ({ department, onUpdated, onCancel }) => {
+
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -13,47 +14,62 @@ const CreateDepartment = ({ onCreated, onCancel }) => {
 
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+
+    if (department) {
+      setFormData({
+        name: department.name || "",
+        description: department.description || "",
+        adminLeader: department.adminLeader || "",
+        assistant: department.assistant || "",
+        adminContact: department.adminContact || ""
+      });
+    }
+
+  }, [department]);
+
   const handleChange = (e) => {
+
     const { name, value } = e.target;
 
     setFormData((prev) => ({
       ...prev,
       [name]: value
     }));
+
   };
 
   const handleSubmit = async (e) => {
+
     e.preventDefault();
 
     setLoading(true);
 
     try {
-      const newDepartment = await DepartmentsAPI.createDepartment(formData);
 
-      onCreated(newDepartment);
+      const updated = await DepartmentsAPI.updateDepartment(
+        department.departmentId,
+        formData
+      );
 
-      setFormData({
-        name: "",
-        description: "",
-        adminLeader: "",
-        assistant: "",
-        adminContact: ""
-      });
+      onUpdated(updated);
 
     } finally {
+
       setLoading(false);
+
     }
+
   };
 
   return (
     <form className="department-form" onSubmit={handleSubmit}>
 
-      <h3 className="form-title">Create Department</h3>
+      <h3 className="form-title">Update Department</h3>
 
       <input
         type="text"
         name="name"
-        placeholder="Department Name"
         value={formData.name}
         onChange={handleChange}
         required
@@ -61,25 +77,21 @@ const CreateDepartment = ({ onCreated, onCancel }) => {
 
       <textarea
         name="description"
-        placeholder="Department Description"
+        rows="4"
         value={formData.description}
         onChange={handleChange}
-        rows="4"
       />
 
       <input
         type="text"
         name="adminLeader"
-        placeholder="Admin Leader"
         value={formData.adminLeader}
         onChange={handleChange}
-        required
       />
 
       <input
         type="text"
         name="assistant"
-        placeholder="Assistant"
         value={formData.assistant}
         onChange={handleChange}
       />
@@ -87,18 +99,21 @@ const CreateDepartment = ({ onCreated, onCancel }) => {
       <input
         type="text"
         name="adminContact"
-        placeholder="Admin Contact"
         value={formData.adminContact}
         onChange={handleChange}
       />
 
       <div className="form-buttons">
 
-        <button className="save-btn" type="submit">
-          {loading ? "Creating..." : "Create"}
+        <button className="save-btn">
+          {loading ? "Updating..." : "Update"}
         </button>
 
-        <button className="cancel-btn" type="button" onClick={onCancel}>
+        <button
+          type="button"
+          className="cancel-btn"
+          onClick={onCancel}
+        >
           Cancel
         </button>
 
@@ -108,4 +123,4 @@ const CreateDepartment = ({ onCreated, onCancel }) => {
   );
 };
 
-export default CreateDepartment;
+export default UpdateDepartment;
