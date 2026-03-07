@@ -1,57 +1,52 @@
-.dashboard-wrapper {
+.dashboard-container {
   background: #000;
   min-height: 100vh;
+  padding: 50px; /* Large screen margin */
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 25px;
 }
 
-.admin-dashboard {
+.admin-layout {
   width: 100%;
-  max-width: 1400px;
   background: #0b1f3a;
-  border-radius: 12px;
+  border-radius: 16px;
   display: flex;
   overflow: hidden;
-  box-shadow: 0 0 25px rgba(0,0,0,0.6);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+  position: relative;
 }
 
 .main-wrapper {
   flex: 1;
   display: flex;
   flex-direction: column;
-  transition: margin-left 0.3s ease;
+  min-width: 0;
+  background: #08182e;
 }
 
 .top-nav {
   height: 70px;
   background: #061427;
-  border-bottom: 2px solid #ff8c42;
+  border-bottom: 1px solid rgba(255, 140, 66, 0.2);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 25px;
 }
 
-.nav-left {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.menu-btn {
+.menu-toggle-btn {
   background: none;
   border: none;
-  font-size: 20px;
+  font-size: 22px;
   color: #ff8c42;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .page-title {
   color: white;
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 1.1rem;
+  font-weight: 500;
 }
 
 .nav-right {
@@ -63,12 +58,12 @@
 .search-box {
   display: flex;
   align-items: center;
-  background: #0b1f3a;
-  border: 1px solid #ff8c42;
-  padding: 6px 10px;
-  border-radius: 6px;
-  gap: 8px;
-  color: white;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 140, 66, 0.4);
+  padding: 8px 12px;
+  border-radius: 8px;
+  gap: 10px;
+  color: #ff8c42;
 }
 
 .search-box input {
@@ -76,93 +71,110 @@
   border: none;
   outline: none;
   color: white;
+  width: 150px;
 }
 
 .icon-btn {
-  background: #0b1f3a;
-  border: 1px solid #ff8c42;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 140, 66, 0.3);
   color: #ff8c42;
-  padding: 8px;
-  border-radius: 6px;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
   cursor: pointer;
   position: relative;
-}
-
-.icon-btn:hover {
-  background: #ff8c42;
-  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .badge {
   position: absolute;
-  top: -6px;
-  right: -6px;
-  background: red;
+  top: -5px;
+  right: -5px;
+  background: #ff4757;
+  color: white;
   font-size: 10px;
-  padding: 2px 5px;
-  border-radius: 50%;
+  padding: 2px 6px;
+  border-radius: 10px;
+  border: 2px solid #061427;
 }
 
 .user-profile {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  padding-left: 10px;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .avatar {
-  font-size: 26px;
+  font-size: 30px;
   color: #ff8c42;
 }
 
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
 .name {
-  display: block;
   font-size: 14px;
   color: white;
+  font-weight: 500;
 }
 
 .role {
   font-size: 11px;
-  color: #bbb;
-}
-
-.logout {
-  color: #ff8c42;
+  color: #888;
 }
 
 .main-content {
-  padding: 25px;
-  background: #08182e;
   flex: 1;
-}
-
-.content-box {
-  background: white;
-  color: black;
-  border-radius: 10px;
   padding: 25px;
-  min-height: 500px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-@media (max-width:1024px) {
+.content-scroll-area {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 5px;
+}
 
+.content-card {
+  background: white;
+  color: #333;
+  border-radius: 12px;
+  padding: 30px;
+  min-height: 100%;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 1024px) {
+  .dashboard-container {
+    padding: 0;
+  }
+  .admin-layout {
+    border-radius: 0;
+  }
   .search-box {
     display: none;
   }
-
-}
-
-@media (max-width:768px) {
-
-  .dashboard-wrapper {
-    padding: 10px;
-  }
-
-  .admin-dashboard {
-    border-radius: 8px;
-  }
-
-  .user-profile div {
+  .user-info {
     display: none;
   }
+}
 
+@media (max-width: 768px) {
+  .top-nav {
+    padding: 0 15px;
+  }
+  .page-title {
+    display: none;
+  }
+  .main-content {
+    padding: 15px;
+  }
 }
