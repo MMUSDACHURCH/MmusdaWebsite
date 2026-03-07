@@ -41,7 +41,7 @@ const AdminDashboard = () => {
               <button className="mobile-menu-trigger" onClick={() => setIsSidebarOpen(true)}>
                 <FaBars />
               </button>
-              <h2 className="view-title">Dashboard</h2>
+              <h2 className="view-title">WELCOME TO MMUSDA ADMIN DASHBOARD</h2>
             </div>
 
             <div className="top-bar-right">

@@ -4,96 +4,86 @@ import { useNavigate, Link } from "react-router-dom";
 import { APIDomain } from "../../utils/APIDomain";
 import "./Login.css";
 
-export default function Login(){
+export default function Login() {
+  const navigate = useNavigate();
 
-const navigate = useNavigate()
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
-const [email,setEmail] = useState("")
-const [password,setPassword] = useState("")
-const [showPassword,setShowPassword] = useState(false)
-const [message,setMessage] = useState("")
-const [loading,setLoading] = useState(false)
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setMessage(""); 
 
-const handleLogin = async(e)=>{
-e.preventDefault()
+    if (!email || !password) {
+      return setMessage("Please fill in all fields to Login");
+    }
 
-if(!email) return setMessage("Email required")
-if(!password) return setMessage("Password required")
+    setLoading(true);
+    try {
+      const res = await axios.post(`${APIDomain}/api/auth/login`, {
+        email,
+        password,
+      });
+      localStorage.setItem("token", res.data.token);
+      navigate("/admin/dashboard");
+    } catch (err) {
+      setMessage(err.response?.data?.error || "Login failed. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
-setLoading(true)
+  return (
+    <div className="auth-page">
+      <div className="auth-card">
+        <h2>WELCOME TO MMUSDA ADMIN LOGIN PAGE</h2>
+        <p className="subtitle">Welcome back! Please enter your details to Login.</p>
 
-try{
+        {message && <div className="message-banner">{message}</div>}
 
-const res = await axios.post(`${APIDomain}/api/auth/login`,{
-email,
-password
-})
+        <form onSubmit={handleLogin}>
+          <div className="input-group">
+            <label>Email Address</label>
+            <input
+              type="email"
+              placeholder="admin@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
 
-localStorage.setItem("token",res.data.token)
+          <div className="input-group">
+            <label>Password</label>
+            <div className="password-box">
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <span className="toggle-pass" onClick={() => setShowPassword(!showPassword)}>
+                {showPassword ? "Hide" : "Show"}
+              </span>
+            </div>
+          </div>
 
-navigate("/admin/dashboard")
+          <button type="submit" className="login-btn" disabled={loading}>
+            {loading ? <span className="loader"></span> : "Login to Dashboard"}
+          </button>
+        </form>
 
-}catch(err){
-
-setMessage(err.response?.data?.error || "Login failed")
-
-}
-
-setLoading(false)
-}
-
-return(
-
-<div className="auth-page">
-
-<div className="auth-card">
-
-<h2>Admin Login</h2>
-
-{message && <p className="message">{message}</p>}
-
-<form onSubmit={handleLogin}>
-
-<input
-type="email"
-placeholder="Email"
-value={email}
-onChange={(e)=>setEmail(e.target.value)}
-/>
-
-<div className="password-box">
-
-<input
-type={showPassword ? "text" : "password"}
-placeholder="Password"
-value={password}
-onChange={(e)=>setPassword(e.target.value)}
-/>
-
-<span onClick={()=>setShowPassword(!showPassword)}>
-{showPassword ? "Hide" : "Show"}
-</span>
-
-</div>
-
-<button type="submit">
-{loading ? "Logging in..." : "Login"}
-</button>
-
-</form>
-
-<div className="auth-links">
-<p>Don't have an account?</p>
-<Link to="/register" className="link">Register</Link>
-</div>
-
-<div className="auth-links">
-<Link to="/forgot-password" className="link">Forgot Password?</Link>
-</div>
-
-</div>
-
-</div>
-
-)
+        <div className="auth-footer">
+          <p>
+            Don't have an account? <Link to="/register" className="black-link">Register</Link>
+          </p>
+          <Link to="/forgot-password" className="forgot-link">Forgot Password?</Link>
+        </div>
+      </div>
+    </div>
+  );
 }
