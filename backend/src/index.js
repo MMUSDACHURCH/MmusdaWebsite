@@ -16,6 +16,7 @@ import { membersRouter } from "./members/members.router.js";
 import { suggestionsRouter } from "./suggestions/suggestions.router.js";
 import offeringsRouter from "./offering/offering.router.js";
 import offeringDetailsRouter from "./offeringDetails/offeringDetails.router.js";
+import { AdminsRouter } from "./admins/admins.router.js";
 
 const app = express();
 
@@ -53,6 +54,7 @@ app.use("/api/members", membersRouter);
 app.use("/api/suggestions", suggestionsRouter);
 app.use("/api/offerings", offeringsRouter);
 app.use("/api/offeringsdetails", offeringDetailsRouter);
+app.use("/api/admins", AdminsRouter);
 
 app.get("/", (req, res) =>
   res.send("MKUU HAPA NI BACKEND,HUWEZI ONA KITU INAFANYIKA,MAYBE UTUHACK WHICH HUWEZI,SISI NDO SIFUNA!!!!!")
