@@ -1,15 +1,79 @@
-.create-homechurch{
-width:100%;
-max-width:500px;
-margin:auto;
-background:white;
-padding:30px;
-border-radius:8px;
-box-shadow:0 0 10px rgba(0,0,0,0.1);
+:root{
+--dark-blue:#0A1A44;
+--warm-orange:#FF8C42;
+--white:#ffffff;
+--black:#000000;
 }
 
-.create-homechurch h2{text-align:center;color:#0b2a4a;margin-bottom:20px;}
-.create-homechurch form{display:flex;flex-direction:column;gap:12px;}
-.create-homechurch input{padding:10px;border:1px solid #ccc;border-radius:6px;}
-.create-homechurch button{padding:12px;background:#ff8c42;color:white;border:none;border-radius:6px;cursor:pointer;font-weight:600;}
-.create-homechurch button:hover{background:#e6762f;}
+.create-homechurch{
+width:100%;
+max-width:520px;
+margin:auto;
+background:var(--white);
+padding:30px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+border:2px solid var(--dark-blue);
+}
+
+.create-homechurch h2{
+text-align:center;
+color:var(--dark-blue);
+margin-bottom:20px;
+}
+
+.create-homechurch form{
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+.create-homechurch input,
+.create-homechurch textarea{
+padding:12px;
+border:2px solid var(--dark-blue);
+border-radius:6px;
+font-size:14px;
+outline:none;
+}
+
+.create-homechurch input:focus,
+.create-homechurch textarea:focus{
+border-color:var(--warm-orange);
+}
+
+.create-homechurch textarea{
+resize:vertical;
+min-height:80px;
+}
+
+.create-homechurch button{
+padding:12px;
+border:none;
+background:var(--dark-blue);
+color:var(--white);
+font-weight:600;
+border-radius:6px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.create-homechurch button:hover{
+background:var(--warm-orange);
+}
+
+.create-homechurch button:disabled{
+opacity:0.7;
+cursor:not-allowed;
+}
+
+.message{
+margin-top:12px;
+text-align:center;
+font-weight:600;
+color:var(--dark-blue);
+}
+
+@media(max-width:600px){
+.create-homechurch{padding:20px;}
+}

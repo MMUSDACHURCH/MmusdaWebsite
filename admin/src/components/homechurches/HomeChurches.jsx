@@ -11,17 +11,21 @@ const [churches,setChurches] = useState([]);
 const [showCreate,setShowCreate] = useState(false);
 const [showUpdate,setShowUpdate] = useState(false);
 const [selectedChurch,setSelectedChurch] = useState(null);
+const [loading,setLoading] = useState(true);
 
 const fetchChurches = async () => {
 try{
+setLoading(true);
 const data = await getAllHomeChurches();
 setChurches(data);
 }catch(err){ console.log(err); }
+setLoading(false);
 };
 
 useEffect(()=>{ fetchChurches(); },[]);
 
 const handleDelete = async (id) => {
+if(!window.confirm("Delete this Home Church?")) return;
 try{
 await deleteHomeChurch(id);
 fetchChurches();
@@ -38,7 +42,9 @@ return(
 
 <div className="homechurch-header">
 <h2>Home Churches</h2>
-<button className="create-btn" onClick={()=>setShowCreate(true)}>Create Home Church</button>
+<button className="create-btn" onClick={()=>setShowCreate(!showCreate)}>
+{showCreate ? "Close" : "Create Home Church"}
+</button>
 </div>
 
 {showCreate && (
@@ -60,6 +66,7 @@ fetchChurches();
 )}
 
 <div className="table-container">
+{loading ? <p className="loading-text">Loading Home Churches...</p> :
 <table className="homechurch-table">
 <thead>
 <tr>
@@ -72,7 +79,7 @@ fetchChurches();
 </tr>
 </thead>
 <tbody>
-{churches.map((church)=>(
+{churches.map(church=>(
 <tr key={church.homechurchId}>
 <td>{church.name}</td>
 <td>{church.leaderName}</td>
@@ -86,8 +93,9 @@ fetchChurches();
 </tr>
 ))}
 </tbody>
-</table>
+</table>}
 </div>
+
 </div>
 );
 }
