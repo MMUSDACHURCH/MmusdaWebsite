@@ -3,7 +3,7 @@ import "./Footer.css";
 import {
   FaFacebookF,
   FaTwitter,
-  FaInstagram,
+  FaTiktok,
   FaYoutube,
   FaEnvelope,
   FaMapMarkerAlt,
@@ -43,7 +43,7 @@ const Footer = () => {
 
           <div className="contact-item">
             <FaPhoneAlt className="icon" />
-            <span>+254 7XX XXX XXX</span>
+            <span>+254 705214338</span>
           </div>
         </div>
 
@@ -94,11 +94,11 @@ const Footer = () => {
           </div>
 
           <div className="socials">
-            <a href="https://facebook.com" target="_blank" rel="noreferrer"><FaFacebookF /></a>
-            <a href="https://twitter.com" target="_blank" rel="noreferrer"><FaTwitter /></a>
-            <a href="https://instagram.com" target="_blank" rel="noreferrer"><FaInstagram /></a>
-            <a href="https://youtube.com" target="_blank" rel="noreferrer"><FaYoutube /></a>
-            <a href="mailto:emmanuelmose806@gmail.com"><FaEnvelope /></a>
+            <a href="https://m.facebook.com/@MasindeMuliroSDA/?wtsid=rdr_0aLQHB4isZ7jCnp0Q&hr=1" target="_blank" rel="noreferrer"><FaFacebookF /></a>
+            <a href="https://x.com/Mmusda_church?s=09" target="_blank" rel="noreferrer"><FaTwitter /></a>
+            <a href="https://www.tiktok.com/@mmustsda?is_from_webapp=1&sender_device=pc" target="_blank" rel="noreferrer"><FaTiktok /></a>
+            <a href="https://youtube.com/@mmustsdachurch?si=Mzu6ODG4WY-aMk9z" target="_blank" rel="noreferrer"><FaYoutube /></a>
+            <a href="mailto:Mmusdachurch1844@gmail.com"><FaEnvelope /></a>
           </div>
         </div>
 
