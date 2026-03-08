@@ -1,44 +1,62 @@
 .members-page {
   padding: 20px;
   font-family: Arial, sans-serif;
-  background-color: white;
-  color: black;
+  background: #ffffff;
+  color: #000;
 }
 
 .members-header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
   margin-bottom: 20px;
+}
+
+.members-header h2 {
+  color: #0b1e5b;
+  font-size: 24px;
 }
 
 .header-actions {
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
   align-items: center;
 }
 
-.create-btn, .pdf-btn {
-  background-color: #FF8C42;
-  color: white;
+.create-btn,
+.pdf-btn {
+  background: #0b1e5b;
+  color: #ffffff;
   border: none;
-  padding: 8px 14px;
+  padding: 10px 16px;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background 0.3s;
 }
 
-.create-btn:hover, .pdf-btn:hover {
-  background-color: #e57733;
+.create-btn:hover,
+.pdf-btn:hover {
+  background: #081449;
 }
 
 .members-header input {
-  padding: 6px 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 8px 12px;
+  border: 2px solid #0b1e5b;
+  border-radius: 6px;
+  outline: none;
+}
+
+.members-header input:focus {
+  border-color: #ff8c42;
 }
 
 .table-container {
   overflow-x: auto;
+  margin-top: 15px;
 }
 
 .members-table {
@@ -46,14 +64,16 @@
   border-collapse: collapse;
 }
 
-.members-table th, .members-table td {
+.members-table th,
+.members-table td {
+  padding: 10px;
   border: 1px solid #ddd;
-  padding: 8px;
+  vertical-align: middle;
 }
 
 .members-table th {
-  background-color: #002F6C;
-  color: white;
+  background: #0b1e5b;
+  color: #ffffff;
   text-align: left;
 }
 
@@ -63,10 +83,31 @@
 }
 
 .delete-icon {
-  color: red;
+  color: #ff8c42;
   cursor: pointer;
+  font-size: 18px;
+  transition: color 0.3s;
 }
 
 .delete-icon:hover {
-  color: darkred;
+  color: #e6762f;
+}
+
+@media(max-width: 768px) {
+  .members-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .members-header input,
+  .create-btn,
+  .pdf-btn {
+    width: 100%;
+  }
+
+  .members-table th,
+  .members-table td {
+    padding: 8px;
+    font-size: 12px;
+  }
 }
