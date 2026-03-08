@@ -9,16 +9,22 @@ export default function CreateFamily({ onSuccess }) {
   const [leaderContact, setLeaderContact] = useState("");
   const [photoUrl, setPhotoUrl] = useState("");
   const [description, setDescription] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       await createFamily({ familyName, headOfFamily, contactInfo, leaderContact, photoUrl, description });
       setFamilyName(""); setHeadOfFamily(""); setContactInfo(""); setLeaderContact(""); setPhotoUrl(""); setDescription("");
-      onSuccess();
+      setMessage("Family created successfully");
+      if(onSuccess) onSuccess();
     } catch (err) {
       console.log(err);
+      setMessage("Failed to create family");
     }
+    setLoading(false);
   };
 
   return (
@@ -30,9 +36,10 @@ export default function CreateFamily({ onSuccess }) {
         <input type="text" placeholder="Contact Info" value={contactInfo} onChange={e => setContactInfo(e.target.value)} />
         <input type="text" placeholder="Leader Contact" value={leaderContact} onChange={e => setLeaderContact(e.target.value)} />
         <input type="text" placeholder="Photo URL" value={photoUrl} onChange={e => setPhotoUrl(e.target.value)} />
-        <input type="text" placeholder="Description" value={description} onChange={e => setDescription(e.target.value)} />
-        <button type="submit">Create</button>
+        <textarea placeholder="Description" value={description} onChange={e => setDescription(e.target.value)} />
+        <button type="submit" disabled={loading}>{loading ? "Creating..." : "Create"}</button>
       </form>
+      {message && <p className="message">{message}</p>}
     </div>
   );
 }

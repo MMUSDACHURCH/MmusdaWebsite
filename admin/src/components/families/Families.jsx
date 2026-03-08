@@ -10,21 +10,25 @@ export default function Families() {
   const [showCreate, setShowCreate] = useState(false);
   const [showUpdate, setShowUpdate] = useState(false);
   const [selectedFamily, setSelectedFamily] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const fetchFamilies = async () => {
-    try {
+    try{
+      setLoading(true);
       const data = await getAllFamilies();
       setFamilies(data);
-    } catch (err) { console.log(err); }
+    } catch(err){ console.log(err); }
+    setLoading(false);
   };
 
   useEffect(() => { fetchFamilies(); }, []);
 
   const handleDelete = async (id) => {
+    if(!window.confirm("Delete this family?")) return;
     try {
       await deleteFamily(id);
       fetchFamilies();
-    } catch (err) { console.log(err); }
+    } catch(err){ console.log(err); }
   };
 
   const openUpdate = (family) => {
@@ -36,7 +40,9 @@ export default function Families() {
     <div className="families-page">
       <div className="families-header">
         <h2>Families</h2>
-        <button className="create-btn" onClick={() => setShowCreate(true)}>Create Family</button>
+        <button className="create-btn" onClick={() => setShowCreate(!showCreate)}>
+          {showCreate ? "Close" : "Create Family"}
+        </button>
       </div>
 
       {showCreate && <CreateFamily onSuccess={() => { setShowCreate(false); fetchFamilies(); }} />}
@@ -49,6 +55,7 @@ export default function Families() {
       )}
 
       <div className="table-container">
+        {loading ? <p className="loading-text">Loading families...</p> :
         <table className="families-table">
           <thead>
             <tr>
@@ -77,7 +84,7 @@ export default function Families() {
               </tr>
             ))}
           </tbody>
-        </table>
+        </table>}
       </div>
     </div>
   );

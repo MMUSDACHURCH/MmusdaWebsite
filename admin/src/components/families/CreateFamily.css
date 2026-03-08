@@ -1,40 +1,80 @@
 .create-family {
   max-width: 500px;
   margin: 20px auto;
-  padding: 25px;
-  background: white;
+  padding: 30px;
+  background: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border: 2px solid #0b1e5b;
 }
 
 .create-family h2 {
   text-align: center;
-  color: #2d6cdf;
+  color: #0b1e5b;
   margin-bottom: 20px;
 }
 
 .create-family form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 15px;
 }
 
-.create-family input {
-  padding: 10px;
+.create-family input,
+.create-family textarea {
+  padding: 12px;
+  border: 2px solid #0b1e5b;
   border-radius: 6px;
-  border: 1px solid #ccc;
+  outline: none;
+  font-size: 14px;
+  color: #000000;
+}
+
+.create-family input:focus,
+.create-family textarea:focus {
+  border-color: #ff8c42;
+}
+
+.create-family textarea {
+  min-height: 80px;
+  resize: vertical;
 }
 
 .create-family button {
-  padding: 10px;
-  background: #2d6cdf;
-  color: white;
+  padding: 12px;
+  background: #0b1e5b;
+  color: #ffffff;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
+  transition: 0.3s;
 }
 
 .create-family button:hover {
-  background: #1f4fbf;
+  background: #081449;
+}
+
+.message {
+  margin-top: 15px;
+  text-align: center;
+  font-weight: 600;
+  color: #0b1e5b;
+}
+
+@media(max-width: 600px) {
+  .create-family {
+    padding: 20px;
+  }
+
+  .create-family input,
+  .create-family textarea {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .create-family button {
+    font-size: 14px;
+    padding: 10px;
+  }
 }

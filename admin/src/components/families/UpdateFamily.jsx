@@ -9,15 +9,16 @@ export default function UpdateFamily({ family, onClose, onSuccess }) {
   const [leaderContact, setLeaderContact] = useState(family.leaderContact);
   const [photoUrl, setPhotoUrl] = useState(family.photoUrl);
   const [description, setDescription] = useState(family.description);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       await updateFamily(family.familyId, { familyName, headOfFamily, contactInfo, leaderContact, photoUrl, description });
       onSuccess();
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) { console.log(err); }
+    setLoading(false);
   };
 
   return (
@@ -30,9 +31,9 @@ export default function UpdateFamily({ family, onClose, onSuccess }) {
           <input type="text" value={contactInfo} onChange={e => setContactInfo(e.target.value)} />
           <input type="text" value={leaderContact} onChange={e => setLeaderContact(e.target.value)} />
           <input type="text" value={photoUrl} onChange={e => setPhotoUrl(e.target.value)} />
-          <input type="text" value={description} onChange={e => setDescription(e.target.value)} />
+          <textarea value={description} onChange={e => setDescription(e.target.value)} />
           <div className="update-actions">
-            <button type="submit">Update</button>
+            <button type="submit" disabled={loading}>{loading ? "Updating..." : "Update"}</button>
             <button type="button" className="cancel-btn" onClick={onClose}>Cancel</button>
           </div>
         </form>

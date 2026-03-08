@@ -1,16 +1,114 @@
-.families-page{padding:25px;min-height:100vh;background:white;}
-.families-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:20px;}
-.families-header h2{color:#0b2a4a;}
-.create-btn{background:#ff8c42;color:white;border:none;padding:10px 18px;border-radius:6px;cursor:pointer;font-weight:600;}
-.create-btn:hover{background:#e6762f;}
-.table-container{width:100%;overflow-x:auto;}
-.families-table{width:100%;border-collapse:collapse;}
-.families-table th{background:#0b2a4a;color:white;padding:12px;text-align:left;}
-.families-table td{padding:12px;border-bottom:1px solid #eee;vertical-align:middle;}
-.actions{display:flex;gap:12px;align-items:center;}
-.edit-icon{color:#ff8c42;cursor:pointer;font-size:18px;}
-.delete-icon{color:#d11a2a;cursor:pointer;font-size:18px;}
-.edit-icon:hover{color:#e6762f;}
-.delete-icon:hover{color:#a50f1c;}
-.family-photo{width:50px;height:50px;object-fit:cover;border-radius:50%;}
-@media(max-width:768px){.families-header{flex-direction:column;align-items:flex-start;}.families-table th,.families-table td{font-size:14px;padding:10px;}}
+.families-page {
+  padding: 25px;
+  min-height: 100vh;
+  background: #ffffff;
+}
+
+.families-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.families-header h2 {
+  color: #0b1e5b;
+}
+
+.create-btn {
+  background: #ff8c42;
+  color: #ffffff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.create-btn:hover {
+  background: #e6762f;
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.families-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.families-table th {
+  background: #0b1e5b;
+  color: #ffffff;
+  padding: 12px;
+  text-align: left;
+}
+
+.families-table td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  vertical-align: middle;
+  color: #000000;
+}
+
+.family-photo {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #0b1e5b;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.edit-icon {
+  color: #ff8c42;
+  cursor: pointer;
+  font-size: 18px;
+  transition: 0.2s;
+}
+
+.edit-icon:hover {
+  transform: scale(1.2);
+}
+
+.delete-icon {
+  color: #d11a2a;
+  cursor: pointer;
+  font-size: 18px;
+  transition: 0.2s;
+}
+
+.delete-icon:hover {
+  transform: scale(1.2);
+}
+
+.loading-text {
+  text-align: center;
+  font-weight: 600;
+  color: #0b1e5b;
+  padding: 15px 0;
+}
+
+@media(max-width: 768px) {
+  .families-table th, .families-table td {
+    font-size: 14px;
+    padding: 10px;
+  }
+  .family-photo {
+    width: 40px;
+    height: 40px;
+  }
+}
