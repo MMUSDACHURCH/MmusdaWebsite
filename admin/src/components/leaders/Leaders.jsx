@@ -12,14 +12,19 @@ const [showCreate,setShowCreate] = useState(false);
 const [showUpdate,setShowUpdate] = useState(false);
 const [selectedLeader,setSelectedLeader] = useState(null);
 const [searchRole,setSearchRole] = useState("");
+const [loading,setLoading] = useState(true);
 
 const fetchLeaders = async () => {
+
 try{
+setLoading(true);
 const data = await getAllLeaders();
 setLeaders(data.leaders);
 }catch(err){
 console.log(err);
 }
+
+setLoading(false);
 };
 
 useEffect(()=>{
@@ -43,6 +48,8 @@ console.log(err);
 };
 
 const handleDelete = async (id) => {
+
+if(!window.confirm("Delete this leader?")) return;
 
 try{
 await deleteLeader(id);
@@ -68,9 +75,9 @@ return(
 
 <button
 className="create-btn"
-onClick={()=>setShowCreate(true)}
+onClick={()=>setShowCreate(!showCreate)}
 >
-Create Leader
+{showCreate ? "Close" : "Create Leader"}
 </button>
 
 </div>
@@ -109,6 +116,14 @@ fetchLeaders();
 )}
 
 <div className="table-container">
+
+{loading ? (
+
+<p className="loading-text">
+Loading leaders...
+</p>
+
+) : (
 
 <table className="leaders-table">
 
@@ -152,6 +167,8 @@ onClick={()=>handleDelete(leader.leaderId)}
 </tbody>
 
 </table>
+
+)}
 
 </div>
 

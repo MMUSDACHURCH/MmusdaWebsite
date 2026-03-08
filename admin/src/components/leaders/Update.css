@@ -1,10 +1,17 @@
+:root{
+--dark-blue:#0A1A44;
+--warm-orange:#FF8C42;
+--white:#ffffff;
+--black:#000000;
+}
+
 .update-overlay{
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.5);
+background:rgba(0,0,0,0.6);
 display:flex;
 align-items:center;
 justify-content:center;
@@ -13,16 +20,17 @@ z-index:1000;
 }
 
 .update-modal{
-background:white;
+background:var(--white);
 padding:30px;
-border-radius:8px;
+border-radius:10px;
 width:100%;
 max-width:450px;
+border:2px solid var(--dark-blue);
 }
 
 .update-modal h3{
 margin-bottom:20px;
-color:#0b2a4a;
+color:var(--dark-blue);
 }
 
 .update-modal form{
@@ -33,8 +41,12 @@ gap:12px;
 
 .update-modal input{
 padding:10px;
-border:1px solid #ccc;
+border:2px solid var(--dark-blue);
 border-radius:6px;
+}
+
+.update-modal input:focus{
+border-color:var(--warm-orange);
 }
 
 .update-actions{
@@ -53,13 +65,13 @@ font-weight:600;
 }
 
 .update-actions button[type="submit"]{
-background:#ff8c42;
-color:white;
+background:var(--warm-orange);
+color:var(--white);
 }
 
 .cancel-btn{
-background:#0b2a4a;
-color:white;
+background:var(--dark-blue);
+color:var(--white);
 }
 
 @media(max-width:600px){

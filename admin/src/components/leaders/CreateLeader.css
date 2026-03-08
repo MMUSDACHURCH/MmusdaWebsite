@@ -1,16 +1,25 @@
+:root{
+--dark-blue:#0A1A44;
+--warm-orange:#FF8C42;
+--white:#ffffff;
+--black:#000000;
+}
+
 .create-leader{
 width:100%;
-max-width:500px;
+max-width:520px;
 margin:auto;
-background:white;
+background:var(--white);
 padding:30px;
-border-radius:8px;
-box-shadow:0 0 10px rgba(0,0,0,0.1);
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+border:2px solid var(--dark-blue);
 }
 
 .create-leader h2{
 margin-bottom:20px;
 text-align:center;
+color:var(--dark-blue);
 }
 
 .create-leader form{
@@ -21,27 +30,47 @@ gap:15px;
 
 .create-leader input{
 padding:12px;
-border:1px solid #ccc;
+border:2px solid var(--dark-blue);
 border-radius:6px;
 font-size:14px;
+outline:none;
+}
+
+.create-leader input:focus{
+border-color:var(--warm-orange);
 }
 
 .create-leader button{
 padding:12px;
 border:none;
-background:#2d6cdf;
-color:white;
+background:var(--dark-blue);
+color:var(--white);
 font-weight:600;
 border-radius:6px;
 cursor:pointer;
+transition:0.3s;
 }
 
 .create-leader button:hover{
-background:#1f4fbf;
+background:var(--warm-orange);
+}
+
+.create-leader button:disabled{
+opacity:0.7;
+cursor:not-allowed;
 }
 
 .message{
 margin-top:15px;
 text-align:center;
-font-weight:500;
+font-weight:600;
+color:var(--dark-blue);
+}
+
+@media(max-width:600px){
+
+.create-leader{
+padding:20px;
+}
+
 }

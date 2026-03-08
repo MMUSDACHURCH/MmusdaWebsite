@@ -8,10 +8,13 @@ const [name,setName] = useState(leader.name);
 const [department,setDepartment] = useState(leader.department);
 const [contactInfo,setContactInfo] = useState(leader.contactInfo);
 const [role,setRole] = useState(leader.role);
+const [loading,setLoading] = useState(false);
 
 const handleSubmit = async (e) => {
 
 e.preventDefault();
+
+setLoading(true);
 
 try{
 
@@ -27,6 +30,8 @@ onSuccess();
 }catch(err){
 console.log(err);
 }
+
+setLoading(false);
 
 };
 
@@ -63,8 +68,8 @@ onChange={(e)=>setRole(e.target.value)}
 
 <div className="update-actions">
 
-<button type="submit">
-Update
+<button type="submit" disabled={loading}>
+{loading ? "Updating..." : "Update"}
 </button>
 
 <button

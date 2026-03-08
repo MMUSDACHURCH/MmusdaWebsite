@@ -8,12 +8,16 @@ const [name,setName] = useState("");
 const [department,setDepartment] = useState("");
 const [contactInfo,setContactInfo] = useState("");
 const [role,setRole] = useState("");
+const [loading,setLoading] = useState(false);
 const [message,setMessage] = useState("");
 
 const handleSubmit = async (e) => {
+
 e.preventDefault();
 
-try {
+setLoading(true);
+
+try{
 
 await createLeader({
 name,
@@ -33,13 +37,15 @@ if(onSuccess){
 onSuccess();
 }
 
-} catch (error) {
+}catch(error){
 setMessage("Failed to create leader");
 }
 
+setLoading(false);
+
 };
 
-return (
+return(
 
 <div className="create-leader">
 
@@ -76,8 +82,8 @@ value={role}
 onChange={(e)=>setRole(e.target.value)}
 />
 
-<button type="submit">
-Create Leader
+<button type="submit" disabled={loading}>
+{loading ? "Creating..." : "Create Leader"}
 </button>
 
 </form>
@@ -87,5 +93,4 @@ Create Leader
 </div>
 
 );
-
 }
