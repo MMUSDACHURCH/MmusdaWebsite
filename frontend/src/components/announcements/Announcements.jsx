@@ -25,7 +25,6 @@ const Announcements = () => {
 
   const handleFilterById = async () => {
     if (!idFilter) return fetchAllAnnouncements();
-
     try {
       setLoading(true);
       const data = await announcementAPI.getById(idFilter);
@@ -40,7 +39,6 @@ const Announcements = () => {
 
   const handleFilterByDate = async () => {
     if (!dateFilter) return fetchAllAnnouncements();
-
     try {
       setLoading(true);
       const data = await announcementAPI.getFromDate(dateFilter);
@@ -60,15 +58,14 @@ const Announcements = () => {
   return (
     <div className="announcements-container">
 
-      <h1 className="page-title">Church Announcements</h1>
+      <h1 className="page-title">MMUSDA CHURCH ANNOUNCEMENTS</h1>
 
       <div className="filters">
 
         <div className="filter-group">
-          <label htmlFor="idFilter">Filter by ID</label>
+          <label>Filter by ID</label>
           <input
             type="number"
-            id="idFilter"
             value={idFilter}
             onChange={(e) => setIdFilter(e.target.value)}
           />
@@ -76,10 +73,9 @@ const Announcements = () => {
         </div>
 
         <div className="filter-group">
-          <label htmlFor="dateFilter">Filter from Date</label>
+          <label>Filter from Date</label>
           <input
             type="date"
-            id="dateFilter"
             value={dateFilter}
             onChange={(e) => setDateFilter(e.target.value)}
           />
@@ -89,32 +85,39 @@ const Announcements = () => {
       </div>
 
       {loading && <p className="status-text">Loading announcements...</p>}
-
       {error && <p className="error">{error}</p>}
 
-      <div className="announcements-list">
+      <div className="table-wrapper">
 
-        {announcements.length === 0 && !loading && (
+        {announcements.length === 0 && !loading ? (
           <p className="status-text">No announcements found.</p>
+        ) : (
+
+          <table className="announcements-table">
+
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Created At</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {announcements.map((announcement) => (
+                <tr key={announcement.announcementId}>
+                  <td>{announcement.announcementId}</td>
+                  <td className="title-cell">{announcement.title}</td>
+                  <td>{announcement.content}</td>
+                  <td>{new Date(announcement.createdAt).toLocaleString()}</td>
+                </tr>
+              ))}
+            </tbody>
+
+          </table>
+
         )}
-
-        {announcements.map((announcement) => (
-          <div key={announcement.announcementId} className="announcement-card">
-
-            <h2 className="announcement-title">
-              {announcement.title}
-            </h2>
-
-            <p className="announcement-content">
-              {announcement.content}
-            </p>
-
-            <p className="announcement-date">
-              Created at: {new Date(announcement.createdAt).toLocaleString()}
-            </p>
-
-          </div>
-        ))}
 
       </div>
 
