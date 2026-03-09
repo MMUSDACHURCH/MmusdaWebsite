@@ -26,6 +26,7 @@ import Suggestions from "./components/suggestions/Suggestions";
 import Offering from "./components/offering/Offering";
 import OfferingDetails from "./components/offeringdetails/OfferingDetails";
 import Admins from "./components/admins/Admins";
+import Prayer from "./components/prayer/Prayer";
 
 
 const ProtectedRoute = ({ children }) => {
@@ -118,6 +119,10 @@ const router = createBrowserRouter([
       {
         path: "admins",
         element: <Admins />,
+      },
+      {
+        path: "prayer",
+        element: <Prayer />,
       },
     ],
   },
