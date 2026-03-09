@@ -1,7 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
-import { Eye, EyeOff, Mail, Lock, LogIn } from "lucide-react";
 import { APIDomain } from "../../utils/APIDomain";
 import "./Login.css";
 
@@ -16,17 +15,12 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     setMessage("");
-
     if (!email || !password) {
       return setMessage("Please fill in all fields to Login");
     }
-
     setLoading(true);
     try {
-      const res = await axios.post(`${APIDomain}/api/auth/login`, {
-        email,
-        password,
-      });
+      const res = await axios.post(`${APIDomain}/api/auth/login`, { email, password });
       localStorage.setItem("token", res.data.token);
       navigate("/admin/dashboard");
     } catch (err) {
@@ -37,75 +31,55 @@ export default function Login() {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-glass-card">
-        <div className="login-header">
-          <h1>MMUSDA ADMIN</h1>
-          <p>Access the administrative dashboard</p>
-        </div>
+    <div className="auth-page">
+      <div className="auth-card">
+        <h2>WELCOME TO MMUSDA ADMIN LOGIN PAGE</h2>
+        <p className="subtitle">Welcome back! Please enter your details to Login.</p>
 
-        {message && (
-          <div className="error-alert">
-            <span>{message}</span>
-          </div>
-        )}
+        {message && <div className="message-banner">{message}</div>}
 
-        <form onSubmit={handleLogin} className="login-form">
-          <div className="form-group">
+        <form onSubmit={handleLogin}>
+          <div className="input-group">
             <label>Email Address</label>
-            <div className="input-wrapper">
-              <Mail className="input-icon" size={20} />
-              <input
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
+            <input
+              type="email"
+              placeholder="admin@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
           </div>
 
-          <div className="form-group">
+          <div className="input-group">
             <label>Password</label>
-            <div className="input-wrapper">
-              <Lock className="input-icon" size={20} />
+            <div className="password-wrapper">
               <input
                 type={showPassword ? "text" : "password"}
-                placeholder="Enter password"
+                placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
               <button
                 type="button"
-                className="password-toggle-btn"
+                className="toggle-pass"
                 onClick={() => setShowPassword(!showPassword)}
               >
-                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                {showPassword ? "Hide" : "Show"}
               </button>
             </div>
           </div>
 
-          <div className="forgot-container">
-            <Link to="/forgot-password">Forgot Password?</Link>
-          </div>
-
-          <button type="submit" className="submit-btn" disabled={loading}>
-            {loading ? (
-              <div className="btn-loader"></div>
-            ) : (
-              <>
-                <span>Login to Dashboard</span>
-                <LogIn size={20} />
-              </>
-            )}
+          <button type="submit" className="login-btn" disabled={loading}>
+            {loading ? <span className="loader"></span> : "Login to Dashboard"}
           </button>
         </form>
 
-        <div className="login-footer">
+        <div className="auth-footer">
           <p>
-            New Admin? <Link to="/register">Create Account</Link>
+            Don't have an account? <Link to="/register" className="black-link">Register</Link>
           </p>
+          <Link to="/forgot-password" className="forgot-link">Forgot Password?</Link>
         </div>
       </div>
     </div>
