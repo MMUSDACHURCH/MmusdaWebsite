@@ -1,149 +1,85 @@
 import React, { useState } from "react";
 import { createOffering } from "../../Features/offering/offeringAPI";
 import OfferingDetails from "../../components/offeringdetails/OfferingDetails";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { Send, Quote } from "lucide-react";
 import "./Offering.css";
 
 const Offering = () => {
-  const [formData, setFormData] = useState({
-    phoneNumber: "",
-    name: "",
-    amount: "",
-    purpose: ""
-  });
+  const [formData, setFormData] = useState({ phoneNumber: "", name: "", amount: "", purpose: "" });
   const [message, setMessage] = useState("");
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await createOffering(formData);
-      setMessage("Offering created successfully!");
+      setMessage("Offering recorded successfully!");
       setFormData({ phoneNumber: "", name: "", amount: "", purpose: "" });
     } catch (err) {
       setMessage(err.message);
     }
   };
 
-  const containerVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { staggerChildren: 0.2 } }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-  };
-
   return (
-    <div className="offering-container">
-      <motion.h1
-        className="offering-page-title"
-        initial={{ y: -30, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8 }}
+    <div className="offering-page-container">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="offering-card"
       >
-        Church Offering
-      </motion.h1>
+        <header className="offering-header">
+          <h1 className="main-title">CHURCH <span className="highlight">OFFERING</span></h1>
+          <div className="quote-box">
+            <Quote size={16} className="quote-icon" />
+            <p>"Give, and it will be given to you. A good measure, pressed down." — Luke 6:38</p>
+          </div>
+        </header>
 
-      <motion.div
-        className="offering-quote-section"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <motion.p variants={itemVariants} className="offering-quote">
-          “Give, and it will be given to you. A good measure, pressed down, shaken together and running over, will be poured into your lap.” — Luke 6:38
-        </motion.p>
+        <div className="offering-grid">
+          <section className="info-side">
+            <div className="instruction-block">
+              <span className="step-num">01</span>
+              <p>Send Offering to the number below.</p>
+            </div>
+            
+            <OfferingDetails />
 
-        <motion.p variants={itemVariants} className="offering-quote">
-          “Honor the Lord with your wealth, with the firstfruits of all your crops.” — Proverbs 3:9
-        </motion.p>
+            <div className="instruction-block bottom">
+              <span className="step-num">02</span>
+              <p>Fill the form to help us track your offering</p>
+            </div>
+          </section>
+
+          <section className="form-side">
+            <form onSubmit={handleSubmit} className="modern-form">
+              <div className="input-group">
+                <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Full Name" required />
+                <input type="text" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} placeholder="Phone Number" required />
+                <input type="number" name="amount" value={formData.amount} onChange={handleChange} placeholder="Amount (Ksh)" required />
+                <input type="text" name="purpose" value={formData.purpose} onChange={handleChange} placeholder="Purpose (e.g. Tithe)" required />
+              </div>
+
+              <motion.button 
+                whileHover={{ scale: 1.02 }} 
+                whileTap={{ scale: 0.98 }}
+                className="submit-button"
+              >
+                Confirm Offering <Send size={18} />
+              </motion.button>
+
+              <AnimatePresence>
+                {message && (
+                  <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="form-message">
+                    {message}
+                  </motion.p>
+                )}
+              </AnimatePresence>
+            </form>
+          </section>
+        </div>
       </motion.div>
-
-      <motion.div
-        className="offering-details-section"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <motion.p variants={itemVariants} className="instruction">
-          Send money to the number above
-        </motion.p>
-
-        <OfferingDetails />
-
-        <motion.p variants={itemVariants} className="instruction">
-          Submit the following in the form after sending
-        </motion.p>
-      </motion.div>
-
-      <motion.form
-        className="offering-form"
-        onSubmit={handleSubmit}
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <motion.h2 variants={itemVariants}>Create New Offering</motion.h2>
-
-        <motion.input
-          variants={itemVariants}
-          type="text"
-          name="phoneNumber"
-          value={formData.phoneNumber}
-          onChange={handleChange}
-          placeholder="Phone Number"
-          required
-        />
-
-        <motion.input
-          variants={itemVariants}
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          placeholder="Name"
-          required
-        />
-
-        <motion.input
-          variants={itemVariants}
-          type="number"
-          name="amount"
-          value={formData.amount}
-          onChange={handleChange}
-          placeholder="Amount"
-          required
-        />
-
-        <motion.input
-          variants={itemVariants}
-          type="text"
-          name="purpose"
-          value={formData.purpose}
-          onChange={handleChange}
-          placeholder="Purpose"
-          required
-        />
-
-        <motion.button
-          variants={itemVariants}
-          type="submit"
-          whileHover={{ scale: 1.03, backgroundColor: "#ff8c00", color: "#001f4d" }}
-        >
-          Submit
-        </motion.button>
-
-        {message && (
-          <motion.p variants={itemVariants} className="message">
-            {message}
-          </motion.p>
-        )}
-      </motion.form>
     </div>
   );
 };

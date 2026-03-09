@@ -1,146 +1,162 @@
-.offering-container {
-  max-width: 720px;
-  margin: 50px auto;
-  padding: 35px;
-  background-color: white;
-  border-radius: 15px;
-  color: #001f4d;
-  font-family: Arial, sans-serif;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+:root {
+  --navy: #001f3f;
+  --orange: #ff8c00;
+  --text-gray: #475569;
 }
 
-.offering-page-title {
-  text-align: center;
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #ff7f11;
-  margin-bottom: 30px;
-  text-transform: uppercase;
+.offering-page-container {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: #f1f5f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.offering-quote-section {
-  margin-bottom: 30px;
+.offering-card {
+  width: 100%;
+  max-width: 900px;
+  background: white;
+  border-radius: 32px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  overflow: hidden;
+  padding: 40px;
 }
 
-.offering-quote {
-  font-size: 1.05rem;
-  color: #002b5b;
+.offering-header {
+  text-align: left;
+  margin-bottom: 40px;
+  border-bottom: 1px solid #edf2f7;
+  padding-bottom: 20px;
+}
+
+.main-title {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--navy);
+  margin: 0;
+  transition: 0.3s;
+}
+
+.main-title:hover { color: var(--orange); }
+
+.highlight { color: var(--orange); transition: 0.3s; }
+.main-title:hover .highlight { color: var(--navy); }
+
+.quote-box {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  color: var(--text-gray);
   font-style: italic;
-  line-height: 1.6;
-  margin: 12px 0;
-  text-align: left;
-  padding-left: 12px;
-  padding-right: 12px;
+  font-size: 0.95rem;
+  max-width: 600px;
 }
 
-.offering-quote:hover {
-  color: #ff7f11;
+.quote-icon { color: var(--orange); flex-shrink: 0; }
+
+.offering-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
 }
 
-.offering-details-section {
-  background-color: #001f4d;
-  padding: 20px;
-  border-radius: 12px;
+.info-side {
+  background: var(--navy);
+  padding: 30px;
+  border-radius: 24px;
   color: white;
-  margin-bottom: 30px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
 }
 
-.instruction {
+.instruction-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 25px;
   text-align: left;
-  color: #ff7f11;
-  font-weight: bold;
-  margin: 12px 0;
-  padding-left: 12px;
 }
 
-.instruction:hover {
-  color: #00ffcc;
+.step-num {
+  background: var(--orange);
+  color: var(--navy);
+  font-weight: 900;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.8rem;
 }
 
-.offering-form {
+.instruction-block p {
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.modern-form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
 }
 
-.offering-form h2 {
-  text-align: center;
-  font-size: 1.8rem;
-  color: #ff7f11;
-  margin-bottom: 20px;
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.offering-form input {
-  padding: 14px;
-  border-radius: 8px;
-  border: 1px solid #ff7f11;
-  font-size: 1rem;
-  outline: none;
+.modern-form input {
   width: 100%;
-  transition: 0.3s ease;
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  font-size: 1rem;
+  transition: 0.3s;
 }
 
-.offering-form input:focus {
-  border-color: #002b5b;
-  box-shadow: 0 0 12px rgba(0, 47, 91, 0.4);
+.modern-form input:focus {
+  border-color: var(--orange);
+  outline: none;
+  background: white;
+  box-shadow: 0 0 0 4px rgba(255, 140, 0, 0.1);
 }
 
-.offering-form input::placeholder {
-  color: #888;
-}
-
-.offering-form button {
-  padding: 14px;
-  border-radius: 8px;
-  border: none;
-  background-color: #ff7f11;
+.submit-button {
+  background: var(--navy);
   color: white;
-  font-weight: bold;
-  font-size: 1rem;
+  border: none;
+  padding: 16px;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 1.1rem;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: 0.3s;
 }
 
-.offering-form button:hover {
-  background-color: #002b5b;
-  color: #ff7f11;
-  transform: scale(1.03);
+.submit-button:hover {
+  background: var(--orange);
+  box-shadow: 0 10px 20px rgba(255, 140, 0, 0.2);
 }
 
-.message {
-  text-align: left;
-  padding-left: 12px;
-  font-weight: bold;
-  color: #00ffcc;
-  margin-top: 12px;
-  font-size: 1rem;
+.form-message {
+  padding: 12px;
+  background: #f0fdf4;
+  color: #166534;
+  border-radius: 10px;
+  font-weight: 600;
+  text-align: center;
 }
 
-@media screen and (max-width: 900px) {
-  .offering-container {
-    margin: 25px;
-    padding: 25px;
-  }
-
-  .offering-page-title {
-    font-size: 2rem;
-  }
-
-  .offering-quote {
-    font-size: 1rem;
-  }
+@media (max-width: 850px) {
+  .offering-grid { grid-template-columns: 1fr; }
+  .offering-card { padding: 25px; border-radius: 20px; }
+  .main-title { font-size: 1.8rem; }
 }
 
-@media screen and (max-width: 600px) {
-  .offering-form input {
-    font-size: 0.95rem;
-    padding: 12px;
-  }
-
-  .offering-form button {
-    font-size: 0.95rem;
-    padding: 12px;
-  }
+@media (max-width: 480px) {
+  .offering-page-container { padding: 10px; }
+  .info-side { padding: 20px; }
 }
