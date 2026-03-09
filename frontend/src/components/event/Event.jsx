@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { fetchAllEvents } from "../../Features/events/eventsAPI.js";
 import "./Event.css";
 
@@ -21,78 +21,143 @@ const Events = () => {
     event.title.toLowerCase().includes(searchText.toLowerCase())
   );
 
-  if (loading) return <p className="loading-text">Loading events...</p>;
+  if (loading) {
+    return (
+      <div className="loading-container">
+        <motion.div 
+          animate={{ rotate: 360 }} 
+          transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+          className="loader"
+        />
+        <p className="loading-text">Gathering MMUSDA Events...</p>
+      </div>
+    );
+  }
 
-  const containerVariants = { hidden: {}, visible: { transition: { staggerChildren: 0.15 } } };
-  const cardVariants = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } };
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1, 
+      transition: { staggerChildren: 0.1, delayChildren: 0.2 } 
+    }
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, scale: 0.9, y: 20 },
+    visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.4 } }
+  };
 
   return (
-    <div className="events-container">
-      <header className="events-header">
-        <h1 className="title-motion">Church Events</h1>
-
-        <input
-          type="text"
-          placeholder="Search events by title..."
-          className="search-input"
-          value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
-        />
-
-        <p className="verse">
-          “Let us consider one another to stir up love and good works,
-          not forsaking the assembling of ourselves together.”
-          — Hebrews 10:24–25
-        </p>
-
-        <p className="quote">“Great things happen when God’s people gather.”</p>
-        <p className="quote">“Where two or three gather in My name, I am there among them.” — Matthew 18:20</p>
-
-        <p className="intro">
-          Every event strengthens fellowship, builds unity, and inspires spiritual growth.
-          As a family in Christ, we celebrate, worship, and serve together.
-        </p>
-
-        <div className="section-line"></div>
-      </header>
-
-      <motion.div
-        className="events-grid"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        {filteredEvents.map((event) => (
-          <motion.div
-            key={event.eventId}
-            className="event-card"
-            variants={cardVariants}
-            whileHover={{ scale: 1.03, y: -5, boxShadow: "0 12px 30px rgba(0,0,0,0.35)" }}
+    <div className="events-page">
+      <section className="events-hero">
+        <div className="hero-overlay">
+          <motion.h1 
+            initial={{ y: -50, opacity: 0 }} 
+            animate={{ y: 0, opacity: 1 }}
+            className="hero-title"
           >
-            <div className="event-image-wrapper">
-              <img
-                src={event.photo || "https://via.placeholder.com/400x250?text=Church+Event"}
-                alt={event.title}
-                className="event-image"
+            MMUSDA CHURCH EVENTS
+          </motion.h1>
+          
+          <motion.div 
+            className="search-container"
+            initial={{ width: "0%", opacity: 0 }}
+            animate={{ width: "100%", opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+          >
+            <div className="search-box">
+              <input
+                type="text"
+                placeholder="Search for an event title..."
+                className="interactive-search"
+                value={searchText}
+                onChange={(e) => setSearchText(e.target.value)}
               />
-            </div>
-
-            <div className="event-content">
-              <h3 className="event-title">{event.title}</h3>
-              <p className="event-description">{event.description || "—"}</p>
-              <p className="event-date">Date: {new Date(event.eventDate).toDateString()}</p>
+              <span className="search-icon">🔍</span>
             </div>
           </motion.div>
-        ))}
-      </motion.div>
 
-      {filteredEvents.length === 0 && (
-        <p className="no-results">No events match your search.</p>
-      )}
+          <motion.p 
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }} 
+            transition={{ delay: 0.8 }}
+            className="hero-subtitle"
+          >
+            “Where two or three gather in My name, I am there among them.”
+          </motion.p>
+        </div>
+      </section>
 
-      <footer className="events-footer">
-        <p>“Serve the Lord with gladness; come before His presence with singing.” — Psalm 100:2</p>
-        <p>“To everything there is a season, a time for every purpose under heaven.” — Ecclesiastes 3:1</p>
+      <main className="events-main-content">
+        <motion.div 
+          className="content-intro"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <div className="verse-card-interactive">
+            <p className="interactive-text">“Let us consider one another to stir up love and good works, not forsaking the assembling of ourselves together.”</p>
+            <span className="reference">— Hebrews 10:24–25</span>
+          </div>
+        </motion.div>
+
+        <motion.div
+          className="events-grid"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <AnimatePresence mode="popLayout">
+            {filteredEvents.map((event) => (
+              <motion.div
+                key={event.eventId}
+                className="event-card"
+                variants={cardVariants}
+                layout
+                whileHover={{ 
+                  y: -15,
+                  boxShadow: "0 20px 40px rgba(255, 127, 17, 0.2)"
+                }}
+              >
+                <div className="event-image-container">
+                  <img
+                    src={event.photo || "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?auto=format&fit=crop&q=80&w=800"}
+                    alt={event.title}
+                  />
+                  <div className="status-badge">Live Event</div>
+                </div>
+
+                <div className="event-details">
+                  <span className="event-label">Church Fellowship</span>
+                  <h3 className="event-card-title">{event.title}</h3>
+                  <p className="event-card-desc">
+                    {event.description?.substring(0, 110) || "Join us for this special gathering as we grow together in faith and community."}...
+                  </p>
+                  <div className="event-footer-meta">
+                    <div className="event-date-pill">
+                      <span className="date-num">{new Date(event.eventDate).getDate()}</span>
+                      <span className="date-month">{new Date(event.eventDate).toLocaleString('default', { month: 'short' })}</span>
+                    </div>
+                    <span className="interaction-hint">Hover to Zoom</span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+
+        {filteredEvents.length === 0 && (
+          <motion.div initial={{ scale: 0.8 }} animate={{ scale: 1 }} className="empty-search">
+            <div className="empty-icon">📂</div>
+            <p>No matches found for "{searchText}"</p>
+          </motion.div>
+        )}
+      </main>
+
+      <footer className="footer-interactive">
+        <div className="footer-glow"></div>
+        <p className="footer-quote">“Serve the Lord with gladness; come before His presence with singing.”</p>
+        <p className="footer-ref">— Psalm 100:2</p>
       </footer>
     </div>
   );
