@@ -21,40 +21,67 @@
 }
 
 .families-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
 }
 
 .family-card {
-  background: #ffffff;
-  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
   padding: 25px;
+  border-radius: 20px;
+  background: #fff;
   box-shadow: 0 8px 25px rgba(0,0,0,0.15);
   transition: all 0.4s ease;
-  cursor: pointer;
   animation: fadeInUp 0.8s ease forwards;
-  border-top: 5px solid #001f4d;
 }
 
 .family-card:hover {
-  transform: translateY(-8px) scale(1.03);
+  transform: translateY(-8px) scale(1.02);
   background: linear-gradient(145deg, #001f4d, #002a6b);
   color: #ffa500;
   box-shadow: 0 12px 30px rgba(0,0,0,0.35);
-  border-top: 5px solid #ff8c00;
+}
+
+.image-left {
+  flex-direction: row;
+}
+
+.image-right {
+  flex-direction: row-reverse;
+}
+
+.family-photo-wrapper {
+  flex: 1;
+  min-width: 250px;
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .family-photo {
   width: 100%;
-  height: 180px;
+  height: 280px;
   object-fit: cover;
-  border-radius: 15px;
-  margin-bottom: 15px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.family-photo:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.35);
+}
+
+.family-info {
+  flex: 2;
 }
 
 .family-name {
-  font-size: 1.7rem;
+  font-size: 1.8rem;
   font-weight: bold;
   margin-bottom: 12px;
   transition: color 0.3s ease;
@@ -64,11 +91,13 @@
   color: #ffffff;
 }
 
-.family-detail, .family-description {
+.family-detail,
+.family-description {
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: 1.6;
   margin-bottom: 8px;
   transition: color 0.3s ease;
+  word-break: break-word;
 }
 
 .family-card:hover .family-detail,
@@ -100,10 +129,26 @@
   100% { opacity: 1; }
 }
 
-@media (max-width: 768px) {
-  .families-title { font-size: 2.2rem; margin-bottom: 30px; }
-  .family-name { font-size: 1.4rem; }
-  .family-detail, .family-description { font-size: 0.95rem; }
-  .families-grid { gap: 20px; }
-  .families-container { padding: 40px 15px; }
+@media (max-width: 992px) {
+  .family-card {
+    flex-direction: column !important;
+    text-align: left;
+    gap: 20px;
+  }
+  .family-photo-wrapper {
+    width: 100%;
+    max-width: 100%;
+  }
+  .family-photo {
+    height: 350px;
+    border-radius: 25px;
+  }
+  .family-info {
+    margin-top: 15px;
+  }
+  .family-detail,
+  .family-description {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
 }
