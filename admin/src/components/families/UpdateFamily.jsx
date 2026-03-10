@@ -14,7 +14,10 @@ export default function UpdateFamily({ family, onClose, onSuccess }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    try { await updateFamily(family.familyId, { familyName, headOfFamily, contactInfo, leaderContact, photo, description }); onSuccess(); } catch {}
+    try {
+      await updateFamily(family.familyId, { familyName, headOfFamily, contactInfo, leaderContact, photo, description });
+      onSuccess();
+    } catch {}
     setLoading(false);
   };
 

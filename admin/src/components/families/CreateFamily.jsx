@@ -19,7 +19,7 @@ export default function CreateFamily({ onSuccess }) {
       await createFamily({ familyName, headOfFamily, contactInfo, leaderContact, photo, description });
       setFamilyName(""); setHeadOfFamily(""); setContactInfo(""); setLeaderContact(""); setPhoto(null); setDescription("");
       setMessage("Family created successfully");
-      if(onSuccess) onSuccess();
+      if (onSuccess) onSuccess();
     } catch {
       setMessage("Failed to create family");
     }

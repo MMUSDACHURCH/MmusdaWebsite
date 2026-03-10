@@ -11,14 +11,18 @@ export const getAllFamilies = async () => {
 export const createFamily = async (data) => {
   const formData = new FormData();
   for (const key in data) formData.append(key, data[key]);
-  const res = await API.post("/", formData, { headers: { "Content-Type": "multipart/form-data" } });
+  const res = await API.post("/", formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  });
   return res.data;
 };
 
 export const updateFamily = async (id, data) => {
   const formData = new FormData();
   for (const key in data) formData.append(key, data[key]);
-  const res = await API.put(`/${id}`, formData, { headers: { "Content-Type": "multipart/form-data" } });
+  const res = await API.put(`/${id}`, formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  });
   return res.data;
 };
 
