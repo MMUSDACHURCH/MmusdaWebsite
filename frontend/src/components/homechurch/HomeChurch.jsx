@@ -1,58 +1,149 @@
 import { useEffect, useState } from "react";
 import { fetchAllHomeChurches } from "../../Features/homechurches/homechurchesAPI";
+import { Users, User, Phone, Home, Quote, MapPin } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import "./HomeChurch.css";
 
 export default function HomeChurches() {
-  const [homeChurches, setHomeChurches] = useState([]);
 
-  const loadHomeChurches = async () => {
-    const data = await fetchAllHomeChurches();
-    setHomeChurches(data);
-  };
+  const [homeChurches, setHomeChurches] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const verses = [
+    "Matthew 18:20 - For where two or three gather in my name, there am I with them.",
+    "Acts 2:46 - They broke bread in their homes and ate together with glad hearts.",
+    "Hebrews 10:24 - Let us consider how we may spur one another on toward love and good deeds.",
+    "Romans 12:10 - Be devoted to one another in love."
+  ];
 
   useEffect(() => {
-    loadHomeChurches();
+    const load = async () => {
+      try {
+        const data = await fetchAllHomeChurches();
+        setHomeChurches(data || []);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    load();
   }, []);
 
+  if (loading) {
+    return (
+      <div className="homechurch-loading">
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+        >
+          <Home size={50} className="pulse-icon" />
+        </motion.div>
+        <p>Loading Home Churches...</p>
+      </div>
+    );
+  }
+
   return (
-    <div className="homechurches-container">
-      <h1 className="title">Home Churches</h1>
+    <div className="homechurch-outer-wrapper">
 
-      <div className="quotes-section">
-        <p className="quote">"For where two or three are gathered in my name, there am I among them." – Matthew 18:20</p>
-        <p className="quote">"And let us consider how to stir up one another to love and good works." – Hebrews 10:24</p>
-      </div>
+      <div className="homechurch-page-card">
 
-      <div className="table-wrapper">
-        <table className="homechurches-table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Leader</th>
-              <th>Location</th>
-              <th>Contact Info</th>
-            </tr>
-          </thead>
-          <tbody>
+        <header className="homechurch-hero">
+
+          <motion.div
+            initial={{ opacity: 0, y: -15 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+
+            <div className="mini-badge">
+              <Users size={16} />
+              <span>MMUSDA FELLOWSHIP</span>
+            </div>
+
+            <h1 className="hero-title">
+              HOME <span className="highlight">CHURCHES</span>
+            </h1>
+
+          </motion.div>
+
+        </header>
+
+        <div className="homechurch-content-area">
+
+          <AnimatePresence>
+
             {homeChurches.length > 0 ? (
-              homeChurches.map((church) => (
-                <tr key={church.homechurchId}>
-                  <td>{church.name}</td>
-                  <td>{church.leader || "-"}</td>
-                  <td>{church.location || "-"}</td>
-                  <td>{church.contactInfo || "-"}</td>
-                </tr>
+
+              homeChurches.map((church, index) => (
+
+                <motion.div
+                  key={church.homechurchId}
+                  className="homechurch-card"
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  whileHover={{ y: -6 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4 }}
+                >
+
+                  <span className="index-tag">
+                    HOME CHURCH {String(index + 1).padStart(2, "0")}
+                  </span>
+
+                  <h2 className="church-name">
+                    {church.name}
+                  </h2>
+
+                  <div className="meta-row">
+
+                    <div className="meta-pill">
+                      <User size={14} />
+                      <span><strong>Leader:</strong> {church.leaderName || "Not specified"}</span>
+                    </div>
+
+                    <div className="meta-pill">
+                      <Phone size={14} />
+                      <span>{church.leaderContact || "No contact provided"}</span>
+                    </div>
+
+                    <div className="meta-pill">
+                      <MapPin size={14} />
+                      <span>{church.location || "Location not specified"}</span>
+                    </div>
+
+                  </div>
+
+                  <p className="church-description">
+                    {church.description || "A home church dedicated to prayer, fellowship, Bible study and spiritual growth."}
+                  </p>
+
+                  <div className="verse-box">
+                    <Quote size={14} />
+                    <span>
+                      {verses[index % verses.length]}
+                    </span>
+                  </div>
+
+                </motion.div>
+
               ))
+
             ) : (
-              <tr>
-                <td colSpan="4" className="no-data">
-                  No home churches found
-                </td>
-              </tr>
+
+              <div className="no-data">
+                No home churches available
+              </div>
+
             )}
-          </tbody>
-        </table>
+
+          </AnimatePresence>
+
+        </div>
+
       </div>
+
     </div>
   );
 }
