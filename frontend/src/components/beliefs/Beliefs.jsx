@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { BookOpen, ChevronRight, Menu, X, Shield, Globe } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import './Beliefs.css';
 
 const Beliefs = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const fundamentalBeliefs = [
     { title: "The Holy Scriptures", content: "The Holy scriptures, old and New Testaments, are the written word of God, given by divine inspiration through holy men of God who spoke and wrote as they were moved by the Holy Spirit. (2nd Peter 1:20, 21; 2 Tim. 3:16, 17; Ps.119:105)" },
@@ -35,31 +38,85 @@ const Beliefs = () => {
     { title: "The New Earth", content: "On the new earth, God will provide an eternal home for the redeemed and a perfect environment for everlasting life. (2Peter 3:13; Isa.65:17-25; Rev.21:1-7)" }
   ];
 
+  const handleSelect = (idx) => {
+    setActiveTab(idx);
+    setSidebarOpen(false);
+  };
+
   return (
-    <div className="beliefs-container">
-      <header className="beliefs-header">
-        <h1>FUNDAMENTAL BELIEFS</h1>
-        <p>SDA Church</p>
-      </header>
-      <div className="beliefs-body">
-        <nav className="beliefs-sidebar">
-          <ul>
-            {fundamentalBeliefs.map((belief, index) => (
-              <li
-                key={index}
-                className={activeTab === index ? 'active' : ''}
-                onClick={() => setActiveTab(index)}
+    <div className="beliefs-outer-wrapper">
+      <div className="beliefs-page-card">
+        <header className="mobile-top-bar">
+          <button className="mobile-toggle-left" onClick={() => setSidebarOpen(true)}>
+            <Menu size={24} />
+          </button>
+          <span className="mobile-logo-text">DOCTRINES</span>
+        </header>
+
+        <aside className={`beliefs-sidebar ${sidebarOpen ? "active" : ""}`}>
+          <div className="sidebar-brand">
+            <BookOpen size={24} className="brand-icon" />
+            <h3>THE DOCTRINES</h3>
+            <button className="close-sidebar" onClick={() => setSidebarOpen(false)}>
+              <X size={20} />
+            </button>
+          </div>
+          <nav className="beliefs-nav">
+            <p className="nav-label">28 FUNDAMENTALS</p>
+            {fundamentalBeliefs.map((belief, idx) => (
+              <button 
+                key={idx}
+                className={`nav-item ${activeTab === idx ? "active" : ""}`}
+                onClick={() => handleSelect(idx)}
               >
-                {index + 1}. {belief.title}
-              </li>
+                <span className="nav-idx">{idx + 1}</span>
+                <span className="nav-name">{belief.title}</span>
+                <ChevronRight size={14} className="nav-arrow" />
+              </button>
             ))}
-          </ul>
-        </nav>
-        <main className="beliefs-content">
-          <div className="content-card">
-            <h2>{fundamentalBeliefs[activeTab].title}</h2>
-            <hr />
-            <p>{fundamentalBeliefs[activeTab].content}</p>
+          </nav>
+        </aside>
+
+        <main className="beliefs-main-layout">
+          <header className="beliefs-hero">
+            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
+              <div className="mini-badge">
+                <Shield size={14} />
+                <span>FAITH & DOCTRINE</span>
+              </div>
+              <h1>OUR <span className="highlight">BELIEFS</span></h1>
+              <div className="hero-line"></div>
+              <p className="hero-subtext">Exploring the 28 Fundamental Beliefs of the Seventh-day Adventist Church</p>
+            </motion.div>
+          </header>
+
+          <div className="beliefs-display-area">
+            <AnimatePresence mode="wait">
+              <motion.div 
+                key={activeTab}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3 }}
+                className="belief-content-card"
+              >
+                <div className="content-header">
+                  <span className="belief-number">0{activeTab + 1}</span>
+                  <h2>{fundamentalBeliefs[activeTab].title}</h2>
+                </div>
+                
+                <div className="content-body">
+                  <div className="body-inner">
+                    <Globe size={40} className="watermark-icon" />
+                    <p>{fundamentalBeliefs[activeTab].content}</p>
+                  </div>
+                </div>
+
+                <div className="content-footer">
+                  <div className="bible-badge">Based on Holy Scripture</div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
         </main>
       </div>
