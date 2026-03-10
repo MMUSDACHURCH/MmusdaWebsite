@@ -13,9 +13,11 @@ const FamiliesController = {
   create: async (req, res) => {
     try {
       const familyData = { ...req.body };
+
       if (req.file) {
         familyData.photoUrl = `https://mmusda.onrender.com/uploads/${req.file.filename}`;
       }
+
       const data = await FamiliesService.create(familyData);
       res.status(201).json(data);
     } catch (err) {
@@ -27,11 +29,17 @@ const FamiliesController = {
     try {
       const id = parseInt(req.params.id);
       const familyData = { ...req.body };
+
       if (req.file) {
         familyData.photoUrl = `https://mmusda.onrender.com/uploads/${req.file.filename}`;
       }
+
       const data = await FamiliesService.update(id, familyData);
-      if (!data) return res.status(404).json({ message: "Family not found" });
+
+      if (!data) {
+        return res.status(404).json({ message: "Family not found" });
+      }
+
       res.json(data);
     } catch (err) {
       res.status(500).json({ message: "Failed to update family" });
