@@ -1,1 +1,1 @@
-export const APIDomain = "https://mmusda-1wpr.onrender.com"
+export const APIDomain = "http://localhost:5000"
