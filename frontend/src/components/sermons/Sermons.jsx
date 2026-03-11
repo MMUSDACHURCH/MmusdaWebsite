@@ -1,16 +1,26 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { PlayCircle, Clock } from "lucide-react";
+import { Clock } from "lucide-react";
 import { getInitialSermons, getAllSermons } from "../../Features/sermons/sermonsAPI";
 import "./Sermons.css";
 
 const getEmbedUrl = (url) => {
-  if (!url) return null;
+  if (!url) return "";
 
-  const regExp = /(?:youtube\.com\/(?:watch\?v=|live\/|shorts\/)|youtu\.be\/)([^&?/]+)/;
-  const match = url.match(regExp);
+  if (url.includes("watch?v=")) {
+    return url.replace("watch?v=", "embed/");
+  }
 
-  return match ? `https://www.youtube.com/embed/${match[1]}` : null;
+  if (url.includes("youtu.be/")) {
+    const id = url.split("youtu.be/")[1];
+    return `https://www.youtube.com/embed/${id}`;
+  }
+
+  if (url.includes("youtube.com/embed")) {
+    return url;
+  }
+
+  return "";
 };
 
 const Sermons = () => {
@@ -36,6 +46,7 @@ const Sermons = () => {
   return (
     <section className="sermons-section">
       <div className="sermons-wrapper">
+
         <div className="sermons-header">
           <div>
             <h2>Latest Sermons</h2>
@@ -45,58 +56,57 @@ const Sermons = () => {
             </p>
           </div>
 
-          <button className="toggle-btn" onClick={() => setShowAll(!showAll)}>
+          <button
+            className="toggle-btn"
+            onClick={() => setShowAll(!showAll)}
+          >
             {showAll ? "Show Less" : "View All Sermons"}
           </button>
         </div>
 
         <div className="sermons-grid">
+
           {sermons.length === 0 && <p>No sermons available.</p>}
 
-          {sermons.map((sermon, index) => {
-            const embedUrl = getEmbedUrl(sermon.videoUrl);
+          {sermons.map((sermon, index) => (
+            <motion.div
+              key={sermon.sermonId}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              whileHover={{ y: -10 }}
+              transition={{ delay: index * 0.08 }}
+              viewport={{ once: true }}
+              className="sermon-card"
+            >
 
-            return (
-              <motion.div
-                key={sermon.sermonId}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                whileHover={{ y: -10 }}
-                transition={{ delay: index * 0.08 }}
-                viewport={{ once: true }}
-                className="sermon-card"
-              >
-                <div className="video-wrapper">
-                  {embedUrl ? (
-                    <iframe
-                      src={embedUrl}
-                      title={sermon.title}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
-                  ) : (
-                    <div className="video-placeholder">Video unavailable</div>
-                  )}
+              <div className="video-wrapper">
+                <iframe
+                  src={getEmbedUrl(sermon.videoUrl)}
+                  title={sermon.title}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
 
-                  <div className="video-overlay">
-                    <PlayCircle className="play-icon" />
-                  </div>
+              <div className="sermon-content">
+
+                <h3>{sermon.title}</h3>
+
+                <div className="sermon-meta">
+                  <Clock size={16} />
+                  <span>
+                    {new Date(sermon.sermonDate).toLocaleDateString()}
+                  </span>
                 </div>
 
-                <div className="sermon-content">
-                  <h3>{sermon.title}</h3>
+              </div>
 
-                  <div className="sermon-meta">
-                    <Clock size={16} />
-                    <span>
-                      {new Date(sermon.sermonDate).toLocaleDateString()}
-                    </span>
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
+            </motion.div>
+          ))}
+
         </div>
+
       </div>
     </section>
   );
