@@ -11,7 +11,8 @@ import {
   FaLightbulb,
   FaHandHoldingUsd,
   FaUserShield,
-  FaPrayingHands
+  FaPrayingHands,
+  FaBible
 } from "react-icons/fa";
 
 export const adminDrawerData = [

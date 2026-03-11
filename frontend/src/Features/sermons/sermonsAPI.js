@@ -1,6 +1,5 @@
 import { APIDomain } from "../../utils/APIDomain";
 
-// Fetch first 3 sermons
 export const getInitialSermons = async () => {
   try {
     const response = await fetch(`${APIDomain}/sermons/initial`);
@@ -12,7 +11,6 @@ export const getInitialSermons = async () => {
   }
 };
 
-// Fetch all sermons
 export const getAllSermons = async () => {
   try {
     const response = await fetch(`${APIDomain}/sermons/all`);

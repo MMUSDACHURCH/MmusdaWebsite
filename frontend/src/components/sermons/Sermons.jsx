@@ -7,9 +7,8 @@ import "./Sermons.css";
 const getEmbedUrl = (url) => {
   if (!url) return null;
 
-  const match = url.match(
-    /(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&]+)/
-  );
+  const regExp = /(?:youtube\.com\/(?:watch\?v=|live\/|shorts\/)|youtu\.be\/)([^&?/]+)/;
+  const match = url.match(regExp);
 
   return match ? `https://www.youtube.com/embed/${match[1]}` : null;
 };
@@ -37,8 +36,6 @@ const Sermons = () => {
   return (
     <section className="sermons-section">
       <div className="sermons-wrapper">
-
-        {/* HEADER */}
         <div className="sermons-header">
           <div>
             <h2>Latest Sermons</h2>
@@ -48,21 +45,15 @@ const Sermons = () => {
             </p>
           </div>
 
-          <button
-            className="toggle-btn"
-            onClick={() => setShowAll(!showAll)}
-          >
+          <button className="toggle-btn" onClick={() => setShowAll(!showAll)}>
             {showAll ? "Show Less" : "View All Sermons"}
           </button>
         </div>
 
-        {/* SERMON GRID */}
         <div className="sermons-grid">
-
           {sermons.length === 0 && <p>No sermons available.</p>}
 
           {sermons.map((sermon, index) => {
-
             const embedUrl = getEmbedUrl(sermon.videoUrl);
 
             return (
@@ -75,31 +66,24 @@ const Sermons = () => {
                 viewport={{ once: true }}
                 className="sermon-card"
               >
-
-                {/* VIDEO */}
                 <div className="video-wrapper">
-
                   {embedUrl ? (
                     <iframe
                       src={embedUrl}
                       title={sermon.title}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
                     />
                   ) : (
-                    <div className="video-placeholder">
-                      Video unavailable
-                    </div>
+                    <div className="video-placeholder">Video unavailable</div>
                   )}
 
                   <div className="video-overlay">
                     <PlayCircle className="play-icon" />
                   </div>
-
                 </div>
 
-                {/* CONTENT */}
                 <div className="sermon-content">
-
                   <h3>{sermon.title}</h3>
 
                   <div className="sermon-meta">
@@ -108,15 +92,11 @@ const Sermons = () => {
                       {new Date(sermon.sermonDate).toLocaleDateString()}
                     </span>
                   </div>
-
                 </div>
-
               </motion.div>
             );
           })}
-
         </div>
-
       </div>
     </section>
   );
