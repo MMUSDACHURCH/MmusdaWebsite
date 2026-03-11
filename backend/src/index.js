@@ -25,19 +25,21 @@ const app = express();
 
 const allowedOrigins = [
   "https://mmusda.vercel.app",
-  "http://localhost:5173",
-  "https://mmusdaadmin.vercel.app"
+  "https://mmusdaadmin.vercel.app",
+  "http://localhost:5173"
 ];
 
 app.use(express.json());
+
 app.use(
   cors({
     origin: (origin, callback) => {
       if (!origin) return callback(null, true);
       if (allowedOrigins.includes(origin)) return callback(null, true);
-      callback(new Error("Not allowed by CORS"));
+      return callback(new Error(`CORS not allowed for ${origin}`));
     },
-    methods: ["GET", "POST", "PUT", "DELETE"]
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
   })
 );
 
@@ -64,6 +66,13 @@ app.get("/", (req, res) =>
     "MKUU HAPA NI BACKEND, HUWEZI ONA KITU INAFANYIKA, MAYBE UTUHACK WHICH HUWEZI, SISI NDO SIFUNA!!!!!"
   )
 );
+
+app.use((err, req, res, next) => {
+  if (err instanceof Error && err.message.startsWith("CORS")) {
+    return res.status(403).json({ message: err.message });
+  }
+  next(err);
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
