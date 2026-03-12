@@ -29,19 +29,20 @@ const allowedOrigins = [
   "http://localhost:5173"
 ];
 
-app.use(express.json());
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
+}));
 
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (!origin) return callback(null, true);
-      if (allowedOrigins.includes(origin)) return callback(null, true);
-      return callback(new Error(`CORS not allowed for ${origin}`));
-    },
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    credentials: true,
-  })
-);
+app.use(express.json());
 
 app.use("/sermons", sermonsRouter);
 app.use("/youtube", youtubeRoutes);
@@ -68,13 +69,17 @@ app.get("/", (req, res) =>
 );
 
 app.use((err, req, res, next) => {
-  if (err instanceof Error && err.message.startsWith("CORS")) {
-    return res.status(403).json({ message: err.message });
+  if (err.message === "Not allowed by CORS") {
+    res.status(403).json({ error: "CORS policy restriction" });
+  } else {
+    console.error(err.stack);
+    res.status(500).json({ error: "Internal Server Error" });
   }
-  next(err);
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+const PORT = process.env.PORT || 10000;
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
 export default app;
