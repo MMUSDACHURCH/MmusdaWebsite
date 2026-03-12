@@ -98,17 +98,21 @@ export const verifyResetCode = async ({ email, code }) => {
   return { message: "Code verified" };
 };
 
-export const resetPassword = async ({ email, code, newPassword }) => {
+export const resetPassword = async ({ email, newPassword }) => {
   const admin = await db.select().from(admins).where(eq(admins.email, email)).limit(1);
   if (!admin.length) throw new Error("Email not found");
 
   const adminId = admin[0].adminId;
   const registered = await db.select().from(registeredAdmins).where(eq(registeredAdmins.adminId, adminId)).limit(1);
   if (!registered.length) throw new Error("Account not registered");
-  if (registered[0].verificationCode !== code) throw new Error("Invalid reset code");
+
+  if (!registered[0].verificationCode) 
+    throw new Error("Reset not requested or code not verified");
 
   const hashed = await bcrypt.hash(newPassword, 10);
-  await db.update(registeredAdmins).set({ password: hashed, verificationCode: null }).where(eq(registeredAdmins.registeredId, registered[0].registeredId));
+  await db.update(registeredAdmins)
+    .set({ password: hashed, verificationCode: null })
+    .where(eq(registeredAdmins.registeredId, registered[0].registeredId));
 
   return { message: "Password reset successful" };
 };

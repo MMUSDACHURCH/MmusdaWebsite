@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { APIDomain } from "../../utils/APIDomain";
 import "./NewPassword.css";
@@ -6,36 +6,48 @@ import "./NewPassword.css";
 export default function NewPassword() {
   const email = new URLSearchParams(window.location.search).get("email");
   const code = new URLSearchParams(window.location.search).get("code");
-  const [newPassword, setNewPassword] = useState("");
-  const [confirm, setConfirm] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const validatePassword = (pwd) => /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/.test(pwd);
+  const validatePassword = (pwd) =>
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/.test(pwd);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validatePassword(newPassword)) return setMessage("Password must be 8+ chars, uppercase, lowercase, number & special");
-    if (newPassword !== confirm) return setMessage("Passwords do not match");
+    if (!validatePassword(password)) {
+      setMessage(
+        "Password must be 8+ chars, uppercase, lowercase, number & special"
+      );
+      return;
+    }
+    if (password !== confirmPassword) {
+      setMessage("Passwords do not match");
+      return;
+    }
 
     setLoading(true);
-    setMessage("Resetting password...");
     try {
-      const res = await axios.post(`${APIDomain}/api/auth/reset-password`, { email, code, newPassword });
-      setMessage(res.data.message);
-      setTimeout(() => window.location.href="/login", 1500);
-    } catch(err){
+      await axios.post(`${APIDomain}/api/auth/reset-password`, {
+        email,
+        newPassword: password
+      });
+      setMessage("Password reset successful");
+      setTimeout(() => (window.location.href = "/login"), 1500);
+    } catch (err) {
       setMessage(err.response?.data?.error || "Error resetting password");
-    } finally { setLoading(false); }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="auth-page">
       <div className="auth-card">
-        <h1 className="panel-title">RESET PASSWORD PANEL</h1>
-        <h2>Set New Password</h2>
+        <h1 className="panel-title">RESET PASSWORD</h1>
         {message && <p className="message">{message}</p>}
         <form onSubmit={handleSubmit}>
           <div className="input-group">
@@ -44,11 +56,13 @@ export default function NewPassword() {
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="New Password"
-                value={newPassword}
-                onChange={(e) => setNewPassword(e.target.value)}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 required
               />
-              <span onClick={() => setShowPassword(!showPassword)}>{showPassword ? "Hide" : "Show"}</span>
+              <span onClick={() => setShowPassword(!showPassword)}>
+                {showPassword ? "Hide" : "Show"}
+              </span>
             </div>
           </div>
           <div className="input-group">
@@ -57,16 +71,19 @@ export default function NewPassword() {
               <input
                 type={showConfirm ? "text" : "password"}
                 placeholder="Confirm Password"
-                value={confirm}
-                onChange={(e) => setConfirm(e.target.value)}
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
                 required
               />
-              <span onClick={() => setShowConfirm(!showConfirm)}>{showConfirm ? "Hide" : "Show"}</span>
+              <span onClick={() => setShowConfirm(!showConfirm)}>
+                {showConfirm ? "Hide" : "Show"}
+              </span>
             </div>
           </div>
-          <button type="submit" className="register-btn" disabled={loading}>{loading ? "Resetting..." : "Reset Password"}</button>
+          <button type="submit" className="register-btn" disabled={loading}>
+            {loading ? "Resetting..." : "Reset Password"}
+          </button>
         </form>
-        <button className="link-btn" onClick={() => window.history.back()}>Back</button>
       </div>
     </div>
   );

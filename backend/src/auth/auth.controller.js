@@ -60,7 +60,8 @@ export const verifyReset = async (req, res) => {
 
 export const resetPassword = async (req, res) => {
   try {
-    if (!req.body.email || !req.body.password) return res.status(400).json({ error: "Email and new password are required" });
+    if (!req.body.email || !req.body.newPassword) 
+      return res.status(400).json({ error: "Email and new password are required" });
 
     const result = await authService.resetPassword(req.body);
     res.status(200).json(result);
