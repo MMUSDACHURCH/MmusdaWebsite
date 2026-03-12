@@ -7,5 +7,5 @@ authRouter.post("/register", register);
 authRouter.post("/verify", verify);
 authRouter.post("/login", login);
 authRouter.post("/forgot-password", requestReset);
-authRouter.post("/verify-reset-code", verifyReset); // NEW
+authRouter.post("/verify-reset-code", verifyReset);
 authRouter.post("/reset-password", resetPassword);
