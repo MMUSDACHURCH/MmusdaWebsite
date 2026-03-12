@@ -50,7 +50,7 @@ const router = createBrowserRouter([
     element: <VerifyUser />,
   },
   {
-    path: "/forgot-password",
+    path: "/forgotpassword",
     element: <ForgetPassword />,
   },
   {
