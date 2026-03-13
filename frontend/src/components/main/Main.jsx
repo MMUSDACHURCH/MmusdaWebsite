@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import "./Main.css";
 import logo1 from "../../assets/images/logo1.jpeg";
-import { BookOpen, Heart, Users, Music } from "lucide-react";
+import { BookOpen, Heart, Users, Music, ShieldCheck, Zap, Globe } from "lucide-react";
 
 const Main = () => {
   const container = {
@@ -16,10 +16,10 @@ const Main = () => {
   };
 
   const lines = [
-    { text: "Empowering Faith", icon: BookOpen, i: 4 },
-    { text: "Inspiring Hope", icon: Heart, i: 3 },
-    { text: "Serving Community", icon: Users, i: 2 },
-    { text: "Growing Together in Spirit", icon: Music, i: 1 }
+    { text: "Proclaiming the Three Angels' Messages", icon: Zap, i: 4 },
+    { text: "Restoring the Sabbath Truth", icon: ShieldCheck, i: 3 },
+    { text: "Preparing a People for Glory", icon: Globe, i: 2 },
+    { text: "Worshipping in Spirit and Truth", icon: Music, i: 1 }
   ];
 
   return (
@@ -32,7 +32,7 @@ const Main = () => {
         viewport={{ once: false, amount: 0.3 }}
       >
         <motion.h1 variants={item}>
-          Welcome to <span className="highlight">MMUSDA</span> Church
+          Faith, <span className="highlight">Truth</span> & Prophecy at MMUSDA
         </motion.h1>
 
         <div className="animated-lines">
@@ -54,24 +54,37 @@ const Main = () => {
           })}
         </div>
 
-        <motion.p variants={item}>
-          We are committed to nurturing spiritual growth, fostering strong
-          connections, and serving the community with love and purpose.
-        </motion.p>
+        <motion.div variants={item} className="main-content-rich">
+          <p className="hover-text">
+            MMUSDA is more than a church; it is a prophetic movement within Masinde Muliro 
+            University. We are called to proclaim the everlasting gospel of Revelation 14 
+            to every nation, kindred, tongue, and people. In a world of confusion, we 
+            stand as a beacon of the remnant church, upholding the commandments of God 
+            and the faith of Jesus.
+          </p>
 
-        <motion.p variants={item}>
-          Join us every Sabbath for worship, fellowship, music, and meaningful
-          spiritual enrichment that strengthens faith and builds lasting
-          relationships.
-        </motion.p>
+          <p className="hover-text">
+            Our mission is rooted in the urgent call to "Fear God and give glory to Him." 
+            We invite you to experience the beauty of the Seventh-day Sabbath, a sanctuary 
+            in time where we disconnect from the world and reconnect with our Creator. 
+            From deep theological insights to heartfelt student fellowship, your spiritual 
+            journey finds its home here.
+          </p>
+
+          <p className="hover-text">
+            Join our diverse ministries—from the Singing Ambassadors and Health Outreach 
+            to vibrant Youth Societies. Together, we are growing in grace, studying 
+            the word, and looking forward to the blessed hope of the Second Coming.
+          </p>
+        </motion.div>
 
         <motion.div variants={item} className="main-buttons">
           <a href="/learn-more" className="main-btn">
-            Learn More
+            Explore Our Beliefs
           </a>
 
           <a href="/become-member" className="main-btn outline">
-            Become a Member
+            Join the Remnant
           </a>
         </motion.div>
       </motion.div>
@@ -85,7 +98,7 @@ const Main = () => {
       >
         <div className="image-box">
           <div className="image-inner">
-            <img src={logo1} alt="Opened Bible" />
+            <img src={logo1} alt="SDA Logo or Bible" />
           </div>
         </div>
 
@@ -99,7 +112,21 @@ const Main = () => {
           </div>
           <div>
             <p className="card-title">1000+</p>
-            <p className="card-sub">Members Strong</p>
+            <p className="card-sub">Active Students</p>
+          </div>
+        </motion.div>
+
+        <motion.div
+          className="floating-card second"
+          animate={{ y: [0, 18, 0] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        >
+          <div className="card-icon alt">
+            <BookOpen size={20} />
+          </div>
+          <div>
+            <p className="card-title">28</p>
+            <p className="card-sub">Fundamental Beliefs</p>
           </div>
         </motion.div>
       </motion.div>
