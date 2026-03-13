@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import logo1 from "../../assets/images/logo1.jpeg";
-import { 
-  Menu, X, ChevronDown, ChevronRight, ArrowLeft, 
-  Home, GraduationCap, Info, Calendar, Phone, 
-  HandHeart, Users, BookOpen, Megaphone 
+import {
+  Menu, X, ChevronDown, ChevronRight, ArrowLeft,
+  Home, GraduationCap, Info, Calendar, Phone,
+  HandHeart, Users, BookOpen, Megaphone
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Navbar.css";
@@ -12,8 +12,8 @@ import "./Navbar.css";
 const navItems = [
   { label: "Home", path: "/", icon: <Home className="w-4 h-4" /> },
   { label: "Departments", path: "/departments", icon: <GraduationCap className="w-4 h-4" /> },
-  { 
-    label: "About", 
+  {
+    label: "About",
     icon: <Info className="w-4 h-4" />,
     children: [
       { label: "About MMUSDA", path: "/about/mmusda" },
@@ -26,8 +26,8 @@ const navItems = [
   { label: "Contact", path: "/contact", icon: <Phone className="w-4 h-4" /> },
   { label: "Offering", path: "/offering", icon: <HandHeart className="w-4 h-4" /> },
   { label: "Leadership", path: "/leadership", icon: <Users className="w-4 h-4" /> },
-  { 
-    label: "Evangelism", 
+  {
+    label: "Evangelism",
     icon: <BookOpen className="w-4 h-4" />,
     children: [
       { label: "Sermons", path: "/sermons" },
@@ -37,8 +37,8 @@ const navItems = [
       { label: "Books", path: "/books" },
     ]
   },
-  { 
-    label: "Others", 
+  {
+    label: "Others",
     icon: <Megaphone className="w-4 h-4" />,
     children: [
       { label: "Announcements", path: "/announcements" },
@@ -52,17 +52,17 @@ const navItems = [
 
 const Navbar = () => {
 
-  const [isOpen,setIsOpen] = useState(false)
-  const [activeSubMenu,setActiveSubMenu] = useState(null)
-  const [isScrolled,setIsScrolled] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+  const [activeSubMenu, setActiveSubMenu] = useState(null)
+  const [isScrolled, setIsScrolled] = useState(false)
 
-  useEffect(()=>{
-    const handleScroll = ()=> setIsScrolled(window.scrollY>20)
-    window.addEventListener("scroll",handleScroll)
-    return ()=> window.removeEventListener("scroll",handleScroll)
-  },[])
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 20)
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
-  const closeMenu = ()=>{
+  const closeMenu = () => {
     setIsOpen(false)
     setActiveSubMenu(null)
   }
@@ -82,34 +82,32 @@ const Navbar = () => {
 
           <Link to="/" className="navbar-logo" onClick={closeMenu}>
             <div className="logo-img-wrapper">
-              <img src={logo1} alt="MMUSDA Logo"/>
+              <img src={logo1} alt="MMUSDA Logo" />
             </div>
             <span>MMUSDA</span>
           </Link>
 
           <ul className="nav-links desktop-only">
 
-            {navItems.map((item)=>(
+            {navItems.map((item) => (
               <li key={item.label} className={item.children ? "dropdown" : ""}>
 
                 {item.children ? (
                   <>
                     <button className="nav-link-btn">
                       {item.label}
-                      <ChevronDown className="arrow-icon"/>
+                      <ChevronDown className="arrow-icon" />
                     </button>
 
                     <div className="dropdown-content">
-
-                      {item.children.map((child)=>(
+                      {item.children.map((child) => (
                         <Link key={child.label} to={child.path}>
                           {child.label}
                         </Link>
                       ))}
-
                     </div>
                   </>
-                ):(
+                ) : (
                   <Link to={item.path} className="nav-link-btn">
                     {item.label}
                   </Link>
@@ -120,8 +118,8 @@ const Navbar = () => {
 
           </ul>
 
-          <div className="menu-icon" onClick={()=>setIsOpen(!isOpen)}>
-            {isOpen ? <X size={28}/> : <Menu size={28}/>}
+          <div className="menu-icon" onClick={() => setIsOpen(!isOpen)}>
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
           </div>
 
         </div>
@@ -131,18 +129,18 @@ const Navbar = () => {
           {isOpen && (
             <>
               <motion.div
-                initial={{opacity:0}}
-                animate={{opacity:1}}
-                exit={{opacity:0}}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
                 className="mobile-overlay"
                 onClick={closeMenu}
               />
 
               <motion.div
-                initial={{x:"100%"}}
-                animate={{x:0}}
-                exit={{x:"100%"}}
-                transition={{type:"spring",damping:25,stiffness:200}}
+                initial={{ x: "100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: "100%" }}
+                transition={{ type: "spring", damping: 25, stiffness: 200 }}
                 className="mobile-menu"
               >
 
@@ -150,18 +148,18 @@ const Navbar = () => {
 
                   {activeSubMenu ? (
                     <button
-                      onClick={()=>setActiveSubMenu(null)}
+                      onClick={() => setActiveSubMenu(null)}
                       className="back-btn"
                     >
-                      <ArrowLeft size={20}/>
+                      <ArrowLeft size={20} />
                       Back
                     </button>
-                  ):(
+                  ) : (
                     <span className="menu-title">Menu</span>
                   )}
 
                   <button onClick={closeMenu} className="close-btn">
-                    <X size={24}/>
+                    <X size={24} />
                   </button>
 
                 </div>
@@ -173,27 +171,27 @@ const Navbar = () => {
                     {!activeSubMenu ? (
                       <motion.div
                         key="main"
-                        initial={{opacity:0,x:-10}}
-                        animate={{opacity:1,x:0}}
-                        exit={{opacity:0,x:-10}}
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -10 }}
                         className="mobile-links"
                       >
 
-                        {navItems.map((item)=>(
+                        {navItems.map((item) => (
                           <div key={item.label} className="mobile-item">
 
                             {item.children ? (
                               <button
                                 className="mobile-link-btn"
-                                onClick={()=>setActiveSubMenu(item)}
+                                onClick={() => setActiveSubMenu(item)}
                               >
                                 <span className="label-with-icon">
                                   {item.icon}
                                   {item.label}
                                 </span>
-                                <ChevronRight size={18}/>
+                                <ChevronRight size={18} />
                               </button>
-                            ):(
+                            ) : (
                               <Link
                                 to={item.path}
                                 className="mobile-link-btn"
@@ -210,12 +208,12 @@ const Navbar = () => {
                         ))}
 
                       </motion.div>
-                    ):(
+                    ) : (
                       <motion.div
                         key="sub"
-                        initial={{opacity:0,x:10}}
-                        animate={{opacity:1,x:0}}
-                        exit={{opacity:0,x:10}}
+                        initial={{ opacity: 0, x: 10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 10 }}
                         className="mobile-links"
                       >
 
@@ -223,7 +221,7 @@ const Navbar = () => {
                           {activeSubMenu.label}
                         </div>
 
-                        {activeSubMenu.children.map((child)=>(
+                        {activeSubMenu.children.map((child) => (
                           <Link
                             key={child.label}
                             to={child.path}
