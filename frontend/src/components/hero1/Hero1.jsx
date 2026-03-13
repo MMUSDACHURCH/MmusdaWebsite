@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { ArrowRight, BookOpen, Users, Calendar, Heart, Globe, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
-import image1 from "../../assets/images/image1.jpeg";
+import Bible from "../../assets/Bible.png";
 import "./Hero1.css";
 
 const Hero1 = () => {
@@ -41,7 +41,7 @@ const Hero1 = () => {
         <motion.div
           className="hero1-bg"
           style={{
-            backgroundImage: `url(${image1})`,
+            backgroundImage: `url(${Bible})`,
             opacity,
             scale,
             y: bgY
@@ -65,7 +65,7 @@ const Hero1 = () => {
               </motion.div>
 
               <motion.h1 variants={itemVariants} className="hero1-title">
-                Preparing a People <br />
+                Preparing People <br />
                 <span className="interactive-highlight">For His Soon Coming</span>
               </motion.h1>
 
