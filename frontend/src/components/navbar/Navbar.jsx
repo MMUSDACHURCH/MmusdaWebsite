@@ -51,20 +51,21 @@ const navItems = [
 ];
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [activeSubMenu, setActiveSubMenu] = useState(null);
-  const [isScrolled, setIsScrolled] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const [isOpen,setIsOpen] = useState(false)
+  const [activeSubMenu,setActiveSubMenu] = useState(null)
+  const [isScrolled,setIsScrolled] = useState(false)
 
-  const closeMenu = () => {
-    setIsOpen(false);
-    setActiveSubMenu(null);
-  };
+  useEffect(()=>{
+    const handleScroll = ()=> setIsScrolled(window.scrollY>20)
+    window.addEventListener("scroll",handleScroll)
+    return ()=> window.removeEventListener("scroll",handleScroll)
+  },[])
+
+  const closeMenu = ()=>{
+    setIsOpen(false)
+    setActiveSubMenu(null)
+  }
 
   return (
     <>
@@ -78,125 +79,177 @@ const Navbar = () => {
 
       <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
         <div className="navbar-container">
+
           <Link to="/" className="navbar-logo" onClick={closeMenu}>
             <div className="logo-img-wrapper">
-              <img src={logo1} alt="MMUSDA Logo" />
+              <img src={logo1} alt="MMUSDA Logo"/>
             </div>
             <span>MMUSDA</span>
           </Link>
 
           <ul className="nav-links desktop-only">
-            {navItems.map((item) => (
-              <li key={item.label} className={item.children ? "dropdown hover-dropdown" : ""}>
+
+            {navItems.map((item)=>(
+              <li key={item.label} className={item.children ? "dropdown" : ""}>
+
                 {item.children ? (
                   <>
                     <button className="nav-link-btn">
-                      {item.label} <ChevronDown className="arrow-icon" />
+                      {item.label}
+                      <ChevronDown className="arrow-icon"/>
                     </button>
+
                     <div className="dropdown-content">
-                      {item.children.map((child) => (
-                        <Link key={child.label} to={child.path}>{child.label}</Link>
+
+                      {item.children.map((child)=>(
+                        <Link key={child.label} to={child.path}>
+                          {child.label}
+                        </Link>
                       ))}
+
                     </div>
                   </>
-                ) : (
-                  <Link to={item.path} className="nav-link-btn">{item.label}</Link>
+                ):(
+                  <Link to={item.path} className="nav-link-btn">
+                    {item.label}
+                  </Link>
                 )}
+
               </li>
             ))}
+
           </ul>
 
-          <div className="menu-icon" onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          <div className="menu-icon" onClick={()=>setIsOpen(!isOpen)}>
+            {isOpen ? <X size={28}/> : <Menu size={28}/>}
           </div>
+
         </div>
 
         <AnimatePresence>
+
           {isOpen && (
             <>
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
+              <motion.div
+                initial={{opacity:0}}
+                animate={{opacity:1}}
+                exit={{opacity:0}}
                 className="mobile-overlay"
                 onClick={closeMenu}
               />
-              <motion.div 
-                initial={{ x: "100%" }}
-                animate={{ x: 0 }}
-                exit={{ x: "100%" }}
-                transition={{ type: "spring", damping: 25, stiffness: 200 }}
+
+              <motion.div
+                initial={{x:"100%"}}
+                animate={{x:0}}
+                exit={{x:"100%"}}
+                transition={{type:"spring",damping:25,stiffness:200}}
                 className="mobile-menu"
               >
+
                 <div className="mobile-menu-header">
+
                   {activeSubMenu ? (
-                    <button onClick={() => setActiveSubMenu(null)} className="back-btn">
-                      <ArrowLeft size={20} /> Back
+                    <button
+                      onClick={()=>setActiveSubMenu(null)}
+                      className="back-btn"
+                    >
+                      <ArrowLeft size={20}/>
+                      Back
                     </button>
-                  ) : (
+                  ):(
                     <span className="menu-title">Menu</span>
                   )}
-                  <button onClick={closeMenu} className="close-btn"><X size={24} /></button>
+
+                  <button onClick={closeMenu} className="close-btn">
+                    <X size={24}/>
+                  </button>
+
                 </div>
 
                 <div className="mobile-menu-content">
+
                   <AnimatePresence mode="wait">
+
                     {!activeSubMenu ? (
-                      <motion.div 
+                      <motion.div
                         key="main"
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -10 }}
+                        initial={{opacity:0,x:-10}}
+                        animate={{opacity:1,x:0}}
+                        exit={{opacity:0,x:-10}}
                         className="mobile-links"
                       >
-                        {navItems.map((item) => (
+
+                        {navItems.map((item)=>(
                           <div key={item.label} className="mobile-item">
+
                             {item.children ? (
-                              <button 
-                                className="mobile-link-btn" 
-                                onClick={() => setActiveSubMenu(item)}
+                              <button
+                                className="mobile-link-btn"
+                                onClick={()=>setActiveSubMenu(item)}
                               >
-                                <span className="label-with-icon">{item.icon} {item.label}</span>
-                                <ChevronRight size={18} />
+                                <span className="label-with-icon">
+                                  {item.icon}
+                                  {item.label}
+                                </span>
+                                <ChevronRight size={18}/>
                               </button>
-                            ) : (
-                              <Link to={item.path} className="mobile-link-btn" onClick={closeMenu}>
-                                <span className="label-with-icon">{item.icon} {item.label}</span>
+                            ):(
+                              <Link
+                                to={item.path}
+                                className="mobile-link-btn"
+                                onClick={closeMenu}
+                              >
+                                <span className="label-with-icon">
+                                  {item.icon}
+                                  {item.label}
+                                </span>
                               </Link>
                             )}
+
                           </div>
                         ))}
+
                       </motion.div>
-                    ) : (
-                      <motion.div 
+                    ):(
+                      <motion.div
                         key="sub"
-                        initial={{ opacity: 0, x: 10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: 10 }}
+                        initial={{opacity:0,x:10}}
+                        animate={{opacity:1,x:0}}
+                        exit={{opacity:0,x:10}}
                         className="mobile-links"
                       >
-                        <div className="submenu-title">{activeSubMenu.label}</div>
-                        {activeSubMenu.children.map((child) => (
-                          <Link 
-                            key={child.label} 
-                            to={child.path} 
+
+                        <div className="submenu-title">
+                          {activeSubMenu.label}
+                        </div>
+
+                        {activeSubMenu.children.map((child)=>(
+                          <Link
+                            key={child.label}
+                            to={child.path}
                             className="mobile-link-btn submenu-item"
                             onClick={closeMenu}
                           >
                             {child.label}
                           </Link>
                         ))}
+
                       </motion.div>
                     )}
+
                   </AnimatePresence>
+
                 </div>
+
               </motion.div>
             </>
           )}
+
         </AnimatePresence>
+
       </nav>
     </>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar
