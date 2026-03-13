@@ -16,9 +16,9 @@ function LandingPage() {
       <Home />
       <Main />
       <Hero1 />
-      <PrayerRequest />
-      <Contact />
       <Sermons />
+      <Contact />
+      <PrayerRequest />
       <Footer />
     </div>
   );
