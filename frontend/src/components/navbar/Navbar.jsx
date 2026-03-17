@@ -10,7 +10,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import "./Navbar.css";
 
 const navItems = [
-  { label: "Home", path: "/", icon: <Home className="w-4 h-4" /> },
+  { label: "Home", path: "https://www.google.com", external: true, icon: <Home className="w-4 h-4" /> },
   { label: "Departments", path: "/departments", icon: <GraduationCap className="w-4 h-4" /> },
   {
     label: "About",
@@ -47,7 +47,7 @@ const navItems = [
       { label: "Prayer Requests", path: "/prayers" },
       { label: "Donations", path: "/donations" },
       { label: "Suggestions", path: "/suggestions" },
-      { label: "Admins", path: "https://mmusdaadmin.vercel.app" },
+      { label: "Admins", path: "https://mmusdaadmin.vercel.app", external: true },
     ]
   },
 ];
@@ -67,6 +67,27 @@ const Navbar = () => {
   const closeMenu = () => {
     setIsOpen(false)
     setActiveSubMenu(null)
+  }
+
+  const renderLink = (item, className = "") => {
+    if (item.external) {
+      return (
+        <a
+          href={item.path}
+          target="_blank"
+          rel="noreferrer"
+          className={className}
+          onClick={closeMenu}
+        >
+          {item.label}
+        </a>
+      )
+    }
+    return (
+      <Link to={item.path} className={className} onClick={closeMenu}>
+        {item.label}
+      </Link>
+    )
   }
 
   return (
@@ -102,17 +123,21 @@ const Navbar = () => {
                     </button>
 
                     <div className="dropdown-content">
-                      {item.children.map((child) => (
-                        <Link key={child.label} to={child.path}>
-                          {child.label}
-                        </Link>
-                      ))}
+                      {item.children.map((child) =>
+                        child.external ? (
+                          <a key={child.label} href={child.path} target="_blank" rel="noreferrer">
+                            {child.label}
+                          </a>
+                        ) : (
+                          <Link key={child.label} to={child.path}>
+                            {child.label}
+                          </Link>
+                        )
+                      )}
                     </div>
                   </>
                 ) : (
-                  <Link to={item.path} className="nav-link-btn">
-                    {item.label}
-                  </Link>
+                  renderLink(item, "nav-link-btn")
                 )}
 
               </li>
@@ -193,6 +218,19 @@ const Navbar = () => {
                                 </span>
                                 <ChevronRight size={18} />
                               </button>
+                            ) : item.external ? (
+                              <a
+                                href={item.path}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="mobile-link-btn"
+                                onClick={closeMenu}
+                              >
+                                <span className="label-with-icon">
+                                  {item.icon}
+                                  {item.label}
+                                </span>
+                              </a>
                             ) : (
                               <Link
                                 to={item.path}
@@ -223,16 +261,29 @@ const Navbar = () => {
                           {activeSubMenu.label}
                         </div>
 
-                        {activeSubMenu.children.map((child) => (
-                          <Link
-                            key={child.label}
-                            to={child.path}
-                            className="mobile-link-btn submenu-item"
-                            onClick={closeMenu}
-                          >
-                            {child.label}
-                          </Link>
-                        ))}
+                        {activeSubMenu.children.map((child) =>
+                          child.external ? (
+                            <a
+                              key={child.label}
+                              href={child.path}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="mobile-link-btn submenu-item"
+                              onClick={closeMenu}
+                            >
+                              {child.label}
+                            </a>
+                          ) : (
+                            <Link
+                              key={child.label}
+                              to={child.path}
+                              className="mobile-link-btn submenu-item"
+                              onClick={closeMenu}
+                            >
+                              {child.label}
+                            </Link>
+                          )
+                        )}
 
                       </motion.div>
                     )}
@@ -252,4 +303,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default Navbar;

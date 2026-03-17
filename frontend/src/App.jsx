@@ -129,7 +129,31 @@ function App() {
       path: "/become-member",
       element: <Members />,
     },
-    
+    {
+      path: "/about-us",
+      element: <AboutSDA />,
+    },
+    {
+      path: "/ministries",
+      element: <Departments />,
+    },
+    {
+      path: "/announcements",
+      element: <Announcements />,
+    },
+    {
+      path: "/tithes-&-offerings",
+      element: <Offering />,
+    },
+    {
+      path: "/resources",
+      element: <Books />,
+    },
+    {
+      path: "/home",
+      element: <Home />,
+    },
+
   ]);
 
   return (
