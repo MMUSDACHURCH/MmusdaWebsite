@@ -64,7 +64,7 @@
 }
 
 .video-actions button:hover {
-  background: rgba(255,255,255,0.25);
+  background: rgba(255,140,0,1);
 }
 
 .video-container {
@@ -83,18 +83,18 @@
   display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .video-wrapper {
-    width: 290px;
-    height: 200px;
+    width: 180px;
+    height: 120px;
   }
 
   .video-wrapper.expanded {
-    width: 95vw;
-    height: 300px;
+    width: 80vw;
+    height: 250px;
   }
 
   .video-header h3 {
-    font-size: 12px;
+    display: none;
   }
 }

@@ -24,13 +24,12 @@ const Home = () => {
   const prevImage = () => setCurrent((prev) => (prev - 1 + images.length) % images.length);
 
   useEffect(() => {
-    const timer = setInterval(nextImage, 1500);
+    const timer = setInterval(nextImage, 5000);
     return () => clearInterval(timer);
   }, []);
 
   return (
     <div className="home-wrapper">
-
       <div className="live-container">
         <YouTubeLive />
       </div>
@@ -61,7 +60,6 @@ const Home = () => {
           ))}
         </div>
       </div>
-
     </div>
   );
 };

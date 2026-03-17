@@ -1,5 +1,7 @@
 .home-wrapper {
-  margin-top: 20px;
+  margin-top: 5px;
+  margin-left: 20px;
+  margin-right: 20px;
   padding: 15px;
   font-family: Arial, Helvetica, sans-serif;
   position: relative;
@@ -102,26 +104,26 @@
 }
 
 @media screen and (max-width: 900px) {
+  .home-wrapper {
+    margin-top: 2px;
+    margin-left: 1px;
+    margin-right: 1px;
+  }
+
   .home-container {
     height: 360px;
   }
 
   .live-container {
-    position: relative;
-    top: 0;
-    right: 0;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 110;
   }
 }
 
 @media screen and (max-width: 500px) {
   .home-container {
     height: 260px;
-  }
-
-  .home-wrapper {
-    margin-top: 10px;
   }
 }
