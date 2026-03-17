@@ -21,11 +21,14 @@ import Choirs from "./components/choirs/Choirs";
 import Members from "./components/members/Members";
 import Offering from "./components/offering/Offering";
 import Suggestions from "./components/suggestions/Suggestions";
+import Navbar from "./components/navbar/Navbar";
+import Home from "./components/home/Home";
 //import OfferingDetails from "./components/offeringdetails/OfferingDetails";
 
 
 function App() {
   const router = createBrowserRouter([
+    
     {
       path: "/",
       element: <LandingPage />, 
@@ -110,7 +113,22 @@ function App() {
       path: "/donations",
       element: <Offering />,
     },
-    
+    {
+      path: "/watchlive",
+      element: <Home />,
+    },
+    {
+      path: "/learn-more",
+      element: <AboutSDA />,
+    },
+    {
+      path: "/ourfamily",
+      element: <Members />,
+    },
+    {
+      path: "/become-member",
+      element: <Members />,
+    },
     
   ]);
 

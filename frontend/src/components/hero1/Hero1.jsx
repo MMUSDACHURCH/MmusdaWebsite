@@ -93,10 +93,10 @@ const Hero1 = () => {
               </motion.div>
 
               <motion.div variants={itemVariants} className="hero1-buttons">
-                <Link to="/about" className="hero-btn primary">
+                <Link to="/ourfamily" className="hero-btn primary">
                   Join Our Family <ArrowRight size={18} />
                 </Link>
-                <Link to="/sermons" className="hero-btn secondary">
+                <Link to="/watchlive" className="hero-btn secondary">
                   Watch Livestream
                 </Link>
               </motion.div>
