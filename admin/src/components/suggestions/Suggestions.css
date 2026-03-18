@@ -1,0 +1,96 @@
+.suggestions-page {
+  padding: 20px;
+  background: #ffffff;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  color: #000;
+}
+
+.suggestions-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.suggestions-header h2 {
+  color: #0b1e5b;
+  font-size: 24px;
+}
+
+.download-btn {
+  background: #0b1e5b;
+  border: none;
+  color: #ffffff;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.download-btn:hover {
+  background: #081449;
+}
+
+.table-container {
+  overflow-x: auto;
+  margin-top: 15px;
+}
+
+.suggestions-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.suggestions-table th,
+.suggestions-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  vertical-align: middle;
+}
+
+.suggestions-table th {
+  background: #0b1e5b;
+  color: #ffffff;
+  text-align: left;
+}
+
+.suggestions-table tr:nth-child(even) {
+  background: #f7f7f7;
+}
+
+.actions {
+  text-align: center;
+}
+
+.delete-icon {
+  color: #ff8c42;
+  cursor: pointer;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.delete-icon:hover {
+  color: #e6762f;
+}
+
+@media(max-width: 768px) {
+  .suggestions-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .download-btn {
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .suggestions-table th,
+  .suggestions-table td {
+    padding: 8px;
+    font-size: 12px;
+  }
+}

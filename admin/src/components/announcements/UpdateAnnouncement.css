@@ -1,0 +1,106 @@
+.update-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.update-modal {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  border: 2px solid #0b1e5b;
+}
+
+.update-modal h3 {
+  text-align: center;
+  color: #0b1e5b;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.update-modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.update-modal input,
+.update-modal textarea {
+  padding: 12px;
+  border-radius: 6px;
+  border: 2px solid #0b1e5b;
+  outline: none;
+  font-size: 14px;
+  color: #000;
+}
+
+.update-modal textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.update-modal input:focus,
+.update-modal textarea:focus {
+  border-color: #ff8c42;
+}
+
+.update-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  gap: 10px;
+}
+
+.update-actions button[type="submit"] {
+  padding: 12px;
+  background: #0b1e5b;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.update-actions button[type="submit"]:hover {
+  background: #081449;
+}
+
+.cancel-btn {
+  padding: 12px;
+  background: #ff8c42;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.cancel-btn:hover {
+  background: #e6762f;
+}
+
+@media(max-width: 768px) {
+  .update-modal {
+    padding: 20px;
+  }
+
+  .update-modal input,
+  .update-modal textarea {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .update-actions button[type="submit"],
+  .cancel-btn {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

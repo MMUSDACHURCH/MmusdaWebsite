@@ -1,0 +1,79 @@
+.offering-details-page {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f8f8f8;
+  min-height: 100vh;
+}
+
+.offering-details-page h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.details-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.details-table th,
+.details-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.details-table th {
+  background-color: orange;
+  color: #fff;
+}
+
+.details-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.details-table tr:hover {
+  background-color: #e6f0ff;
+}
+
+.edit-btn,
+.save-btn,
+.cancel-btn {
+  padding: 6px 12px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.edit-btn {
+  background-color: #ffc107;
+  color: #fff;
+}
+
+.save-btn {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.cancel-btn {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+input[type="text"] {
+  padding: 6px;
+  width: 90%;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.no-data {
+  text-align: center;
+  color: #999;
+  padding: 15px 0;
+}

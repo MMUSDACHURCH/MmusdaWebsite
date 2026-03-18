@@ -1,0 +1,45 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "build": "echo 'No build needed for backend'",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "push": "drizzle-kit push",
+    "generate": "drizzle-kit generate",
+    "migrate": "node src/drizzle/migrate.js",
+    "seed": "node src/drizzle/seed.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.12.1",
+  "dependencies": {
+    "@neondatabase/serverless": "^1.0.2",
+    "@sendgrid/mail": "^8.1.6",
+    "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.3",
+    "cloudinary": "^2.9.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "drizzle-orm": "^0.45.1",
+    "express": "^5.2.1",
+    "googleapis": "^171.4.0",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.1.1",
+    "multer-storage-cloudinary": "^4.0.0",
+    "node-fetch": "^3.3.2",
+    "nodemailer": "^8.0.1",
+    "pg": "^8.16.3",
+    "streamifier": "^0.1.1"
+  },
+  "devDependencies": {
+    "@types/nodemailer": "^7.0.11",
+    "drizzle-kit": "^0.31.9",
+    "nodemon": "^3.1.11"
+  }
+}

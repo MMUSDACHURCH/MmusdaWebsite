@@ -1,0 +1,74 @@
+.create-announcement {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border: 2px solid #0b1e5b;
+}
+
+.create-announcement h2 {
+  text-align: center;
+  color: #0b1e5b;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.create-announcement form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.create-announcement input,
+.create-announcement textarea {
+  padding: 12px;
+  border-radius: 6px;
+  border: 2px solid #0b1e5b;
+  outline: none;
+  font-size: 14px;
+  color: #000;
+}
+
+.create-announcement textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.create-announcement input:focus,
+.create-announcement textarea:focus {
+  border-color: #ff8c42;
+}
+
+.create-announcement button {
+  padding: 12px;
+  background: #0b1e5b;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.create-announcement button:hover {
+  background: #081449;
+}
+
+@media(max-width: 768px) {
+  .create-announcement {
+    padding: 20px;
+  }
+
+  .create-announcement input,
+  .create-announcement textarea {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .create-announcement button {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

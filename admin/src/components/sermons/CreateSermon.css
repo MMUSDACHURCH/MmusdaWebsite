@@ -1,0 +1,74 @@
+.modal-overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.6);
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:999
+}
+
+.sermon-form{
+background:white;
+padding:30px;
+border-radius:10px;
+width:400px;
+display:flex;
+flex-direction:column;
+gap:12px;
+animation:slideUp .4s ease
+}
+
+.sermon-form h3{
+color:darkblue;
+text-align:center
+}
+
+.sermon-form input,
+.sermon-form textarea{
+padding:10px;
+border:1px solid #ccc;
+border-radius:6px;
+outline:none
+}
+
+.sermon-form input:focus,
+.sermon-form textarea:focus{
+border-color:#ff8c00
+}
+
+.form-buttons{
+display:flex;
+gap:10px;
+justify-content:flex-end
+}
+
+.form-buttons button{
+padding:8px 14px;
+border:none;
+cursor:pointer;
+border-radius:6px;
+transition:.3s
+}
+
+.form-buttons button:first-child{
+background:#ff8c00;
+color:white
+}
+
+.form-buttons button:first-child:hover{
+background:darkblue
+}
+
+.form-buttons button:last-child{
+background:black;
+color:white
+}
+
+@keyframes slideUp{
+from{opacity:0;transform:translateY(40px)}
+to{opacity:1;transform:translateY(0)}
+}

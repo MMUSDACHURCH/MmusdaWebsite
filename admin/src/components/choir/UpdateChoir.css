@@ -1,0 +1,83 @@
+.updateChoir{
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 6px 15px rgba(0,0,0,0.08);
+margin-top:25px;
+}
+
+.updateChoir h2{
+color:#0b2a63;
+margin-bottom:15px;
+}
+
+.updateChoir form{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:12px;
+}
+
+.updateChoir input,
+.updateChoir textarea{
+padding:10px;
+border:1px solid #ddd;
+border-radius:6px;
+font-size:14px;
+}
+
+.updateChoir textarea{
+grid-column:span 2;
+min-height:80px;
+resize:none;
+}
+
+.buttons{
+display:flex;
+gap:10px;
+grid-column:span 2;
+}
+
+.buttons button{
+flex:1;
+padding:10px;
+border:none;
+border-radius:6px;
+font-weight:600;
+cursor:pointer;
+}
+
+.buttons button:first-child{
+background:#0b2a63;
+color:white;
+}
+
+.buttons button:first-child:hover{
+background:#091f4a;
+}
+
+.deleteBtn{
+background:#ff7a00;
+color:white;
+}
+
+.deleteBtn:hover{
+background:red;
+}
+
+.buttons button:disabled{
+background:#ccc;
+cursor:not-allowed;
+}
+
+@media(max-width:700px){
+
+.updateChoir textarea{
+grid-column:span 1;
+}
+
+.buttons{
+grid-column:span 1;
+flex-direction:column;
+}
+
+}

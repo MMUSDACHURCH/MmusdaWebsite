@@ -1,0 +1,64 @@
+.createChoir{
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 6px 15px rgba(0,0,0,0.08);
+margin-bottom:25px;
+}
+
+.createChoir h2{
+color:#0b2a63;
+margin-bottom:15px;
+}
+
+.createChoir form{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:12px;
+}
+
+.createChoir input,
+.createChoir textarea{
+padding:10px;
+border:1px solid #ddd;
+border-radius:6px;
+font-size:14px;
+}
+
+.createChoir textarea{
+grid-column:span 2;
+min-height:80px;
+resize:none;
+}
+
+.createChoir button{
+background:#ff7a00;
+border:none;
+color:white;
+padding:10px;
+border-radius:6px;
+cursor:pointer;
+font-weight:600;
+grid-column:span 2;
+}
+
+.createChoir button:hover{
+background:#e56700;
+}
+
+.createChoir button:disabled{
+background:#ccc;
+cursor:not-allowed;
+}
+
+@media(max-width:700px){
+
+.createChoir textarea{
+grid-column:span 1;
+}
+
+.createChoir button{
+grid-column:span 1;
+}
+
+}

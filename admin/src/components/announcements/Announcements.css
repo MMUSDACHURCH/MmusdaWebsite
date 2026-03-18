@@ -1,0 +1,218 @@
+.announcements-page {
+  padding: 25px;
+  min-height: 100vh;
+  background: #ffffff;
+}
+
+.announcements-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.announcements-header h2 {
+  color: #0b1e5b;
+}
+
+.create-btn {
+  background: #0b1e5b;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.create-btn:hover {
+  background: #081449;
+}
+
+.date-filter {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 2px solid #0b1e5b;
+  color: #000;
+}
+
+.date-filter:focus {
+  border-color: #ff8c42;
+  outline: none;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.announcements-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.announcements-table th,
+.announcements-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+  color: #000;
+}
+
+.announcements-table th {
+  background: #0b1e5b;
+  color: #ffffff;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.edit-icon {
+  color: #ff8c42;
+  cursor: pointer;
+}
+
+.edit-icon:hover {
+  color: #e6762f;
+}
+
+.delete-icon {
+  color: #d11a2a;
+  cursor: pointer;
+}
+
+.delete-icon:hover {
+  color: #a50f1c;
+}
+
+.create-announcement,
+.update-modal {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border: 2px solid #0b1e5b;
+}
+
+.create-announcement h2,
+.update-modal h3 {
+  text-align: center;
+  color: #0b1e5b;
+  margin-bottom: 20px;
+}
+
+.create-announcement form,
+.update-modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.create-announcement input,
+.create-announcement textarea,
+.update-modal input,
+.update-modal textarea {
+  padding: 12px;
+  border-radius: 6px;
+  border: 2px solid #0b1e5b;
+  outline: none;
+  font-size: 14px;
+  color: #000;
+}
+
+.create-announcement input:focus,
+.create-announcement textarea:focus,
+.update-modal input:focus,
+.update-modal textarea:focus {
+  border-color: #ff8c42;
+}
+
+.create-announcement textarea,
+.update-modal textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.create-announcement button,
+.update-actions button[type="submit"] {
+  padding: 12px;
+  background: #0b1e5b;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.create-announcement button:hover,
+.update-actions button[type="submit"]:hover {
+  background: #081449;
+}
+
+.update-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.update-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+.cancel-btn {
+  padding: 10px;
+  background: #ff8c42;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.cancel-btn:hover {
+  background: #e6762f;
+}
+
+@media(max-width: 768px) {
+  .announcements-table th,
+  .announcements-table td {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .create-announcement,
+  .update-modal {
+    padding: 20px;
+  }
+
+  .create-announcement input,
+  .create-announcement textarea,
+  .update-modal input,
+  .update-modal textarea {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .create-announcement button,
+  .update-actions button[type="submit"],
+  .cancel-btn {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
