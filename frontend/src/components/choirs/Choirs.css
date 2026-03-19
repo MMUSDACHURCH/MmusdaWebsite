@@ -227,3 +227,26 @@
   .choir-display-name { font-size: 1.5rem; }
   .meta-pill { width: 100%; }
 }
+.read-more-btn{
+margin-top:10px;
+margin-bottom:10px;
+background:none;
+border:none;
+color:var(--orange);
+font-weight:700;
+cursor:pointer;
+font-size:.9rem;
+transition:0.3s;
+}
+
+.read-more-btn:hover{
+color:var(--navy);
+text-decoration:underline;
+transform:scale(1.08);
+}
+
+@media(max-width:768px){
+.read-more-btn{
+margin-bottom:5px;
+}
+}
