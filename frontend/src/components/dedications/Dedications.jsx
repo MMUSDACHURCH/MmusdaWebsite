@@ -37,7 +37,7 @@ const Dedications = () => {
       </div>
 
       <div className="dedications-list">
-        {loading && <p>Loading...</p>}
+        {loading && <p className="loading-text">Loading...</p>}
         {dedicationsToShow?.map(d => (
           <motion.div
             key={d.dedicationId}

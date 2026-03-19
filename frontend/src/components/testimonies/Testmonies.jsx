@@ -37,7 +37,7 @@ const Testimonies = () => {
       </div>
 
       <div className="testimonies-list">
-        {loading && <p>Loading...</p>}
+        {loading && <p className="loading-text">Loading...</p>}
         {testimoniesToShow?.map(t => (
           <motion.div
             key={t.testimonyId}
