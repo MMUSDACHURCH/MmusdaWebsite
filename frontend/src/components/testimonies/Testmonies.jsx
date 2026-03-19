@@ -9,6 +9,7 @@ const Testimonies = () => {
   const [allTestimonies, setAllTestimonies] = useState([]);
   const [showAll, setShowAll] = useState(false);
   const [showCreate, setShowCreate] = useState(false);
+  const [expanded, setExpanded] = useState({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -27,6 +28,13 @@ const Testimonies = () => {
     });
   };
 
+  const toggleRead = (id) => {
+    setExpanded(prev => ({
+      ...prev,
+      [id]: !prev[id]
+    }));
+  };
+
   const testimoniesToShow = showAll ? allTestimonies : firstTwo;
 
   return (
@@ -38,23 +46,40 @@ const Testimonies = () => {
 
       <div className="testimonies-list">
         {loading && <p className="loading-text">Loading...</p>}
-        {testimoniesToShow?.map(t => (
-          <motion.div
-            key={t.testimonyId}
-            className="testimony-card"
-            whileHover={{ scale: 1.05 }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <h3 className="testimony-name">{t.name}</h3>
-            <p className="testimony-desc">{t.description}</p>
-          </motion.div>
-        ))}
+
+        {testimoniesToShow?.map(t => {
+          const isExpanded = expanded[t.testimonyId];
+          const shortText = t.description.slice(0, 120);
+
+          return (
+            <motion.div
+              key={t.testimonyId}
+              className="testimony-card"
+              whileHover={{ scale: 1.05 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+            >
+              <h3 className="testimony-name">{t.name}</h3>
+
+              <p className="testimony-desc">
+                {isExpanded ? t.description : shortText + "..."}
+              </p>
+
+              <button
+                className="read-btn"
+                onClick={() => toggleRead(t.testimonyId)}
+              >
+                {isExpanded ? "Read Less" : "Read More"}
+              </button>
+            </motion.div>
+          );
+        })}
       </div>
 
       {!showAll && (
-        <button className="show-more-btn" onClick={handleShowAll}>Show More</button>
+        <button className="show-more-btn" onClick={handleShowAll}>
+          Show More
+        </button>
       )}
 
       <AnimatePresence>

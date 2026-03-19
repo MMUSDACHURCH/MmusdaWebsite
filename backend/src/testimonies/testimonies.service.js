@@ -6,8 +6,12 @@ export const createTestimony = async (data) => {
   return await db.insert(testimonies).values(data).returning();
 };
 
-export const getAllTestimonies = async () => {
-  return await db.select().from(testimonies);
+export const getAllTestimonies = async (limit = null) => {
+  let query = db.select().from(testimonies);
+  if (limit) {
+    query = query.limit(limit);
+  }
+  return await query;
 };
 
 export const updateTestimony = async (id, data) => {

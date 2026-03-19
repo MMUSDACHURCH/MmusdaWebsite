@@ -11,7 +11,8 @@ export const create = async (req, res) => {
 
 export const getAll = async (req, res) => {
   try {
-    const result = await service.getAllTestimonies();
+    const limit = req.query.limit ? Number(req.query.limit) : null;
+    const result = await service.getAllTestimonies(limit);
     res.json(result);
   } catch (error) {
     res.status(500).json({ error: error.message });
