@@ -868,3 +868,36 @@
   overflow-wrap: break-word;
   hyphens: auto;
 }
+.read-more-btn {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background: none;
+  border: none;
+  color: var(--orange);
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: var(--transition);
+  position: relative;
+  z-index: 5;
+}
+
+.read-more-btn:hover {
+  color: var(--navy);
+  text-decoration: underline;
+  transform: scale(1.08);
+}
+
+.dept-glass-card::after {
+  pointer-events: none;
+}
+
+.dept-glass-card::before {
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .read-more-btn {
+    margin-bottom: 5px;
+  }
+}
