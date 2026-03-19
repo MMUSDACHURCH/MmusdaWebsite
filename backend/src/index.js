@@ -18,6 +18,8 @@ import { suggestionsRouter } from "./suggestions/suggestions.router.js";
 import offeringsRouter from "./offering/offering.router.js";
 import offeringDetailsRouter from "./offeringDetails/offeringDetails.router.js";
 import { AdminsRouter } from "./admins/admins.router.js";
+import testimoniesRouter from "./testimonies/testimonies.router.js";
+import dedicationsRouter from "./dedications/dedications.router.js";
 
 dotenv.config();
 
@@ -61,6 +63,8 @@ app.use("/api/suggestions", suggestionsRouter);
 app.use("/api/offerings", offeringsRouter);
 app.use("/api/offeringsdetails", offeringDetailsRouter);
 app.use("/api/admins", AdminsRouter);
+app.use("/api/testimonies", testimoniesRouter);
+app.use("/api/dedications", dedicationsRouter);
 
 app.get("/", (req, res) =>
   res.send(
