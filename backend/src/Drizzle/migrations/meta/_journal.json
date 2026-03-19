@@ -15,6 +15,13 @@
       "when": 1773120846018,
       "tag": "0001_glossy_thing",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1773891376640,
+      "tag": "0002_whole_lenny_balinger",
+      "breakpoints": true
     }
   ]
 }

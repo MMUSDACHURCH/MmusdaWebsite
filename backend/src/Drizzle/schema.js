@@ -154,3 +154,26 @@ export const offeringDetails = pgTable("offering_details", {
   name: varchar("name", { length: 255 }).notNull(),
   phoneNumber: varchar("phone_number", { length: 50 }).notNull(),
 });
+
+export const testimonies = pgTable("testimonies", {
+  testimonyId: serial("testimony_id").primaryKey(),
+  name: varchar("name", { length: 255 }).notNull(),
+  description: text("description").notNull(),
+  isApproved: boolean("is_approved").default(false), 
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+export const dedications = pgTable("dedications", {
+  dedicationId: serial("dedication_id").primaryKey(),
+  childName: varchar("child_name", { length: 255 }).notNull(),
+  fatherName: varchar("father_name", { length: 255 }).notNull(),
+  motherName: varchar("mother_name", { length: 255 }).notNull(),
+  availableDate: date("available_date").notNull(),
+  contactNumber: varchar("contact_number", { length: 50 }), 
+  email: varchar("email", { length: 255 }), // optional contact
+  status: varchar("status", { length: 50 }).default("pending"), // pending, approved, completed
+  notes: text("notes"), 
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
