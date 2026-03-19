@@ -1,35 +1,25 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { APIDomain } from "../../utils/APIDomain";
 
-export const adminTestmonyAPI = createApi({
-  reducerPath: "adminTestmonyAPI",
-  baseQuery: fetchBaseQuery({ baseUrl: `${APIDomain}/api/testimonies` }),
-  tagTypes: ["Testimonies"],
-  endpoints: (builder) => ({
-    getAllTestimonies: builder.query({
-      query: () => "/",
-      providesTags: ["Testimonies"]
-    }),
-    deleteTestimony: builder.mutation({
-      query: (id) => ({
-        url: `/${id}`,
-        method: "DELETE"
-      }),
-      invalidatesTags: ["Testimonies"]
-    }),
-    updateTestimony: builder.mutation({
-      query: ({ id, data }) => ({
-        url: `/${id}`,
-        method: "PUT",
-        body: data
-      }),
-      invalidatesTags: ["Testimonies"]
-    })
-  })
-});
+export const getAllTestimonies = async () => {
+  const res = await fetch(`${APIDomain}/api/testimonies`);
+  if (!res.ok) throw new Error("Failed to fetch all testimonies");
+  return res.json();
+};
 
-export const {
-  useGetAllTestimoniesQuery,
-  useDeleteTestimonyMutation,
-  useUpdateTestimonyMutation
-} = adminTestmonyAPI;
+export const updateTestimony = async (id, updatedData) => {
+  const res = await fetch(`${APIDomain}/api/testimonies/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(updatedData),
+  });
+  if (!res.ok) throw new Error("Failed to update testimony");
+  return res.json();
+};
+
+export const deleteTestimony = async (id) => {
+  const res = await fetch(`${APIDomain}/api/testimonies/${id}`, {
+    method: "DELETE",
+  });
+  if (!res.ok) throw new Error("Failed to delete testimony");
+  return res.json();
+};
