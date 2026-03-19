@@ -5,6 +5,7 @@ const dedicationsRouter = express.Router();
 
 dedicationsRouter.post("/", controller.create);
 dedicationsRouter.get("/", controller.getAll);
+dedicationsRouter.get("/first-two", controller.getFirstTwo);
 dedicationsRouter.put("/:id", controller.update);
 dedicationsRouter.delete("/:id", controller.remove);
 

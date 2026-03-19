@@ -1,17 +1,23 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { APIDomain } from "../../utils/APIDomain";
 
-export const testimoniesAPI = createApi({
-  reducerPath: "testimoniesAPI",
-  baseQuery: fetchBaseQuery({ baseUrl: `${APIDomain}/api` }),
-  endpoints: (builder) => ({
-    getAllTestimonies: builder.query({
-      query: () => "/testimonies"
-    }),
-    getFirstTwoTestimonies: builder.query({
-      query: () => "/testimonies"
-    })
-  })
-});
+export const getFirstTwoTestimonies = async () => {
+  const res = await fetch(`${APIDomain}/api/testimonies?limit=2`);
+  if (!res.ok) throw new Error("Failed to fetch first two testimonies");
+  return res.json();
+};
 
-export const { useGetAllTestimoniesQuery, useGetFirstTwoTestimoniesQuery } = testimoniesAPI;
+export const getAllTestimonies = async () => {
+  const res = await fetch(`${APIDomain}/api/testimonies`);
+  if (!res.ok) throw new Error("Failed to fetch all testimonies");
+  return res.json();
+};
+
+export const createTestimony = async (newTestimony) => {
+  const res = await fetch(`${APIDomain}/api/testimonies`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(newTestimony),
+  });
+  if (!res.ok) throw new Error("Failed to create testimony");
+  return res.json();
+};

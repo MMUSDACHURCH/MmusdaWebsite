@@ -1,0 +1,82 @@
+.testimonies-container {
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  color: black;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header h2 {
+  color: darkblue;
+}
+
+.create-btn {
+  background-color: warmorange;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.create-btn:hover {
+  background-color: darkblue;
+}
+
+.testimonies-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
+  gap: 15px;
+}
+
+.testimony-card {
+  background-color: white;
+  border: 2px solid darkblue;
+  padding: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.testimony-name {
+  font-weight: bold;
+  color: darkblue;
+  margin-bottom: 8px;
+  transition: color 0.3s ease;
+}
+
+.testimony-name:hover {
+  color: warmorange;
+}
+
+.testimony-desc {
+  color: black;
+}
+
+.show-more-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: darkblue;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.show-more-btn:hover {
+  background-color: warmorange;
+}
+
+@media screen and (max-width: 600px) {
+  .testimonies-list {
+    grid-template-columns: 1fr;
+  }
+}

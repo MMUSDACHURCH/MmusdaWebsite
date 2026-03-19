@@ -18,6 +18,15 @@ export const getAll = async (req, res) => {
   }
 };
 
+export const getFirstTwo = async (req, res) => {
+  try {
+    const result = await service.getFirstTwoDedications();
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 export const update = async (req, res) => {
   try {
     const result = await service.updateDedication(Number(req.params.id), req.body);

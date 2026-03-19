@@ -1,5 +1,5 @@
-import { db } from "../db";
-import { dedications } from "../schema";
+import { db } from "../Drizzle/db.js";
+import { dedications } from "../Drizzle/schema.js";
 import { eq } from "drizzle-orm";
 
 export const createDedication = async (data) => {
@@ -8,6 +8,10 @@ export const createDedication = async (data) => {
 
 export const getAllDedications = async () => {
   return await db.select().from(dedications);
+};
+
+export const getFirstTwoDedications = async () => {
+  return await db.select().from(dedications).limit(2);
 };
 
 export const updateDedication = async (id, data) => {

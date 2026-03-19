@@ -24,6 +24,8 @@ import Suggestions from "./components/suggestions/Suggestions";
 import Navbar from "./components/navbar/Navbar";
 import Home from "./components/home/Home";
 //import OfferingDetails from "./components/offeringdetails/OfferingDetails";
+ import Testimonies from "./components/testimonies/Testmonies";
+ import Dedications from "./components/dedications/Dedications";
 
 
 function App() {
@@ -152,6 +154,14 @@ function App() {
     {
       path: "/home",
       element: <Home />,
+    },
+    {
+      path: "/testimonies",
+      element: <Testimonies />,
+    },
+    {
+      path: "/dedication",
+      element: <Dedications />,
     },
 
   ]);
