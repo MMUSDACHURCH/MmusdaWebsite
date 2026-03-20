@@ -14,7 +14,7 @@ import image8 from "../../assets/images/image9.jpeg";
 import image8 from "../../assets/images/image10.jpeg";
 
 const images = [
-  image8, image7, image9, image10, image2, image3, image4, image5,
+  image8, image7, image9, image10, image2, image3, image4, image6,
   image1, image2, image3, image4, image5,
   image1, image2, image8, image7, image10,
 ];
