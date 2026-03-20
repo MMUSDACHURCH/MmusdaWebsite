@@ -53,7 +53,7 @@ const router = createBrowserRouter([
     element: <VerifyUser />,
   },
   {
-    path: "/forgotpassword",
+    path: "/forgot-password",
     element: <ForgetPassword />,
   },
   {
