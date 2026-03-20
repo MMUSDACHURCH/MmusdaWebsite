@@ -10,8 +10,8 @@ import image5 from "../../assets/images/image5.jpg";
 import image6 from "../../assets/images/image6.jpeg";
 import image7 from "../../assets/images/image7.jpeg";
 import image8 from "../../assets/images/image8.jpeg";
-import image8 from "../../assets/images/image9.jpeg";
-import image8 from "../../assets/images/image10.jpeg";
+import image9 from "../../assets/images/image9.jpeg";
+import image10 from "../../assets/images/image10.jpeg";
 
 const images = [
   image8, image7, image9, image10, image2, image3, image4, image6,
