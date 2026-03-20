@@ -10,11 +10,13 @@ import image5 from "../../assets/images/image5.jpg";
 import image6 from "../../assets/images/image6.jpeg";
 import image7 from "../../assets/images/image7.jpeg";
 import image8 from "../../assets/images/image8.jpeg";
+import image8 from "../../assets/images/image9.jpeg";
+import image8 from "../../assets/images/image10.jpeg";
 
 const images = [
-  image6, image7, image8, image1, image2, image3, image4, image5,
+  image8, image7, image9, image10, image2, image3, image4, image5,
   image1, image2, image3, image4, image5,
-  image1, image2
+  image1, image2, image8, image7, image10,
 ];
 
 const Home = () => {
