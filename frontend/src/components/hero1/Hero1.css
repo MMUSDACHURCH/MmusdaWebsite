@@ -107,7 +107,7 @@
 }
 
 .hero1-outer-page-wrapper {
-  padding: 10px;
+  padding: 0;
   width: 100%;
   box-sizing: border-box;
 }
@@ -119,6 +119,7 @@
   align-items: center;
   overflow: hidden;
   border-radius: 30px;
+  margin: 5px;
   background: linear-gradient(135deg, var(--bg-dark), var(--bg-deep), var(--bg-darker));
   background-size: 400% 400%;
   animation: backgroundShift 15s ease infinite;
@@ -698,12 +699,9 @@
 }
 
 @media (max-width: 768px) {
-  .hero1-outer-page-wrapper {
-    padding: 5px 1px;
-  }
-  
   .hero1-section {
     border-radius: 15px;
+    margin: 1px;
   }
   
   .hero1-container {

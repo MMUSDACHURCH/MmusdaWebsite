@@ -1,6 +1,6 @@
 .header-ticker {
-  width: calc(100% - 30px);
-  margin: 10px auto 0;
+  width: calc(100% - 10px);
+  margin: 5px auto 0;
   background: linear-gradient(90deg, #001f3f 0%, #002856 50%, #001f3f 100%);
   border-bottom: 5px solid #ffd700;
   padding: 10px 0;
@@ -61,11 +61,11 @@
 }
 
 .navbar {
-  width: calc(100% - 30px);
-  margin: 5px auto 0;
+  width: calc(100% - 10px);
+  margin: 5px auto 5px;
   background: #001f3f;
   position: sticky;
-  top: 10px;
+  top: 5px;
   z-index: 1000;
   transition: all 0.3s ease;
   box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.3);
@@ -208,9 +208,9 @@
 
 .mobile-menu {
   position: fixed;
-  top: 10px;
-  right: 10px;
-  height: calc(100vh - 20px);
+  top: 5px;
+  right: 5px;
+  height: calc(100vh - 10px);
   width: 85%;
   max-width: 300px;
   background: #001f3f;
@@ -307,6 +307,15 @@
 }
 
 @media (max-width: 1024px) {
+  .header-ticker {
+    width: calc(100% - 2px);
+    margin: 1px auto 0;
+  }
+  .navbar {
+    width: calc(100% - 2px);
+    margin: 1px auto 1px;
+    top: 1px;
+  }
   .desktop-only {
     display: none;
   }
@@ -318,8 +327,9 @@
 @media (max-width: 480px) {
   .mobile-menu {
     width: 82%;
-    top: 10px;
-    right: 10px;
+    top: 1px;
+    right: 1px;
+    height: calc(100vh - 2px);
   }
   .mobile-link-btn {
     font-size: 1rem;

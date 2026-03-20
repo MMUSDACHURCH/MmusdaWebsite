@@ -29,7 +29,7 @@
   padding: 30px 20px;
   min-height: auto;
   color: var(--white);
-  margin: 15px;
+  margin: 5px;
   border-radius: 25px;
   position: relative;
   display: flex;
@@ -441,23 +441,9 @@
   border-color: var(--sda-orange);
 }
 
-.location-wrapper.expanded .expand-btn {
-  top: 20px;
-  right: 20px;
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-}
-
-@media (max-width: 1024px) {
-  .location-image-container {
-    max-width: 180px;
-  }
-}
-
 @media (max-width: 900px) {
   .contact-section {
-    margin: 10px;
+    margin: 1px;
     padding: 25px 15px;
   }
 
@@ -466,44 +452,12 @@
     gap: 25px;
   }
 
-  .contact-info {
-    text-align: left;
-  }
-
   .contact-subtext {
     margin: 0 0 25px;
-    border-left: 3px solid var(--sda-orange);
-    border-top: none;
     padding: 0 0 0 15px;
     max-width: 100%;
   }
 
-  .contact-cards {
-    align-items: flex-start;
-  }
-
-  .contact-card {
-    max-width: 100%;
-    width: 100%;
-  }
-
-  .social-links {
-    justify-content: flex-start;
-  }
-  
-  .location-wrapper {
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-    margin: 0;
-    display: block;
-  }
-  
-  .location-wrapper.expanded {
-    position: fixed;
-    margin: 0;
-  }
-  
   .location-image-container {
     max-width: 140px;
   }
@@ -511,111 +465,21 @@
 
 @media (max-width: 600px) {
   .contact-section {
-    margin: 8px 1px;
+    margin: 1px;
     padding: 20px 10px;
     border-radius: 20px;
   }
-  
+
   .form-row {
     grid-template-columns: 1fr;
-    gap: 12px;
   }
 
   .contact-info h2 {
     font-size: 1.5rem;
-    line-height: 1.3;
   }
 
-  .contact-form-card {
-    padding: 20px 15px;
-  }
-  
-  .contact-form-card h3 {
-    font-size: 1.4rem;
-  }
-  
-  .social-links a {
-    width: 34px;
-    height: 34px;
-    font-size: 14px;
-  }
-  
-  .location-wrapper {
-    bottom: 10px;
-    right: 10px;
-  }
-  
   .location-image-container {
     max-width: 120px;
-  }
-  
-  .expand-btn {
-    width: 26px;
-    height: 26px;
-    top: -8px;
-    right: -8px;
-  }
-  
-  .location-wrapper.expanded .expand-btn {
-    top: 15px;
-    right: 15px;
-    width: 35px;
-    height: 35px;
-  }
-  
-  .contact-card {
-    padding: 10px 12px;
-  }
-  
-  .contact-card svg {
-    width: 18px;
-    height: 18px;
-  }
-  
-  .label {
-    font-size: 0.55rem;
-  }
-  
-  .value {
-    font-size: 0.8rem;
-  }
-  
-  .contact-subtext {
-    font-size: 0.9rem;
-    line-height: 1.6;
-  }
-}
-
-@media (max-width: 480px) {
-  .contact-info h2 {
-    font-size: 1.4rem;
-  }
-  
-  .contact-subtext {
-    font-size: 0.85rem;
-  }
-  
-  .location-wrapper {
-    bottom: 8px;
-    right: 8px;
-  }
-  
-  .location-image-container {
-    max-width: 100px;
-  }
-  
-  .expand-btn {
-    width: 24px;
-    height: 24px;
-  }
-  
-  .location-wrapper.expanded .location-image-container {
-    max-width: 95%;
-  }
-  
-  .location-wrapper.expanded .expand-btn {
-    width: 32px;
-    height: 32px;
   }
 }
 
@@ -623,37 +487,8 @@
   .contact-info h2 {
     font-size: 1.3rem;
   }
-  
-  .contact-subtext {
-    font-size: 0.8rem;
-  }
-  
-  .contact-card {
-    padding: 8px 10px;
-  }
-  
-  .value {
-    font-size: 0.75rem;
-  }
-  
-  .location-wrapper {
-    bottom: 5px;
-    right: 5px;
-  }
-  
+
   .location-image-container {
     max-width: 85px;
-  }
-  
-  .expand-btn {
-    width: 22px;
-    height: 22px;
-    top: -6px;
-    right: -6px;
-  }
-  
-  .location-wrapper.expanded .expand-btn {
-    width: 30px;
-    height: 30px;
   }
 }
