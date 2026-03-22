@@ -20,12 +20,14 @@ const navItems = [
       { label: "About SDA", path: "/about/sda" },
       { label: "Beliefs", path: "/about/beliefs" },
       { label: "Members", path: "/members" },
+      { label: "Elders", path: "/elders" },
+      { label: "Pastor", path: "/pastor" },
     ]
   },
   { label: "Events", path: "/events", icon: <Calendar className="w-4 h-4" /> },
   { label: "Contact", path: "/contact", icon: <Phone className="w-4 h-4" /> },
   { label: "Offering", path: "/offering", icon: <HandHeart className="w-4 h-4" /> },
-  { label: "Leadership", path: "/leadership", icon: <Users className="w-4 h-4" /> },
+  { label: "Leader", path: "/leadership", icon: <Users className="w-4 h-4" /> },
   {
     label: "Evangelism",
     icon: <BookOpen className="w-4 h-4" />,

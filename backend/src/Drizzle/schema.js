@@ -177,3 +177,24 @@ export const dedications = pgTable("dedications", {
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
 });
+export const elders = pgTable("elders", {
+  elderId: serial("elder_id").primaryKey(),
+  name: varchar("name", { length: 255 }).notNull(),
+  message: text("message"),
+  contactNumber: varchar("contact_number", { length: 50 }),
+  image: varchar("image", { length: 500 }),
+  role: varchar("role", { length: 255 }).default("Elder"),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+export const pastors = pgTable("pastors", {
+  pastorId: serial("pastor_id").primaryKey(),
+  name: varchar("name", { length: 255 }).notNull(),
+  message: text("message"),
+  contactNumber: varchar("contact_number", { length: 50 }),
+  image: varchar("image", { length: 500 }),
+  title: varchar("title", { length: 255 }).default("Pastor"),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});

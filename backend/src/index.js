@@ -20,6 +20,8 @@ import offeringDetailsRouter from "./offeringDetails/offeringDetails.router.js";
 import { AdminsRouter } from "./admins/admins.router.js";
 import testimoniesRouter from "./testimonies/testimonies.router.js";
 import dedicationsRouter from "./dedications/dedications.router.js";
+import eldersRouter from "./elders/elders.router.js";
+import pastorsRouter from "./pastors/pastors.router.js";
 
 dotenv.config();
 
@@ -45,6 +47,7 @@ app.use(cors({
 }));
 
 app.use(express.json());
+app.use("/uploads", express.static("uploads"));
 
 app.use("/sermons", sermonsRouter);
 app.use("/youtube", youtubeRoutes);
@@ -65,6 +68,8 @@ app.use("/api/offeringsdetails", offeringDetailsRouter);
 app.use("/api/admins", AdminsRouter);
 app.use("/api/testimonies", testimoniesRouter);
 app.use("/api/dedications", dedicationsRouter);
+app.use("/api/elders", eldersRouter);
+app.use("/api/pastors", pastorsRouter);
 
 app.get("/", (req, res) =>
   res.send(
@@ -82,6 +87,7 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 10000;
+
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });
