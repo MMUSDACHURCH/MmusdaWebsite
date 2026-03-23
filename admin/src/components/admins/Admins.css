@@ -1,20 +1,27 @@
 .admins-page{
-  padding:40px;
+  padding:20px;
   background:#0b2a4a;
   min-height:100vh;
   color:white;
+  font-family: Arial, sans-serif;
 }
 
 .admins-header{
   display:flex;
+  flex-wrap:wrap;
   justify-content:space-between;
   align-items:center;
-  margin-bottom:30px;
+  margin-bottom:20px;
 }
 
 .admins-header h2{
   color:#ff7a00;
-  font-size:28px;
+  font-size:24px;
+  margin-bottom:10px;
+}
+
+.table-wrapper {
+  overflow-x:auto;
 }
 
 table{
@@ -24,18 +31,19 @@ table{
   color:black;
   border-radius:8px;
   overflow:hidden;
+  min-width:400px;
 }
 
 th{
   background:#0b2a4a;
   color:white;
-  padding:14px;
+  padding:12px;
   text-align:left;
   font-weight:600;
 }
 
 td{
-  padding:14px;
+  padding:12px;
   border-bottom:1px solid #eee;
 }
 
@@ -45,4 +53,64 @@ tr:hover{
 
 tbody tr:last-child td{
   border-bottom:none;
+}
+
+/* Icons */
+.actions {
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.icon {
+  cursor:pointer;
+  font-size:18px;
+  transition: opacity 0.2s;
+}
+
+.edit-icon {
+  color:#ff7a00;
+}
+
+.edit-icon:hover {
+  opacity:0.8;
+}
+
+.delete-icon {
+  color:#000;
+}
+
+.delete-icon:hover {
+  opacity:0.8;
+}
+
+/* Responsive */
+@media (max-width:768px){
+  .admins-header{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .admins-header h2{
+    font-size:20px;
+  }
+
+  td, th{
+    font-size:14px;
+    padding:8px;
+  }
+
+  .icon{
+    font-size:16px;
+  }
+}
+
+@media (max-width:480px){
+  .admins-header h2{
+    font-size:18px;
+  }
+
+  .icon{
+    font-size:14px;
+  }
 }
