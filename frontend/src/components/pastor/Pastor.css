@@ -1,0 +1,96 @@
+.pastor-container {
+  padding: 2rem;
+  background-color: #001f4d;
+  min-height: 100vh;
+  color: white;
+}
+
+.pastor-container h1 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  color: #ff9900;
+}
+
+.pastor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.pastor-card {
+  background-color: #ffffff;
+  color: #001f4d;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.pastor-card:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.pastor-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 auto 1rem auto;
+  display: block;
+  border: 3px solid #ff9900;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.pastor-image:hover {
+  transform: scale(1.05);
+  border-color: #001f4d;
+}
+
+.pastor-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.3rem;
+  color: #001f4d;
+  transition: color 0.3s;
+}
+
+.pastor-card h3:hover {
+  color: #ff9900;
+}
+
+.pastor-title,
+.pastor-contact,
+.pastor-message {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+  color: #001f4d;
+  transition: color 0.3s;
+  word-wrap: break-word;
+  text-align: left;
+}
+
+.pastor-title:hover,
+.pastor-contact:hover,
+.pastor-message:hover {
+  color: #ff9900;
+}
+
+@media (max-width: 600px) {
+  .pastor-container {
+    padding: 1rem;
+  }
+
+  .pastor-container h1 {
+    font-size: 1.6rem;
+  }
+
+  .pastor-card {
+    padding: 1rem;
+  }
+
+  .pastor-image {
+    width: 120px;
+    height: 120px;
+  }
+}
