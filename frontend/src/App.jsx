@@ -26,6 +26,7 @@ import Home from "./components/home/Home";
 //import OfferingDetails from "./components/offeringdetails/OfferingDetails";
  import Testimonies from "./components/testimonies/Testmonies";
  import Dedications from "./components/dedications/Dedications";
+ import Elder from "./components/elder/Elder";
 
 
 function App() {
@@ -162,6 +163,10 @@ function App() {
     {
       path: "/dedication",
       element: <Dedications />,
+    },
+    {
+      path: "/elder",
+      element: <Elder />,
     },
 
   ]);
