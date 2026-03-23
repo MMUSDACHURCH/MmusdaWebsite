@@ -31,6 +31,8 @@ import Choir from "./components/choir/Choir";
 import Sermons from "./components/sermons/Sermons";
 import Testmony from "./components/testmony/Testmony";
 import Dedications from "./components/dedication/Dedications";
+import Pastors from "./components/pastors/Pastors";
+import Elders from "./components/elders/Elders";
 
 
 
@@ -144,6 +146,14 @@ const router = createBrowserRouter([
       {
         path: "testimonies",
         element: <Testmony />,
+      },
+      {
+        path: "elders",
+        element: <Elders />,
+      },
+      {
+        path: "pastors",
+        element: <Pastors />,
       },
 
     ],

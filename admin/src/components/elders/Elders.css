@@ -1,0 +1,117 @@
+.elders-container {
+  padding: 2rem;
+  background: linear-gradient(to right, #f5f7fa, #e4ecf7);
+  min-height: 100vh;
+}
+
+.elders-container h1 {
+  text-align: center;
+  color: #003366;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.elders-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.elder-card {
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.elder-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
+.elder-image-circle {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 auto 1rem auto;
+  display: block;
+}
+
+.elder-card h3 {
+  color: #003366;
+  margin-bottom: 0.3rem;
+}
+
+.elder-card p {
+  margin: 0.2rem 0;
+  font-size: 0.9rem;
+  color: #555;
+  text-align: left;
+}
+
+.elder-card p:nth-child(4) {
+  font-style: italic;
+  color: #333;
+  margin-top: 0.5rem;
+}
+
+.elder-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.edit-btn,
+.delete-btn {
+  border: none;
+  padding: 0.5rem 0.7rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.edit-btn {
+  background-color: #ff9900;
+  color: #fff;
+}
+
+.edit-btn:hover {
+  background-color: #e68a00;
+  transform: scale(1.05);
+}
+
+.delete-btn {
+  background-color: #003366;
+  color: #fff;
+}
+
+.delete-btn:hover {
+  background-color: #001f4d;
+  transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+  .elders-container {
+    padding: 1rem;
+  }
+
+  .elders-container h1 {
+    font-size: 1.5rem;
+  }
+
+  .elder-card {
+    padding: 0.8rem;
+  }
+
+  .elder-image-circle {
+    width: 120px;
+    height: 120px;
+  }
+}

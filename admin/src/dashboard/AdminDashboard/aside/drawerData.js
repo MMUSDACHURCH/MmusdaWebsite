@@ -127,4 +127,16 @@ export const adminDrawerData = [
     icon: FaUserShield, 
     link: "admins" 
   },
+  { 
+    id: "elders",
+    name: "Elders", 
+    icon: FaUserShield,
+    link: "elders" 
+    },
+  { 
+    id: "pastors",
+    name: "Pastors", 
+    icon: FaUserShield, 
+    link: "pastors" 
+    } 
 ];
