@@ -141,9 +141,9 @@ export const adminDrawerData = [
     link: "pastors" 
     },
   {
-     id: "patrons", 
-      name: "Patrons", 
-      icon: FaUserFriends, 
-      link: "patrons"
+    id: "patrons", 
+    name: "Patrons", 
+    icon: FaUserFriends, 
+    link: "patrons"
   }
 ];
