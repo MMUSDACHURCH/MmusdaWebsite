@@ -9,38 +9,49 @@ const YT_BASE = "https://www.googleapis.com/youtube/v3";
 
 export const getLatestVideo = async (req, res) => {
   try {
-    const videos = [];
     const searchResponse = await fetch(
-      `${YT_BASE}/search?part=snippet&channelId=${CHANNEL_ID}&maxResults=10&type=video&key=${API_KEY}`
+      `${YT_BASE}/search?part=snippet&channelId=${CHANNEL_ID}&maxResults=10&type=video&order=date&key=${API_KEY}`
     );
     const searchData = await searchResponse.json();
 
-    if (searchData.items) {
-      for (const item of searchData.items) {
-        if (item.snippet.liveBroadcastContent === "live") {
-          videos.push({ type: "live", videoId: item.id.videoId, title: item.snippet.title });
+    if (!searchData.items || searchData.items.length === 0) {
+      return res.status(404).json({ message: "No videos found" });
+    }
 
-          const allSubscribers = await db.select().from(subscribers);
-          for (const sub of allSubscribers) {
-            await sendNotificationEmail(
-              sub.email,
-              `A live session has started: ${item.snippet.title}. Watch here: https://www.youtube.com/watch?v=${item.id.videoId}`
-            );
-          }
+    const videos = [];
+
+    // 1Detect live videos
+    for (const item of searchData.items) {
+      const videoId = item.id?.videoId || item.id;
+      if (!videoId) continue;
+
+      if (item.snippet?.liveBroadcastContent === "live") {
+        videos.push({ type: "live", videoId, title: item.snippet.title });
+
+        // Notify subscribers
+        const allSubscribers = await db.select().from(subscribers);
+        for (const sub of allSubscribers) {
+          await sendNotificationEmail(
+            sub.email,
+            `A live session has started: ${item.snippet.title}. Watch here: https://www.youtube.com/watch?v=${videoId}`
+          );
         }
       }
     }
 
-    if (videos.length === 0 && searchData.items) {
+    // 2️ If no live videos, add latest recorded videos
+    if (videos.length === 0) {
       searchData.items.slice(0, 5).forEach(item => {
-        videos.push({ type: "recorded", videoId: item.id.videoId, title: item.snippet.title });
+        const videoId = item.id?.videoId || item.id;
+        if (videoId) {
+          videos.push({ type: "recorded", videoId, title: item.snippet.title });
+        }
       });
     }
 
-    if (videos.length === 0) return res.status(404).json({ message: "No videos found" });
-
     return res.json(videos);
-  } catch {
+  } catch (err) {
+    console.error("Failed to fetch YouTube data:", err);
     return res.status(500).json({ error: "Failed to fetch YouTube data" });
   }
 };

@@ -11,14 +11,12 @@ const YouTubeLive = () => {
   useEffect(() => {
     const getVideos = async () => {
       const data = await fetchLatestVideos();
-
       if (!data || data.length === 0) return;
 
       // Prioritize live videos first
       const sorted = data.sort((a, b) => (a.type === "live" ? -1 : 1));
       setVideos(sorted);
 
-      // Set the first live video, otherwise the first recorded video
       const firstLive = sorted.find(v => v.type === "live");
       setCurrentVideo(firstLive || sorted[0]);
     };
@@ -31,11 +29,10 @@ const YouTubeLive = () => {
   return (
     <div className={`video-wrapper ${expanded ? "expanded" : ""}`}>
       <div className="video-header">
-        <span className={`live-indicator ${currentVideo.type === "live" ? "live" : "recorded"}`}>
+        <span className={`live-indicator ${currentVideo.type}`}>
           {currentVideo.type === "live" ? "LIVE" : "VIDEO"}
         </span>
         <h3>{currentVideo.title}</h3>
-
         <div className="video-actions">
           <button onClick={() => setExpanded(!expanded)}>⛶</button>
           <button onClick={() => setShowPlayer(false)}>✕</button>
@@ -57,11 +54,7 @@ const YouTubeLive = () => {
           {videos
             .filter(v => v.videoId !== currentVideo.videoId)
             .map((vid) => (
-              <div
-                key={vid.videoId}
-                className="video-item"
-                onClick={() => setCurrentVideo(vid)}
-              >
+              <div key={vid.videoId} className="video-item" onClick={() => setCurrentVideo(vid)}>
                 {vid.title}
               </div>
             ))}
