@@ -11,8 +11,9 @@ const YouTubeLive = () => {
   useEffect(() => {
     const getVideos = async () => {
       const data = await fetchLatestVideos();
-      setVideos(data);
-      if (data.length > 0) setCurrentVideo(data[0]);
+      const sorted = data.sort((a, b) => (a.type === "live" ? -1 : 1));
+      setVideos(sorted);
+      if (sorted.length > 0) setCurrentVideo(sorted[0]);
     };
     getVideos();
   }, []);
@@ -22,7 +23,9 @@ const YouTubeLive = () => {
   return (
     <div className={`video-wrapper ${expanded ? "expanded" : ""}`}>
       <div className="video-header">
-        <span className="live-indicator">LIVE</span>
+        <span className="live-indicator">
+          {currentVideo.type === "live" ? "LIVE" : "VIDEO"}
+        </span>
         <h3>{currentVideo.title}</h3>
 
         <div className="video-actions">
