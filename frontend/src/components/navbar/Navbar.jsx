@@ -20,8 +20,9 @@ const navItems = [
       { label: "About SDA", path: "/about/sda" },
       { label: "Beliefs", path: "/about/beliefs" },
       { label: "Members", path: "/members" },
-      { label: "Elders", path: "/elder" },
-      { label: "Pastor", path: "/pastor" },
+      { label: "Message From Elders", path: "/elder" },
+      { label: "Message From Pastor", path: "/pastor" },
+      { label: "Message From Patrons", path: "/patron" },
     ]
   },
   { label: "Events", path: "/events", icon: <Calendar className="w-4 h-4" /> },
