@@ -14,7 +14,6 @@ import {
   FaPrayingHands,
   FaBible,
   FaRegEdit,
-  FaUserFriends,
   FaRegFileAlt
 } from "react-icons/fa";
 

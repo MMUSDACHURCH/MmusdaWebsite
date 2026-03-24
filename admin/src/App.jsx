@@ -33,6 +33,7 @@ import Testmony from "./components/testmony/Testmony";
 import Dedications from "./components/dedication/Dedications";
 import Pastors from "./components/pastors/Pastors";
 import Elders from "./components/elders/Elders";
+import Patrons from "./components/patrons/Patrons";
 
 
 
@@ -154,6 +155,10 @@ const router = createBrowserRouter([
       {
         path: "pastors",
         element: <Pastors />,
+      },
+      {
+        path: "patrons",
+        element: <Patrons />,
       },
 
     ],

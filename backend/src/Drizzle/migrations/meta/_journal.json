@@ -36,6 +36,13 @@
       "when": 1774322100284,
       "tag": "0004_plain_bloodscream",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1774335267289,
+      "tag": "0005_brave_arclight",
+      "breakpoints": true
     }
   ]
 }
