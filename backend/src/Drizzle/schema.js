@@ -198,3 +198,9 @@ export const pastors = pgTable("pastors", {
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
 });
+export const subscribers = pgTable("subscribers", {
+  subscriberId: serial("subscriber_id").primaryKey(),
+  email: varchar("email", { length: 255 }).notNull().unique(),
+  isActive: boolean("is_active").default(true),
+  createdAt: timestamp("created_at").defaultNow(),
+});
