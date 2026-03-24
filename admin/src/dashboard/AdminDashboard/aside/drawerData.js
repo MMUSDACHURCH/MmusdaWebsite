@@ -14,6 +14,7 @@ import {
   FaPrayingHands,
   FaBible,
   FaRegEdit,
+  FaUserFriends,
   FaRegFileAlt
 } from "react-icons/fa";
 
@@ -138,5 +139,11 @@ export const adminDrawerData = [
     name: "Pastors", 
     icon: FaUserShield, 
     link: "pastors" 
-    } 
+    },
+  {
+     id: "patrons", 
+      name: "Patrons", 
+      icon: FaUserFriends, 
+      link: "patrons"
+  }
 ];

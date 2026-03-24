@@ -198,6 +198,16 @@ export const pastors = pgTable("pastors", {
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
 });
+export const patrons = pgTable("patrons", {
+  patronId: serial("patron_id").primaryKey(),
+  name: varchar("name", { length: 255 }).notNull(),
+  message: text("message"),
+  contactNumber: varchar("contact_number", { length: 50 }),
+  image: varchar("image", { length: 500 }),
+  title: varchar("title", { length: 255 }).default("Patron"),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
 export const subscribers = pgTable("subscribers", {
   subscriberId: serial("subscriber_id").primaryKey(),
   email: varchar("email", { length: 255 }).notNull().unique(),

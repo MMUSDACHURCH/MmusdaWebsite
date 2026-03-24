@@ -22,6 +22,7 @@ import testimoniesRouter from "./testimonies/testimonies.router.js";
 import dedicationsRouter from "./dedications/dedications.router.js";
 import eldersRouter from "./elders/elders.router.js";
 import pastorsRouter from "./pastors/pastors.router.js";
+import patronsRouter from "./patrons/patrons.router.js";
 import subscribeRouter from "./subscribe/subscribe.router.js";
 
 dotenv.config();
@@ -71,6 +72,7 @@ app.use("/api/testimonies", testimoniesRouter);
 app.use("/api/dedications", dedicationsRouter);
 app.use("/api/elders", eldersRouter);
 app.use("/api/pastors", pastorsRouter);
+app.use("/api/patrons", patronsRouter);
 app.use("/api", subscribeRouter);
 
 app.get("/", (req, res) =>
