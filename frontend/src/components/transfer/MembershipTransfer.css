@@ -1,0 +1,137 @@
+:root {
+  --accent: #3b82f6;
+  --accent-light: #dbeafe;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --bg-card: #ffffff;
+  --border: #e2e8f0;
+}
+
+.transfer-container {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Inter', sans-serif;
+}
+
+.transfer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+}
+
+.form-section, .list-section {
+  background: var(--bg-card);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  border: 1px solid var(--border);
+}
+
+.form-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.header-icon {
+  color: var(--accent);
+}
+
+.transfer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f8fafc;
+  padding: 0 15px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+
+.input-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #f8fafc;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+textarea { height: 100px; resize: none; }
+
+.submit-btn {
+  background: var(--accent);
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.transfer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-height: 600px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.transfer-card {
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid var(--border);
+  background: #fff;
+  transition: transform 0.2s;
+}
+
+.transfer-card:hover {
+  transform: translateX(5px);
+  border-color: var(--accent);
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.status-badge {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 700;
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+.card-details p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 5px 0;
+}
+
+@media (max-width: 900px) {
+  .transfer-grid { grid-template-columns: 1fr; }
+}
