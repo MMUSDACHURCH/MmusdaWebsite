@@ -30,6 +30,7 @@ import Home from "./components/home/Home";
  import Pastor from "./components/pastor/Pastor";
  import Patron from "./components/patron/Patron";
  import MembershipTransfer from "./components/transfer/MembershipTransfer";
+ import Baptisms from "./components/baptisms/Baptisms";
 
 
 function App() {
@@ -182,6 +183,10 @@ function App() {
     {
       path: "/transfer",
       element: <MembershipTransfer />,
+    },
+     {
+      path: "/baptism",
+      element: <Baptisms />,
     },
 
   ]);
