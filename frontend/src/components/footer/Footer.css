@@ -13,7 +13,7 @@
   color: var(--white);
   padding: 60px 20px 20px;
   border-radius: 15px 15px 10px 10px;
-  margin: 10px 15px 5px;
+  margin: 5px;
   box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
@@ -320,7 +320,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .footer { padding: 40px 15px 15px; border-radius: 12px 12px 8px 8px; }
+  .footer { padding: 40px 15px 15px; border-radius: 12px 12px 8px 8px; margin: 1px; }
   .footer-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
   .footer-card { padding: 20px; }
   .footer-card h3 { font-size: 1.2rem; margin-bottom: 15px; }
@@ -329,13 +329,13 @@
 }
 
 @media screen and (max-width: 480px) {
-  .footer { padding: 30px 12px 12px; border-radius: 10px 10px 5px 5px; }
+  .footer { padding: 30px 12px 12px; border-radius: 10px 10px 5px 5px; margin: 1px; }
   .footer-grid { grid-template-columns: 1fr; gap: 18px; }
   .newsletter input { flex: 1 1 100%; }
   .newsletter button { flex: 1 1 100%; margin-top: 10px; }
 }
 
 @media screen and (max-width: 360px) {
-  .footer { padding: 25px 10px 10px; }
+  .footer { padding: 25px 10px 10px; margin: 1px; }
   .newsletter input, .newsletter button { flex: 1 1 100%; }
 }

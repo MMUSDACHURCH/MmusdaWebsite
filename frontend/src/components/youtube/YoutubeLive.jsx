@@ -13,7 +13,6 @@ const YouTubeLive = () => {
       const data = await fetchLatestVideos();
       if (!data || data.length === 0) return;
 
-      // Prioritize live videos first
       const sorted = data.sort((a, b) => (a.type === "live" ? -1 : 1));
       setVideos(sorted);
 
@@ -35,7 +34,7 @@ const YouTubeLive = () => {
         <h3>{currentVideo.title}</h3>
         <div className="video-actions">
           <button onClick={() => setExpanded(!expanded)}>⛶</button>
-          <button onClick={() => setShowPlayer(false)}>✕</button>
+          <button className="close-btn" onClick={() => setShowPlayer(false)}>✕</button>
         </div>
       </div>
 
@@ -49,12 +48,17 @@ const YouTubeLive = () => {
         />
       </div>
 
-      {videos.length > 1 && (
-        <div className="video-list">
+      {videos.length > 1 && expanded && (
+        <div className="video-list" style={{ display: 'block', background: '#000', padding: '5px' }}>
           {videos
             .filter(v => v.videoId !== currentVideo.videoId)
             .map((vid) => (
-              <div key={vid.videoId} className="video-item" onClick={() => setCurrentVideo(vid)}>
+              <div 
+                key={vid.videoId} 
+                className="video-item" 
+                onClick={() => setCurrentVideo(vid)}
+                style={{ color: 'white', fontSize: '10px', cursor: 'pointer', padding: '4px', borderBottom: '1px solid #333' }}
+              >
                 {vid.title}
               </div>
             ))}

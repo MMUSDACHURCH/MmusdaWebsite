@@ -161,28 +161,29 @@
 @media (max-width: 768px) {
   .sermons-section {
     margin: 1px;
-    padding: 30px 10px;
+    padding: 30px 15px;
     border-radius: 20px;
   }
 
   .sermons-grid {
     grid-template-columns: 1fr;
-    gap: 25px;
+    gap: 30px;
   }
 
   .sermons-header {
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
   }
 
   .sermons-header h2 {
-    font-size: 1.8rem;
-    max-width: 60%;
+    font-size: 2rem;
+    max-width: 100%;
   }
 
   .video-wrapper {
     aspect-ratio: 4 / 3;
+    height: calc(100% + 10px);
   }
 
   .sermon-card {
@@ -192,38 +193,44 @@
 
 @media (max-width: 480px) {
   .sermons-section {
-    padding: 20px 5px;
+    padding: 25px 12px;
+    margin: 1px;
   }
 
   .sermons-header h2 {
-    font-size: 1.4rem;
-    max-width: 55%;
+    font-size: 1.6rem;
   }
 
   .video-wrapper {
-    aspect-ratio: 3 / 2.2;
+    aspect-ratio: 3 / 2.5;
   }
 
   .sermon-content {
-    padding: 15px;
+    padding: 18px;
   }
 
   .sermon-content h3 {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
   }
 
   .toggle-btn {
-    padding: 8px 15px;
-    font-size: 0.75rem;
+    width: 100%;
+    padding: 12px;
+    font-size: 0.85rem;
   }
 }
 
 @media (max-width: 360px) {
+  .sermons-section {
+    padding: 20px 8px;
+    margin: 1px;
+  }
+
   .video-wrapper {
     aspect-ratio: 1 / 1;
   }
   
   .sermons-header h2 {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
 }
