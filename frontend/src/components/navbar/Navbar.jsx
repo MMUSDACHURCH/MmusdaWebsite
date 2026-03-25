@@ -38,6 +38,9 @@ const navItems = [
       { label: "Families", path: "/families" },
       { label: "Choirs", path: "/choirs" },
       { label: "Testmonies", path: "/testimonies" },
+      { label: "Baptism", path: "/baptism" },
+      { label: "Prayer Requests", path: "/prayers" },
+      { label: "Child Dedication", path: "/dedication" },
       { label: "Books", path: "/books" },
     ]
   },
@@ -50,7 +53,6 @@ const navItems = [
       { label: "Donations", path: "/donations" },
       { label: "Child Dedication", path: "/dedication" },
       { label: "Suggestions", path: "/suggestions" },
-      { label: "Baptism", path: "/baptism" },
       { label: "Membership Transfer", path: "/transfer" },
       { label: "Admins", path: "https://mmusdaadmin.vercel.app", external: true },
     ]
