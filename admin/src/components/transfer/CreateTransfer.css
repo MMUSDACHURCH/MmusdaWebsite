@@ -1,0 +1,48 @@
+.create-transfer-form {
+  max-width: 500px;
+  margin: 2rem auto;
+  background-color: #003366;
+  padding: 2.5rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  color: #fff;
+}
+
+.create-transfer-form h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.create-transfer-form input, 
+.create-transfer-form textarea {
+  padding: 0.75rem;
+  border-radius: 5px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: #f9f9f9;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.create-transfer-form textarea {
+  height: 80px;
+  resize: none;
+}
+
+.submit-btn {
+  background-color: #ff9900;
+  color: white;
+  border: none;
+  padding: 0.9rem;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #e68a00;
+}

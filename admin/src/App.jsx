@@ -34,6 +34,8 @@ import Dedications from "./components/dedication/Dedications";
 import Pastors from "./components/pastors/Pastors";
 import Elders from "./components/elders/Elders";
 import Patrons from "./components/patrons/Patrons";
+import MembershipTransfers from "./components/transfer/MembershipTransfers";
+import Baptisms from "./components/baptisms/Baptisms";
 
 
 
@@ -159,6 +161,14 @@ const router = createBrowserRouter([
       {
         path: "patrons",
         element: <Patrons />,
+      },
+      {
+        path: "transfers",
+        element: <MembershipTransfers />,
+      },
+      {
+        path: "baptisms",
+        element: <Baptisms />,
       },
 
     ],

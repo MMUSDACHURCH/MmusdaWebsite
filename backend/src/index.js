@@ -24,6 +24,8 @@ import eldersRouter from "./elders/elders.router.js";
 import pastorsRouter from "./pastors/pastors.router.js";
 import patronsRouter from "./patrons/patrons.router.js";
 import subscribeRouter from "./subscribe/subscribe.router.js";
+import baptismsRouter from "./baptisms/baptisms.router.js";
+import transferRouter from "./membershipTransfers/membershipTransfers.router.js";
 
 dotenv.config();
 
@@ -74,6 +76,8 @@ app.use("/api/elders", eldersRouter);
 app.use("/api/pastors", pastorsRouter);
 app.use("/api/patrons", patronsRouter);
 app.use("/api", subscribeRouter);
+app.use("/api/baptisms", baptismsRouter);
+app.use("/api/membership-transfers", transferRouter);
 
 app.get("/", (req, res) =>
   res.send(

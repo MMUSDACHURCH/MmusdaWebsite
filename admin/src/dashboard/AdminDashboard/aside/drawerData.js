@@ -14,7 +14,9 @@ import {
   FaPrayingHands,
   FaBible,
   FaRegEdit,
-  FaRegFileAlt
+  FaRegFileAlt,
+  FaWater,         
+  FaExchangeAlt
 } from "react-icons/fa";
 
 export const adminDrawerData = [
@@ -122,12 +124,6 @@ export const adminDrawerData = [
     link: "testimonies"
   },
   { 
-    id: "admins", 
-    name: "Admins", 
-    icon: FaUserShield, 
-    link: "admins" 
-  },
-  { 
     id: "elders",
     name: "Elders", 
     icon: FaUserShield,
@@ -144,5 +140,23 @@ export const adminDrawerData = [
     name: "Patrons", 
     icon: FaUserFriends, 
     link: "patrons"
-  }
+  },
+  { 
+    id: "baptisms",
+    name: "Baptisms",
+    icon: FaWater,
+    link: "baptisms"
+  },
+  { 
+    id: "transfers",
+    name: "Membership Transfer",
+    icon: FaExchangeAlt,
+    link: "transfers"
+  },
+  { 
+    id: "admins", 
+    name: "Admins", 
+    icon: FaUserShield, 
+    link: "admins" 
+  },
 ];

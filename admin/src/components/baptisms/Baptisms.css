@@ -1,0 +1,45 @@
+.baptisms-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1rem;
+  color: #333;
+}
+
+.baptisms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.baptism-card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border-top: 5px solid #ff9900;
+}
+
+.baptism-avatar {
+  width: 70px;
+  height: 70px;
+  background: #003366;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  margin: 0 auto 1rem;
+}
+
+.baptism-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.edit-btn { background: #ff9900; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; }
+.delete-btn { background: #cc0000; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; }

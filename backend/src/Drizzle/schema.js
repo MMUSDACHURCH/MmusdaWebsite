@@ -214,3 +214,27 @@ export const subscribers = pgTable("subscribers", {
   isActive: boolean("is_active").default(true),
   createdAt: timestamp("created_at").defaultNow(),
 });
+export const baptisms = pgTable("baptisms", {
+  baptismId: serial("baptism_id").primaryKey(),
+  fullName: varchar("full_name", { length: 255 }).notNull(),
+  email: varchar("email", { length: 255 }),
+  phoneNumber: varchar("phone_number", { length: 50 }).notNull(),
+  dob: date("dob"),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+export const membershipTransfers = pgTable("membership_transfers", {
+  transferId: serial("transfer_id").primaryKey(),
+  fullName: varchar("full_name", { length: 255 }).notNull(),
+  email: varchar("email", { length: 255 }),
+  phoneNumber: varchar("phone_number", { length: 50 }).notNull(),
+  fromChurch: varchar("from_church", { length: 255 }).notNull(),
+  toChurch: varchar("to_church", { length: 255 }).notNull(),
+  destinationDistrict: varchar("destination_district", { length: 255 }).notNull(),
+  destinationConference: varchar("destination_conference", { length: 255 }).notNull(),
+  destinationLocation: varchar("destination_location", { length: 255 }).notNull(),
+  reason: text("reason"),
+  status: varchar("status", { length: 50 }).default("pending"),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});

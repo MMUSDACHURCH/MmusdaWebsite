@@ -1,0 +1,53 @@
+.create-baptism-form {
+  max-width: 400px;
+  margin: 2rem auto;
+  background-color: #003366;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: #fff;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.create-baptism-form input {
+  padding: 0.8rem;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+
+.date-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.date-input-group label {
+  font-size: 0.8rem;
+  color: #ccc;
+}
+
+.submit-btn {
+  background-color: #ff9900;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #e68a00;
+  transform: translateY(-2px);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
